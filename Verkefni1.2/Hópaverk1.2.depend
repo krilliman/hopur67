@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1511953168 source:c:\users\kristmannk\documents\for100\hópaverk1.2\main.cpp
+	<iostream>
+	<fstream>
+	<string>
+

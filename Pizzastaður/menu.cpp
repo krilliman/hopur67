@@ -51,9 +51,3 @@ void Menu::write(ofstream& fout)const
     fout.write((char*)(&addPizza), sizeof(Pizza));
 }
 
-ostream& operator <<(ostream& out , Menu menu)
-{
-    out << menu.addPizza;
-
-    return out;
-}

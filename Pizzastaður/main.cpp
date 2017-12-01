@@ -6,7 +6,10 @@ using namespace std;
 
 int main()
 {
-///forrit crashar þegar það er prentað út menu
+///Veit ekki hvort það er hægt að skrifa og prenta pizzur á menu eins og eg er að gera (nota bara nafn úr toppings classanum) - spyrja uti það
+///og síðan er ég með breytu í pizzu sem tilgreynir hvort pizzan sé á menu eða ekki, ef a menu þá gefir henni nafn , veit ekki hvort það er hægt að hafa það svoleiðis
+///Gæti verið einhvað vesen þegar ég reyni að lesa binary files þannig , s.s það er gert ráð fyrir að það sé verið a lesa einhvað sem er jafn mörg byte og allur classin en siðan nota eg ekki allan classan
+///Komast að því hvernig það er hægt að lesa úr skrám inni fylki, vantar að laga það í topping List , Side Order List og Menu(menu er bara fattlað yfir höfuð).
     MainUI mainui;
     mainui.startUI();
 

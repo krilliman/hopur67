@@ -44,15 +44,6 @@ void ToppingList::read(ifstream& ifin)
             cout << "Could not open file." << endl;
         }
 }
-
-ostream& operator <<(ostream& out , ToppingList toppinglist)
-{
-    out << toppinglist.ToppingToAdd;
-
-    return out;
-}
-
-
 /*
 void ToppingList::addSizeSet(int addSize)
 {

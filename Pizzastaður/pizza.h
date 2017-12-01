@@ -19,15 +19,19 @@ class Pizza
         void write(ofstream& fout) const;
         void read(ifstream& fin);
 
+        void setMenuPizza(bool n);
+
         friend ostream& operator <<(ostream& out ,const Pizza& pizza);
         friend istream& operator >>(istream& in, Pizza& pizza);
 
     protected:
 
     private:
+        char name[20];
         alegg *toppings;
         int toppingCount;
         int currentToppingNum;
+        bool menuPizza;
 
 };
 

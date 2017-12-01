@@ -4,6 +4,9 @@
 #include "toppinglist.h"
 #include "aleggrepository.h"
 #include "pizzarepository.h"
+#include "sideorderlist.h"
+#include "extrasrepository.h"
+#include "sideorders.h"
 using namespace std;
 AdminUI::AdminUI()
 {
@@ -18,14 +21,17 @@ AdminUI::~AdminUI()
 void AdminUI::startUI()
 {
     AleggRepository aleggRepo;
+    extrasRepository extraRepo;
     PizzaRepository pizzaRepo;
     char Selection = '\0';
     while(Selection != 'q')
     {
         cout << endl<< "t: to add to Toppings: " << endl;
         cout << "m: to add to Menu: " << endl;
+        cout << "s: to add to Side Orders: " << endl << endl << endl;
         cout << "p: to print Toppings: " << endl;
-        cout << "pm: to print Menu: " << endl;
+        cout << "l: to print Menu: //ERROR" << endl;
+        cout << "o: to print Toppings: " << endl;
         cin >> Selection;
 
         if(Selection == 't' ||Selection == 'T' )
@@ -59,12 +65,38 @@ void AdminUI::startUI()
             {
                 cout << endl;
                 Pizza nyPizza;
+                nyPizza.setMenuPizza(true);
                 cin >> nyPizza;
 
                 menu.setPizzaToAdd(nyPizza);
                 pizzaRepo.storeMenu(menu);
 
             }
+        }
+        else if(Selection == 's' || Selection == 'S')
+        {
+            int SOAdd;
+            SideOrderList SOList;
+
+            cout << endl << "How many Side Orders would you like to add ? ";
+            cin >> SOAdd;
+
+            for(int i = 0 ; i < SOAdd;i++)
+            {
+                cout << endl;
+                SideOrders newsideorder;
+                cin >> newsideorder;
+
+                SOList.setSideOrderToAdd(newsideorder);
+                extraRepo.writeSideOrder(SOList);
+            }
+
+
+        }
+        else if(Selection == 'o' || Selection == 'O')
+        {
+            cout << endl;
+            extraRepo.readSOList();
         }
         else if(Selection == 'p' || Selection == 'P')
         {

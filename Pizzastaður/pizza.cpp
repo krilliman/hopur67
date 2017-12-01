@@ -4,6 +4,8 @@ Pizza::Pizza()
     toppings = NULL;
     toppingCount = 0;
     currentToppingNum = 0;
+    name[0] = '\0';
+    menuPizza = false;
 }
 
 Pizza::~Pizza()
@@ -53,8 +55,19 @@ void Pizza::read(ifstream& fin)
     currentToppingNum = toppingCount;
 }
 
+
+void Pizza::setMenuPizza(bool n)
+{
+    menuPizza = n;
+}
+
 ostream& operator <<(ostream& out ,const Pizza& pizza)
 {
+    if(pizza.menuPizza)
+    {
+        cout << "Name of the Pizza : ";
+        out << pizza.name << endl;
+    }
     for(int i = 0; i < pizza.toppingCount;i++)
     {
         out << pizza.toppings[i];
@@ -63,12 +76,20 @@ ostream& operator <<(ostream& out ,const Pizza& pizza)
 istream& operator >>(istream& in, Pizza& pizza)
 {
     int topCnt;
+    bool n = false;
+
+    if(pizza.menuPizza)
+    {
+        cout << "Enter Name For the Pizza: ";
+        in >> pizza.name;
+    }
+    cout << "Enter Number Of Toppings: ";
     in >> topCnt;
 
     pizza.initialize(topCnt);
 
     alegg topping;
-
+    topping.setAddOrNot(n);
     for(int i = 0; i < topCnt;i++)
     {
         in >> topping;

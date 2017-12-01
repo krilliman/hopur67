@@ -3,80 +3,67 @@
 alegg::alegg()
 {
     nafn[0] = '\0';
-    tegund[0] = '\0';
     verdLitil = 0;
     verdMid = 0;
     verdStor = 0;
+    addOrNot = true;
 }
 
-void alegg::setVerbose(bool v)
+
+void alegg::setAddOrNot(bool n)
 {
-    verbose = v;
+    addOrNot = n;
 }
-
 
 
 istream& operator >> (istream& in, alegg& nyttalegg)
 {
-    if(nyttalegg.verbose)
-    {
-        cout << "Nafn:";
-        in >> nyttalegg.nafn;
-    }
 
+    cout << "Name Of Topping: ";
+    in >> nyttalegg.nafn;
 
-    if(nyttalegg.verbose)
+    if(nyttalegg.addOrNot)
     {
-        cout << "tegund:";
-        in >> nyttalegg.tegund;
-    }
-
-    if(nyttalegg.verbose)
-    {
-        cout << "verd Litil:";
+        cout << "Price Little: ";
         in >> nyttalegg.verdLitil;
     }
-    if(nyttalegg.verbose)
+
+    if(nyttalegg.addOrNot)
     {
-        cout << "verd Litil:";
+        cout << "Price Middle: ";
         in >> nyttalegg.verdMid;
     }
-    if(nyttalegg.verbose)
+
+    if(nyttalegg.addOrNot)
     {
-        cout << "verd Stor:";
+        cout << "Price Big: ";
         in >> nyttalegg.verdStor;
     }
+
     return in;
 
 }
 ostream& operator << (ostream& out, const alegg skrifalegg)
 {
-    if(skrifalegg.verbose)
-    {
-        cout << "Nafn:";
-    }
+
+    cout << "Topping name: ";
     out << skrifalegg.nafn << endl;
+    if(skrifalegg.addOrNot)
+    {
+        cout << "Price Little: ";
+        out << skrifalegg.verdLitil << endl;
+    }
 
-    if(skrifalegg.verbose)
+    if(skrifalegg.addOrNot)
     {
-        cout << "tegund:";
+        cout << "Price Middle : ";
+        out << skrifalegg.verdMid << endl;
     }
-    out << skrifalegg.tegund << endl;
+    if(skrifalegg.addOrNot)
+    {
+        cout << "Price Big: ";
+        out << skrifalegg.verdStor << endl;
+    }
 
-    if(skrifalegg.verbose)
-    {
-        cout << "verd Litil: ";
-    }
-    out << skrifalegg.verdLitil << endl;
-    if(skrifalegg.verbose)
-    {
-        cout << "verd Mid :";
-    }
-    out << skrifalegg.verdMid << endl;
-    if(skrifalegg.verbose)
-    {
-        cout << "verd Stor:";
-    }
-    out << skrifalegg.verdStor << endl;
     return out;
 }

@@ -14,7 +14,6 @@ class Menu
         void setListMemory(int menuLength);
         void setPizzaToAdd(Pizza newPizza);
 
-        friend ostream& operator <<(ostream& out , Menu menu);
 
 
 

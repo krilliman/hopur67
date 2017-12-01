@@ -9,18 +9,18 @@ class alegg
         alegg();
         friend istream& operator >> (istream& in, alegg& nyttalegg);
         friend ostream& operator << (ostream& out, const alegg skrifalegg);
-        void setVerbose(bool v);
+        void setAddOrNot(bool n);
+
+
 
 
 
     private:
         char nafn[20];
-        char tegund[20];
         int verdLitil;
         int verdMid;
         int verdStor;
-
-        bool verbose = true;
+        bool addOrNot;
 };
 
 #endif // ALEGG_H

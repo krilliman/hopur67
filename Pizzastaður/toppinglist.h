@@ -15,7 +15,6 @@ class ToppingList
         void write(ofstream& fout);
         //void addSizeSet(int addSize);
 
-        friend ostream& operator <<(ostream& out , ToppingList toppinglist);
 
         void setToppingToAdd(alegg ToppingToAdd);
         void setListMemory(int memory);
@@ -27,6 +26,7 @@ class ToppingList
         alegg ToppingToAdd;
         alegg *toppinglist;
         int listLength;
+        bool add;
 };
 
 #endif // TOPPINGLIST_H
