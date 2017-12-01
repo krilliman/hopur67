@@ -1,0 +1,88 @@
+# depslib dependency file v1.0
+1512084367 source:c:\users\kristmannk\documents\for100\pizzastaður\main.cpp
+	<iostream>
+	<fstream>
+	"mainui.h"
+
+1511901377 c:\users\kristmannk\documents\for100\pizzastaður\include\matseðill.h
+	<fstream>
+	<iostream>
+
+1511901377 source:c:\users\kristmannk\documents\for100\pizzastaður\src\matseðill.cpp
+	"matseðill.h"
+	<fstream>
+
+1511900213 c:\users\kristmannk\documents\for100\pizzastaður\include\operator.h
+	<iostream>
+	<string>
+
+1511900257 source:c:\users\kristmannk\documents\for100\pizzastaður\src\operator.cpp
+	"Operator.h"
+
+1512085294 source:c:\users\kristmannk\documents\for100\pizzastaður\src\alegg.cpp
+	"alegg.h"
+	<fstream>
+
+1512085174 c:\users\kristmannk\documents\for100\pizzastaður\include\alegg.h
+	<iostream>
+
+1512091315 source:c:\users\kristmannk\documents\for100\pizzastaður\adminui.cpp
+	"adminui.h"
+	"alegg.h"
+	<iostream>
+	"toppinglist.h"
+	"aleggrepository.h"
+	"pizzarepository.h"
+
+1512062351 c:\users\kristmannk\documents\for100\pizzastaður\adminui.h
+
+1512082550 source:c:\users\kristmannk\documents\for100\pizzastaður\aleggrepository.cpp
+	"aleggrepository.h"
+	"toppinglist.h"
+	<fstream>
+
+1512082158 c:\users\kristmannk\documents\for100\pizzastaður\aleggrepository.h
+	"alegg.h"
+	"toppinglist.h"
+
+1512090378 c:\users\kristmannk\documents\for100\pizzastaður\toppinglist.h
+	"alegg.h"
+	<iostream>
+	<fstream>
+
+1512062350 c:\users\kristmannk\documents\for100\pizzastaður\mainui.h
+
+1512065026 source:c:\users\kristmannk\documents\for100\pizzastaður\mainui.cpp
+	"mainui.h"
+	"adminui.h"
+	<iostream>
+
+1512090378 source:c:\users\kristmannk\documents\for100\pizzastaður\toppinglist.cpp
+	"toppinglist.h"
+	"alegg.h"
+
+1512091117 source:c:\users\kristmannk\documents\for100\pizzastaður\pizza.cpp
+	"pizza.h"
+
+1512091087 c:\users\kristmannk\documents\for100\pizzastaður\pizza.h
+	"alegg.h"
+	<iostream>
+	<fstream>
+
+1512090228 source:c:\users\kristmannk\documents\for100\pizzastaður\pizzarepository.cpp
+	"pizzarepository.h"
+	<fstream>
+	"menu.h"
+
+1512089728 c:\users\kristmannk\documents\for100\pizzastaður\pizzarepository.h
+	"pizza.h"
+	"menu.h"
+
+1512091243 c:\users\kristmannk\documents\for100\pizzastaður\menu.h
+	"pizza.h"
+	<fstream>
+
+1512091382 source:c:\users\kristmannk\documents\for100\pizzastaður\menu.cpp
+	"menu.h"
+	"pizza.h"
+
