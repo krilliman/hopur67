@@ -6,9 +6,10 @@ class MainUI
 {
     public:
         MainUI();
-        virtual ~MainUI();
+
+
         void startUI();
-    protected:
+
 
     private:
 };

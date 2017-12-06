@@ -28,6 +28,7 @@ void AdminUI::startUI()
     {
         cout << endl<< "t: to add to Toppings: " << endl;
         cout << "m: to add to Menu: " << endl;
+        cout << "b: to add to Beverages: " << endl;
         cout << "s: to add to Side Orders: " << endl << endl << endl;
         cout << "p: to print Toppings: " << endl;
         cout << "l: to print Menu: //ERROR" << endl;
@@ -93,6 +94,13 @@ void AdminUI::startUI()
 
 
         }
+        else if(Selection == 'b' || Selection == 'B' )
+        {
+            int BeveragesAdd;
+
+
+        }
+
         else if(Selection == 'o' || Selection == 'O')
         {
             cout << endl;
