@@ -1,5 +1,4 @@
 #include "aleggrepository.h"
-#include "toppinglist.h"
 #include <fstream>
 AleggRepository::AleggRepository()
 {
@@ -12,8 +11,17 @@ AleggRepository::~AleggRepository()
 }
 
 
-void AleggRepository::storeAlegg( ToppingList toppinglist)
+void AleggRepository::storeAlegg( alegg aleggToAdd)
 {
+
+    ofstream fout;
+
+    fout.open("Topping_list.dat", ios::binary | ios::app);
+
+    fout.write((char*)(&aleggToAdd), sizeof(alegg));
+
+    fout.close();
+    /*
     ofstream fout;
 
     fout.open("Topping_list.dat", ios::binary | ios::app);
@@ -22,18 +30,41 @@ void AleggRepository::storeAlegg( ToppingList toppinglist)
 
 
     fout.close();
+    */
 }
-ToppingList AleggRepository::getTopList()
+
+///not a good idea to return a pointer so need to find another way/if this even works.
+alegg* AleggRepository::getTopList()
 {
-    ifstream fin;
+    ifstream ifin;
 
-    //fin.open("pizzas.dat", ios::binary );
-    fin.open("Topping_list.dat", ios::binary);
-    ToppingList topList;
+    alegg newAlegg;
 
-    topList.read(fin);
+    ifin.open("Topping_list.dat", ios::binary);
 
-    fin.close();
 
-    return topList;
+    if(ifin.is_open())
+        {
+            ifin.seekg(0,ifin.end);
+            int listSize = ifin.tellg() / sizeof(alegg);
+            ifin.seekg(0, ifin.beg);
+
+            alegg arrayOfAlegg[listSize];
+
+            for(int i = 0; i < listSize;i++)
+            {
+                ifin.read((char*)(&newAlegg),sizeof(alegg));
+
+                arrayOfAlegg[i] = newAlegg;
+                cout << newAlegg << endl;
+            }
+             return arrayOfAlegg;
+        }
+        else
+        {
+            cout << "Could not open file." << endl;
+        }
+
+    ifin.close();
+
 }

@@ -1,7 +1,6 @@
 #ifndef ALEGGREPOSITORY_H
 #define ALEGGREPOSITORY_H
 #include "alegg.h"
-#include "toppinglist.h"
 
 class AleggRepository
 {
@@ -9,8 +8,8 @@ class AleggRepository
         AleggRepository();
         virtual ~AleggRepository();
 
-        void storeAlegg( ToppingList toppinglist);
-        ToppingList getTopList();
+        void storeAlegg( alegg topping);
+        alegg* getTopList();
     protected:
 
     private:

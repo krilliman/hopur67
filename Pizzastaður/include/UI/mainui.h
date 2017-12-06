@@ -6,11 +6,7 @@ class MainUI
 {
     public:
         MainUI();
-
-
         void startUI();
-
-
     private:
 };
 

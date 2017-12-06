@@ -16,58 +16,15 @@ SideOrderList::~SideOrderList()
 */
 }
 
-void SideOrderList::setSideOrderToAdd(SideOrders sideorder)
+void SideOrderList::setNewSideOrder(SideOrders sideorder)
 {
-    sideorderToAdd = sideorder;
+    ///need to validate the sideOrder
+    extrasRepository extraRepo;
+    extraRepo.writeSideOrder(sideorder);
 }
 
-/*
-void SideOrderList::setlistSize(int listSize)
+void SideOrderList::getListOfSideOrders()
 {
-    SOList = new SideOrders[listSize];
-    listLength = listSize;
+    extrasRepository extrasRepo;
+    SOList = extrasRepo.readSOList();
 }
-*/
-void SideOrderList::writeList(ofstream& fout)
-{
-    /*
-    fout.write((char*)(&listLength), sizeof(int));
-    fout.write((char*)SOList, sizeof(SideOrders)*listLength);
-    ///skrifar ekkert inni folerið
-    */
-    fout.write((char*)(&sideorderToAdd),sizeof(SideOrders));
-}
-
-void SideOrderList::readList(ifstream& ifin)
-{
-    SideOrders nyttSO;
-        if(ifin.is_open())
-        {
-            ifin.seekg(0,ifin.end);
-            int listSize = ifin.tellg() / sizeof(SideOrders);
-            ifin.seekg(0, ifin.beg);
-
-            //setlistSize(listSize);
-            for(int i = 0; i < listSize;i++)
-            {
-                ifin.read((char*)(&nyttSO),sizeof(SideOrders));
-
-                cout << nyttSO << endl <<endl;
-            }
-        }
-        else
-        {
-            cout << "Could not open file." << endl;
-        }
-}
-/*
-
-void SideOrderList::setSOListElements(SideOrders sideorder)
-{
-    if(currentSideorderNum < listLength)
-    {
-        SOList[currentSideorderNum] = sideorder;
-        currentSideorderNum++;
-    }
-}
-*/

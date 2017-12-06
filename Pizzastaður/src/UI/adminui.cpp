@@ -1,12 +1,11 @@
 #include "adminui.h"
 #include "alegg.h"
-#include <iostream>
 #include "toppinglist.h"
-#include "aleggrepository.h"
 #include "pizzarepository.h"
 #include "sideorderlist.h"
-#include "extrasrepository.h"
 #include "sideorders.h"
+#include "beverageslist.h"
+#include "beverages.h"
 using namespace std;
 AdminUI::AdminUI()
 {
@@ -20,9 +19,7 @@ AdminUI::~AdminUI()
 
 void AdminUI::startUI()
 {
-    AleggRepository aleggRepo;
-    extrasRepository extraRepo;
-    PizzaRepository pizzaRepo;
+    PizzaRepository pizzaRepo; ///fix pizza in general and get rid of this , the domain should be the only one that talks to the repo
     char Selection = '\0';
     while(Selection != 'q')
     {
@@ -33,6 +30,7 @@ void AdminUI::startUI()
         cout << "p: to print Toppings: " << endl;
         cout << "l: to print Menu: //ERROR" << endl;
         cout << "o: to print Toppings: " << endl;
+        cout << "i: to print Beverages" << endl;
         cin >> Selection;
 
         if(Selection == 't' ||Selection == 'T' )
@@ -48,10 +46,8 @@ void AdminUI::startUI()
                 cout << endl;
                 alegg nyttAlegg;
                 cin >> nyttAlegg;
+                toppinlist.setNewTopping(nyttAlegg);
 
-                toppinlist.setToppingToAdd(nyttAlegg);
-
-                aleggRepo.storeAlegg(toppinlist);
             }
         }
         else if(Selection == 'm' || Selection == 'M' )
@@ -87,9 +83,7 @@ void AdminUI::startUI()
                 cout << endl;
                 SideOrders newsideorder;
                 cin >> newsideorder;
-
-                SOList.setSideOrderToAdd(newsideorder);
-                extraRepo.writeSideOrder(SOList);
+                SOList.setNewSideOrder(newsideorder);
             }
 
 
@@ -98,23 +92,45 @@ void AdminUI::startUI()
         {
             int BeveragesAdd;
 
+            Beverageslist beveragelist;
+
+            cout << endl << "How many Beverages would you like to add ? ";
+            cin >> BeveragesAdd;
+
+            for(int i = 0; i < BeveragesAdd;i++)
+            {
+                Beverages beverage;
+                cin >> beverage;
+                cout << "test: " << beverage << endl;
+                beveragelist.getNewBeverges(beverage);
+            }
+
 
         }
 
         else if(Selection == 'o' || Selection == 'O')
         {
             cout << endl;
-            extraRepo.readSOList();
+            SideOrderList sideorderlist;
+            sideorderlist.getListOfSideOrders();
         }
         else if(Selection == 'p' || Selection == 'P')
         {
             cout << endl;
-            aleggRepo.getTopList();
+            ToppingList toppinlist;
+            toppinlist.getToppingList();
         }
         else if(Selection == 'l'||Selection == 'L')
         {
             cout << endl;
             pizzaRepo.readMenu();
+        }
+        else if(Selection == 'i' ||Selection == 'I')
+        {
+            cout << endl;
+            Beverageslist beverageslist;
+
+            beverageslist.getBevergeList();
         }
     }
 }

@@ -11,24 +11,45 @@ extrasRepository::~extrasRepository()
 }
 
 
-void extrasRepository::writeSideOrder(SideOrderList sideorderlist)
+void extrasRepository::writeSideOrder(SideOrders sideorder)
 {
     ofstream fout;
 
     fout.open("Side_Order_List.dat", ios::binary|ios::app);
-    sideorderlist.writeList(fout);
+
+    fout.write((char*)(&sideorder), sizeof(SideOrders));
+
     fout.close();
 }
-
-SideOrderList extrasRepository::readSOList()
+///Might need to change that this function return a pointer , might not work
+SideOrders* extrasRepository::readSOList()
 {
     ifstream fin;
 
+    SideOrders sideorder;
+    fin.open("Side_Order_List.dat", ios::binary);
 
-    fin.open("Side_Order_List.dat", ios::binary|ios::app);
-    SideOrderList SOList;
+    if(fin.is_open())
+    {
+        fin.seekg(0,fin.end);
+        int listSize = fin.tellg() / sizeof(SideOrders);
+        fin.seekg(0,fin.beg);
 
-    SOList.readList(fin);
+        SideOrders sideorderArray[listSize];
+
+        for(int i = 0; i < listSize;i++)
+        {
+            fin.read((char*)(&sideorder),sizeof(SideOrders));
+
+            sideorderArray[i] = sideorder;
+            cout << sideorder << endl << endl;
+        }
+        return sideorderArray;
+    }
+    else
+    {
+        cout << "Could not open file." << endl;
+    }
 
     fin.close();
 }
@@ -44,7 +65,7 @@ void extrasRepository::writeBeverageToList(Beverages beverage)
     fout.close();
 }
 
-Beverages extrasRepository::readBevergesList()
+Beverages* extrasRepository::readBevergesList()
 {
     ifstream fin;
 
@@ -56,14 +77,16 @@ Beverages extrasRepository::readBevergesList()
             fin.seekg(0,fin.end);
             int listSize = fin.tellg() / sizeof(Beverages);
             fin.seekg(0, fin.beg);
+            Beverages arrayOfBeverages[listSize];
 
-            //setlistSize(listSize);
             for(int i = 0; i < listSize;i++)
             {
                 fin.read((char*)(&newBeverage),sizeof(Beverages));
 
-                return newBeverage;
+                arrayOfBeverages[i] = newBeverage;
+                cout << newBeverage;
             }
+            return arrayOfBeverages;
         }
         else
         {

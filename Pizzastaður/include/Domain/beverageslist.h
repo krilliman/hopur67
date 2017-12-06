@@ -13,6 +13,7 @@ class Beverageslist
         void getBevergeList();
 
         void setList();
+        void printList();
 
     private:
         Beverages beveragesToAdd;

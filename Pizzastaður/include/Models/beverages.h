@@ -11,16 +11,14 @@ class Beverages
         Beverages();
         Beverages(char name , int verd , char size);
 
-        char getName();
-        int getVerd();
-        char getSize();
-
         friend ostream& operator << (ostream& out, const Beverages& beverages);
+        friend istream& operator >>(istream& in, Beverages& beverages);
 
     private:
-        char name;
-        int verd;
-        char size;
+        char name[20];
+        int smallPrice; /// 0.5L
+        int midPrice;   /// 1.5L
+        int bigPrice;   /// 2.0L
 };
 
 #endif // BEVERAGES_H

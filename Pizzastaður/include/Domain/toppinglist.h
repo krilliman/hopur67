@@ -1,7 +1,8 @@
 #ifndef TOPPINGLIST_H
 #define TOPPINGLIST_H
 #include "alegg.h"
-#include <iostream>
+#include "aleggrepository.h"
+
 #include <fstream>
 
 class ToppingList
@@ -10,16 +11,11 @@ class ToppingList
         ToppingList();
         virtual ~ToppingList();
 
+        void setNewTopping(alegg newTopping);
+        void getToppingList();
 
-        void read(ifstream& fin);
-        void write(ofstream& fout);
-        //void addSizeSet(int addSize);
-
-
-        void setToppingToAdd(alegg ToppingToAdd);
-        void setListMemory(int memory);
-
-    protected:
+        //void setList();
+        //void printList();
 
     private:
        // int addToList;

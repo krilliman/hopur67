@@ -1,6 +1,7 @@
 #ifndef SIDEORDERLIST_H
 #define SIDEORDERLIST_H
 #include "sideorders.h"
+#include "extrasrepository.h"
 #include <fstream>
 
 class SideOrderList
@@ -9,22 +10,17 @@ class SideOrderList
         SideOrderList();
         virtual ~SideOrderList();
 
-        void writeList(ofstream& fout);
-        void readList(ifstream& fin);
+       void setNewSideOrder(SideOrders sideorder);
+       void getListOfSideOrders();
 
-        //void setlistSize(int listSize);
 
-        //void setSOListElements(SideOrders sideorder);
-
-        void setSideOrderToAdd(SideOrders sideorder);
 
     protected:
 
     private:
         SideOrders sideorderToAdd;
-        //SideOrders *SOList;
-        //int listLength;
-        //int currentSideorderNum;
+        SideOrders *SOList;
+        int listLength;
 };
 
 #endif // SIDEORDERLIST_H

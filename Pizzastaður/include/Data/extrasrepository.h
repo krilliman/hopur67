@@ -1,6 +1,6 @@
 #ifndef EXTRASREPOSITORY_H
 #define EXTRASREPOSITORY_H
-#include "sideorderlist.h"
+#include "sideorders.h"
 #include "beverages.h"
 
 class extrasRepository
@@ -9,11 +9,11 @@ class extrasRepository
         extrasRepository();
         virtual ~extrasRepository();
 
-        void writeSideOrder(SideOrderList sideorderlist);
-        SideOrderList readSOList();
+        void writeSideOrder(SideOrders sideorder);
+        SideOrders* readSOList();
 
         void writeBeverageToList(Beverages beverage);
-        Beverages readBevergesList();
+        Beverages* readBevergesList();
         int getBeverageSize();
 
 
