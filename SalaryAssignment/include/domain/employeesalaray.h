@@ -10,9 +10,10 @@ class EmployeeSalaray
         EmployeeSalaray();
 
         void writeSalary(employee Employee);
-        void readSalary();///bæta við SSN sem parameter
-        void checkHighestSalary(char year);
-        void getTotalSalary(char SSN, char salary);
+        void readSalary(char* SSN);///bæta við SSN sem parameter
+        void checkHighestSalary(char *year);
+        void getTotalSalary(char year[], char SSN[]);
+        void printSalary();
 
     private:
         employee Employee;

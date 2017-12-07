@@ -1,5 +1,5 @@
 #include "employeerepository.h"
-
+#include <algorithm>
 EmployeeRepository::EmployeeRepository()
 {
     //ctor
@@ -42,18 +42,81 @@ void EmployeeRepository::readSalary()
 
     fin.close();
 }
-void EmployeeRepository::printSalaryVector()
+void EmployeeRepository::printSalaryVector(vector<employee> employeeVector)
 {
-    for ( vector<employee>::iterator i = employeeArray.begin(); i != employeeArray.end(); ++i)
+    for ( vector<employee>::iterator i = employeeVector.begin(); i != employeeVector.end(); ++i)
     {
         cout << *i << ' ' << endl;
     }
 }
-void EmployeeRepository::checkHighestSalary(char year)
+
+
+void EmployeeRepository::checkHighestSalary(char* year)
 {
+    int higestSalary = 0;
+    char* name = '\0';
+    readSalary();
+    int newYear = atoll(year);
+    for(int i = 0; i < employeeArray.size();i++)
+    {
+        int arrayYear =  atoll(employeeArray[i].getYear());
+        if(newYear == arrayYear)
+        {
+            int arraySalary = atoll(employeeArray[i].getAmount());
+            if(arraySalary > higestSalary)
+            {
+                name = '\0';
+                name = employeeArray[i].getName();
+                higestSalary = arraySalary;
+            }
+        }
+    }
+    cout << "Name of the person with the Highest total salary in " << newYear << " is: " << name << endl;
+}
+
+void EmployeeRepository::readEmployeesSalary(char* SSN)
+{
+    vector<employee> givenEmployee;
+    readSalary();
+    int value1 = atoll(SSN);
+    for(int i = 0; i < employeeArray.size();i++)
+    {
+        int value2 = atoll(employeeArray[i].getSSN());
+        if(value1 == value2)
+        {
+            cout << "match " << endl;
+            givenEmployee.push_back(employeeArray[i]);
+        }
+    }
+    printSalaryVector(givenEmployee);
 
 }
-void EmployeeRepository::getTotalSalary(char SSN , char name)
+void EmployeeRepository::getTotalSalary(char year[] , char SSN[])
 {
+
+    int totalSalary = 0;
+    readSalary();
+    cout << "before atoll" << SSN << endl << endl << endl;
+    int newSSN = atoi(SSN);
+    int newYear = atoll(year);
+
+    for(int i = 0; i < employeeArray.size();i++)
+    {
+        int arrayYear = atoll(employeeArray[i].getYear());
+        int arraySSN = atoi(employeeArray[i].getSSN());
+        cout << "test SSN: " << newSSN << endl;
+        cout << "test year: " << newYear << endl;
+        cout << "file SSN: " << arraySSN << endl;
+        cout << "file year: " << arrayYear << endl << endl;
+
+        if(newSSN == arraySSN && newYear == arrayYear)
+        {
+            cout << "match" << endl;
+            int arrayAmount = atoll(employeeArray[i].getAmount());
+            totalSalary += arrayAmount;
+        }
+
+    }
+    cout << "Total salary is: " << totalSalary << endl;
 
 }

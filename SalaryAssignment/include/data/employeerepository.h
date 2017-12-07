@@ -9,10 +9,11 @@ class EmployeeRepository
         EmployeeRepository();
 
         void writeSalary(employee Employee);
-        void readSalary();///bæta SSN hérna við
-        void checkHighestSalary(char year);
-        void getTotalSalary(char SSN , char name);
-        void printSalaryVector();
+        void readSalary();
+        void readEmployeesSalary(char* SSN);
+        void checkHighestSalary(char* year);
+        void getTotalSalary(char year[] , char SSN[]);
+        void printSalaryVector(vector<employee> employeeVector);
 
 
     private:

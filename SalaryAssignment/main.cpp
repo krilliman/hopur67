@@ -2,21 +2,9 @@
 #include <adminui.h>
 using namespace std;
 
-///UI
-///Admin
-
-///Models
-///employee(SSN, name)
-
-///Domain
-///employee's salary(amount , month, year.... void checkEmployeeName(), void checkEmployeeSNN(), void checkSalary(), void checkSalaryDate())
-
-
-
-///Respositories
-///employee's Respository(void writeSalary(), void readSalary(), void checkHighestSalary(), void getTotalSalary());
-
-
+///everything other then getting a total salary for a given SSN and a Given Year.
+/// then we need to validate everything
+/// and we can only write the name in 1 word if 2 or 3 the program crashes/ need to fix that.
 
 int main()
 {
