@@ -34,29 +34,35 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="adminui.cpp" />
-		<Unit filename="adminui.h" />
-		<Unit filename="aleggrepository.cpp" />
-		<Unit filename="aleggrepository.h" />
-		<Unit filename="extrasrepository.cpp" />
-		<Unit filename="extrasrepository.h" />
-		<Unit filename="include/alegg.h" />
+		<Unit filename="include/Data/aleggrepository.h" />
+		<Unit filename="include/Data/extrasrepository.h" />
+		<Unit filename="include/Data/pizzarepository.h" />
+		<Unit filename="include/Domain/beverageslist.h" />
+		<Unit filename="include/Domain/matseðill.h" />
+		<Unit filename="include/Domain/menu.h" />
+		<Unit filename="include/Domain/sideorderlist.h" />
+		<Unit filename="include/Domain/toppinglist.h" />
+		<Unit filename="include/Models/alegg.h" />
+		<Unit filename="include/Models/beverages.h" />
+		<Unit filename="include/Models/pizza.h" />
+		<Unit filename="include/Models/sideorders.h" />
+		<Unit filename="include/UI/adminui.h" />
+		<Unit filename="include/UI/mainui.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="mainui.cpp" />
-		<Unit filename="mainui.h" />
-		<Unit filename="menu.cpp" />
-		<Unit filename="menu.h" />
-		<Unit filename="pizza.cpp" />
-		<Unit filename="pizza.h" />
-		<Unit filename="pizzarepository.cpp" />
-		<Unit filename="pizzarepository.h" />
-		<Unit filename="sideorderlist.cpp" />
-		<Unit filename="sideorderlist.h" />
-		<Unit filename="sideorders.cpp" />
-		<Unit filename="sideorders.h" />
-		<Unit filename="src/alegg.cpp" />
-		<Unit filename="toppinglist.cpp" />
-		<Unit filename="toppinglist.h" />
+		<Unit filename="src/Data/aleggrepository.cpp" />
+		<Unit filename="src/Data/extrasrepository.cpp" />
+		<Unit filename="src/Data/pizzarepository.cpp" />
+		<Unit filename="src/Domain/beverageslist.cpp" />
+		<Unit filename="src/Domain/matseðill.cpp" />
+		<Unit filename="src/Domain/menu.cpp" />
+		<Unit filename="src/Domain/sideorderlist.cpp" />
+		<Unit filename="src/Domain/toppinglist.cpp" />
+		<Unit filename="src/Models/alegg.cpp" />
+		<Unit filename="src/Models/beverages.cpp" />
+		<Unit filename="src/Models/pizza.cpp" />
+		<Unit filename="src/Models/sideorders.cpp" />
+		<Unit filename="src/UI/adminui.cpp" />
+		<Unit filename="src/UI/mainui.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
