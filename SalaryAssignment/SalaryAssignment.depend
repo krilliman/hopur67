@@ -39,3 +39,116 @@
 1512653385 c:\users\kristmannk\documents\3viknarepo\hopur67\salaryassignment\include\exeptions\checkisemployeevalid.h
 	<employee.h>
 
+1512691724 source:c:\hopur67\salaryassignment\main.cpp
+	<iostream>
+	<adminui.h>
+
+1512691724 c:\hopur67\salaryassignment\include\ui\adminui.h
+	"employeesalaray.h"
+
+1512691724 c:\hopur67\salaryassignment\include\domain\employeesalaray.h
+	"employee.h"
+	"employeerepository.h"
+
+1512691724 c:\hopur67\salaryassignment\include\models\employee.h
+	<iostream>
+	<string>
+
+1512691724 c:\hopur67\salaryassignment\include\data\employeerepository.h
+	"employee.h"
+	<fstream>
+	<vector>
+
+1512691724 source:c:\hopur67\salaryassignment\src\data\employeerepository.cpp
+	"employeerepository.h"
+	<algorithm>
+
+1512691724 source:c:\hopur67\salaryassignment\src\domain\employeesalaray.cpp
+	"employeesalaray.h"
+
+1512691724 source:c:\hopur67\salaryassignment\src\exeptions\checkisemployeevalid.cpp
+	"checkIsEmployeeValid.h"
+
+1512691724 c:\hopur67\salaryassignment\include\exeptions\checkisemployeevalid.h
+	<employee.h>
+
+1512691724 source:c:\hopur67\salaryassignment\src\models\employee.cpp
+	"employee.h"
+
+1512691724 source:c:\users\kristmannk\desktop\hópavinna-krakkanir\salaryassignment\main.cpp
+	<iostream>
+	<adminui.h>
+
+1512691724 c:\users\kristmannk\desktop\hópavinna-krakkanir\salaryassignment\include\ui\adminui.h
+	"employeesalaray.h"
+
+1512933457 c:\users\kristmannk\desktop\hópavinna-krakkanir\salaryassignment\include\domain\employeesalaray.h
+	"employee.h"
+	"employeerepository.h"
+
+1512932594 c:\users\kristmannk\desktop\hópavinna-krakkanir\salaryassignment\include\models\employee.h
+	<iostream>
+	<string>
+
+1512691724 c:\users\kristmannk\desktop\hópavinna-krakkanir\salaryassignment\include\data\employeerepository.h
+	"employee.h"
+	<fstream>
+	<vector>
+
+1512933520 source:c:\users\kristmannk\desktop\hópavinna-krakkanir\salaryassignment\src\data\employeerepository.cpp
+	"employeerepository.h"
+	<algorithm>
+
+1512933453 source:c:\users\kristmannk\desktop\hópavinna-krakkanir\salaryassignment\src\domain\employeesalaray.cpp
+	"employeesalaray.h"
+	<checkIsEmployeeValid.h>
+	<InvalidSSNException.h>
+	<InvalidSalaryExceptions.h>
+	<InvalidMonthExceptions.h>
+	<InvalidYearException.h>
+	<InvalidEmployeeName.h>
+
+1512933248 source:c:\users\kristmannk\desktop\hópavinna-krakkanir\salaryassignment\src\exeptions\checkisemployeevalid.cpp
+	"checkIsEmployeeValid.h"
+	<string>
+
+1512932008 c:\users\kristmannk\desktop\hópavinna-krakkanir\salaryassignment\include\exeptions\checkisemployeevalid.h
+	<employee.h>
+
+1512932594 source:c:\users\kristmannk\desktop\hópavinna-krakkanir\salaryassignment\src\models\employee.cpp
+	"employee.h"
+	<assert.h>
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+
+1512921457 source:c:\users\kristmannk\desktop\hópavinna-krakkanir\salaryassignment\src\ui\adminui.cpp
+	"adminui.h"
+	<stdlib.h>
+	<cstring>
+
+1512929478 c:\users\kristmannk\desktop\hópavinna-krakkanir\salaryassignment\include\exeptions\invalidssnexception.h
+
+1512929492 source:c:\users\kristmannk\desktop\hópavinna-krakkanir\salaryassignment\src\exeptions\invalidssnexception.cpp
+	"InvalidSSNException.h"
+
+1512930023 source:c:\users\kristmannk\desktop\hópavinna-krakkanir\salaryassignment\src\exeptions\invalidmonthexceptions.cpp
+	"InvalidMonthExceptions.h"
+
+1512930016 c:\users\kristmannk\desktop\hópavinna-krakkanir\salaryassignment\include\exeptions\invalidmonthexceptions.h
+
+1512930652 source:c:\users\kristmannk\desktop\hópavinna-krakkanir\salaryassignment\src\exeptions\invalidsalaryexceptions.cpp
+	"InvalidSalaryExceptions.h"
+
+1512930647 c:\users\kristmannk\desktop\hópavinna-krakkanir\salaryassignment\include\exeptions\invalidsalaryexceptions.h
+
+1512931929 c:\users\kristmannk\desktop\hópavinna-krakkanir\salaryassignment\include\exeptions\invalidyearexception.h
+
+1512931927 source:c:\users\kristmannk\desktop\hópavinna-krakkanir\salaryassignment\src\exeptions\invalidyearexception.cpp
+	"InvalidYearException.h"
+
+1512932851 c:\users\kristmannk\desktop\hópavinna-krakkanir\salaryassignment\include\exeptions\invalidemployeename.h
+
+1512932856 source:c:\users\kristmannk\desktop\hópavinna-krakkanir\salaryassignment\src\exeptions\invalidemployeename.cpp
+	"InvalidEmployeeName.h"
+

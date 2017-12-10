@@ -7,10 +7,11 @@ class checkIsEmployeeValid
     public:
         checkIsEmployeeValid();
 
-        void checkEmployeeName(employee Employee);
-        void checkEmployeeSNN(employee Employee);
-        void checkSalary(employee Employee);
-        void checkSalaryDate(employee Employee);
+        bool checkEmployeeName(employee Employee);
+        bool checkEmployeeSNN(employee Employee);
+        bool checkSalary(employee Employee);
+        bool checkMonth(employee Employee);
+        bool checkYear(employee Employee);
 
     private:
 };

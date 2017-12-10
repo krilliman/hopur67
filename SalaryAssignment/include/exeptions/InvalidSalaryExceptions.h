@@ -1,0 +1,8 @@
+#ifndef INVALIDSALARYEXCEPTIONS_H
+#define INVALIDSALARYEXCEPTIONS_H
+
+
+class InvalidSalaryExceptions
+{};
+
+#endif // INVALIDSALARYEXCEPTIONS_H

@@ -1,5 +1,6 @@
 #include "adminui.h"
 #include <stdlib.h>
+#include <cstring>
 AdminUI::AdminUI()
 {
     //ctor
@@ -11,10 +12,13 @@ void AdminUI::startUI()
     char selection = '\0';
     while(selection != 'q')
     {
-        cout << "1. To add salary: " << endl;
-        cout << "2. To print info for a given SSN: " << endl;
-        cout << "3. To print total salary for a given month and SSN: " << endl;
-        cout << "4. To print a name of a person with the highest salary for a given year: " << endl;
+        cout << "** Menu **" << endl;
+        cout << "-------------------------------------------------------------------------" << endl;
+        cout << "1. Add new salary record" << endl;
+        cout << "2. Get all salary records for given SSN" << endl;
+        cout << "3. Get all salary records for given year and given SSN" << endl;
+        cout << "4. Get employee with the highest salary for a given year" << endl;
+        cout << "-------------------------------------------------------------------------" << endl;
 
         cin >> selection;
 
@@ -22,7 +26,7 @@ void AdminUI::startUI()
         {
             EmployeeSalaray employeesalaray;
             int salaryInput;
-            cout << "How many salary's would you like to add ? ";
+            cout << "How many records would you like to add? ";
             cin >> salaryInput;
 
             for(int i = 0 ; i < salaryInput;i++)
@@ -40,20 +44,21 @@ void AdminUI::startUI()
         {
             char* SSN;
             system("CLS");
-            cout << "Enter a SSN: ";
+            cout << "Enter social security number: ";
             cin >> SSN;
             EmployeeSalaray employeesalaray;
             employeesalaray.readSalary(SSN);
         }
         else if(selection == '3')
         {
-            char SSN[10];
+            string SSNstring;
+            char SSN[32];
             char year[4];
             system("CLS");
-            cout << "Enter a given SSN: ";
+            cout << "Enter social security number: ";
             cin >> SSN;
 
-            cout << "Enter a given Year: ";
+            cout << "Enter year: ";
             cin >> year;
 
             EmployeeSalaray employeesalaray;
@@ -63,7 +68,7 @@ void AdminUI::startUI()
         {
             char year[20];
             system("CLS");
-            cout << "Enter a year: ";
+            cout << "Enter year: ";
             cin >> year;
 
             EmployeeSalaray employeesalaray;

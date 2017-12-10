@@ -1,5 +1,10 @@
 #include "employee.h"
 
+#include <assert.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
 employee::employee()
 {
     name[0] = '\0';
@@ -7,8 +12,6 @@ employee::employee()
     year[0]= '\0';
     month[0] = '\0';
     amount[0] = '\0';
-
-
 }
 
 
@@ -51,9 +54,14 @@ ostream& operator <<(ostream& out, const employee Employee)
 }
 istream& operator >>(istream& in, employee& Employee)
 {
+
+    string temp;
     cout << "Enter name of employee: ";
     in >> Employee.name;
     cout << endl;
+
+    //Employee.name = (char *)malloc(temp.size() + 1);
+    //memcpy(Employee.name, temp.c_str(), temp.size() + 1);
 
     cout << "Enter SSN of the employee: ";
     in >> Employee.SSN;

@@ -10,6 +10,7 @@ class employee
     public:
         employee();
 
+
         char* getName();
         char* getSSN();
         char* getYear();

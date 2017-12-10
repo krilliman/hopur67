@@ -10,6 +10,7 @@ void EmployeeRepository::writeSalary(employee Employee)
 {
     ofstream fout;
 
+
     fout.open("employee_list.dat", ios::binary|ios::app);
 
     fout.write((char*)(&Employee), sizeof(employee));
@@ -53,6 +54,7 @@ void EmployeeRepository::printSalaryVector(vector<employee> employeeVector)
 
 void EmployeeRepository::checkHighestSalary(char* year)
 {
+    int counter = 0;
     int higestSalary = 0;
     char* name = '\0';
     readSalary();
@@ -62,6 +64,7 @@ void EmployeeRepository::checkHighestSalary(char* year)
         int arrayYear =  atoll(employeeArray[i].getYear());
         if(newYear == arrayYear)
         {
+            counter++;
             int arraySalary = atoll(employeeArray[i].getAmount());
             if(arraySalary > higestSalary)
             {
@@ -71,7 +74,15 @@ void EmployeeRepository::checkHighestSalary(char* year)
             }
         }
     }
-    cout << "Name of the person with the Highest total salary in " << newYear << " is: " << name << endl;
+    if(counter == 0)
+    {
+        cout << "No records of the Year: " << newYear << endl;
+    }
+    else
+    {
+        cout << "Name of the person with the Highest total salary in " << newYear << " is: " << name << endl;
+    }
+
 }
 
 void EmployeeRepository::readEmployeesSalary(char* SSN)
@@ -96,7 +107,6 @@ void EmployeeRepository::getTotalSalary(char year[] , char SSN[])
 
     int totalSalary = 0;
     readSalary();
-    cout << "before atoll" << SSN << endl << endl << endl;
     int newSSN = atoi(SSN);
     int newYear = atoll(year);
 
@@ -104,14 +114,9 @@ void EmployeeRepository::getTotalSalary(char year[] , char SSN[])
     {
         int arrayYear = atoll(employeeArray[i].getYear());
         int arraySSN = atoi(employeeArray[i].getSSN());
-        cout << "test SSN: " << newSSN << endl;
-        cout << "test year: " << newYear << endl;
-        cout << "file SSN: " << arraySSN << endl;
-        cout << "file year: " << arrayYear << endl << endl;
 
         if(newSSN == arraySSN && newYear == arrayYear)
         {
-            cout << "match" << endl;
             int arrayAmount = atoll(employeeArray[i].getAmount());
             totalSalary += arrayAmount;
         }
