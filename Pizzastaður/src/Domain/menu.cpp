@@ -1,53 +1,60 @@
 #include "menu.h"
-#include "pizza.h"
+#include <fstream>
+#include "pizzarepository.h"
 Menu::Menu()
 {
-        addPizza;
-        pizzaMenu = NULL;
-        menuLength = 0;
+    name[0] = '\0';
+    verdLitil = 0;
+    verdMid = 0;
+    verdStor = 0;
+
+}
+void Menu::addNewPizza(Menu menu)
+{
+    PizzaRepository pizzaRepo;
+    pizzaRepo.storeMenu(menu);
+}
+void Menu::getMenu()
+{
+    PizzaRepository pizzaRepo;
+    pizzaRepo.printMenu();
 }
 
-Menu::~Menu()
+ostream& operator << (ostream& out, const Menu& listi)
 {
-    if(pizzaMenu != NULL)
-    {
-        delete[] pizzaMenu;
-    }
-}
-void Menu::setListMemory(int menuLength)
-{
-    pizzaMenu = new Pizza[menuLength];
-    this->menuLength = menuLength;
-}
-void Menu::read(ifstream& ifin)
-{
-    Pizza nyPizza;
-        if(ifin.is_open())
-        {
-            ifin.seekg(0,ifin.end);
-            int listSize = ifin.tellg() / sizeof(Pizza);
-            ifin.seekg(0, ifin.beg);
 
-            setListMemory(listSize);
-            for(int i = 0; i < listSize;i++)
-            {
-                ifin.read((char*)(&nyPizza),sizeof(Pizza));
+    cout << "Nafn: ";
+    out << listi.name << endl;
 
-                cout << nyPizza << endl;
-            }
-        }
-        else
-        {
-            cout << "Could not open file." << endl;
-        }
-}
-void Menu::setPizzaToAdd(Pizza newPizza)
-{
-    addPizza = newPizza;
+    cout << "Price for little: ";
+    out << listi.verdLitil << endl;
+
+    cout << "Price for Middle: ";
+    out << listi.verdMid << endl;
+
+    cout << "Price for Big: ";
+    out << listi.verdStor << endl;
+
+    return out;
 }
 
-void Menu::write(ofstream& fout)const
+istream& operator >> (istream& in, Menu& listi)
 {
-    fout.write((char*)(&addPizza), sizeof(Pizza));
-}
 
+    cout << "Name: ";
+    in >> listi.name;
+
+    cin >> listi.pizza;
+    cout << "Price for little: ";
+    in >> listi.verdLitil;
+
+    cout << "Price for Middle: ";
+    in >> listi.verdMid;
+
+    cout << "Price for Big: ";
+    in >> listi.verdStor;
+
+
+
+    return in;
+}

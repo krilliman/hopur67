@@ -8,8 +8,7 @@ class SideOrderList
 {
     public:
         SideOrderList();
-        virtual ~SideOrderList();
-
+        ~SideOrderList();
        void setNewSideOrder(SideOrders sideorder);
        void getListOfSideOrders();
 
@@ -18,9 +17,6 @@ class SideOrderList
     protected:
 
     private:
-        SideOrders sideorderToAdd;
-        SideOrders *SOList;
-        int listLength;
 };
 
 #endif // SIDEORDERLIST_H

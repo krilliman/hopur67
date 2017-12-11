@@ -9,18 +9,10 @@ class Beverageslist
     public:
         Beverageslist();
 
-        void getNewBeverges(Beverages beverage);
+        void setNewBeverges(Beverages beverage);
         void getBevergeList();
 
-        void setList();
-        void printList();
-
     private:
-        Beverages beveragesToAdd;
-        Beverages *BeverageList;
-        int listSize;
-
-
 };
 
 #endif // BEVERAGESLIST_H

@@ -1,5 +1,8 @@
 #include "mainui.h"
 #include "adminui.h"
+#include "SalesUI.h"
+#include "bakingui.h"
+#include "deliveryui.h"
 #include <iostream>
 
 using namespace std;
@@ -8,37 +11,41 @@ MainUI::MainUI()
     //ctor
 }
 
-MainUI::~MainUI()
-{
-    //dtor
-}
 
 void MainUI::startUI()
 {
     char Selection = '\0';
-    while(Selection != 'q')
+    while (Selection != 'Q' || Selection != 'q')
     {
-        cout << "a: to add to menu/Toppings: " << endl;
-        cout << "o: to create a order: " << endl;
+        cout << "Main Menu: " << endl;
+        cout << "1. Admin" << endl;
+        cout << "2. Sales" << endl;
+        cout << "3. Baking" << endl;
+        cout << "4. Delivery" << endl;
+        cout << "To exit, press Q." << endl;
+
         cin >> Selection;
 
-        if(Selection == 'a' ||Selection == 'A' )
+        if (Selection == '1')
         {
             AdminUI adminui;
             adminui.startUI();
-
         }
-        else if(Selection == 'o' || Selection == 'O' )
+        if (Selection == '2')
         {
-
+            SalesUI salesui;
+            salesui.startUI();
         }
-        else if(Selection == 'pm')
+        if (Selection == '3')
         {
-
+            bakingui BakingUI;
+            BakingUI.startUI();
         }
-        else if(Selection == 'pm')
+        if (Selection == '4')
         {
-
+            deliveryui DeliveryUI;
+            DeliveryUI.startUI();
         }
     }
+
 }

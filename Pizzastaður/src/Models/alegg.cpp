@@ -1,5 +1,7 @@
 #include "alegg.h"
-#include <fstream>
+
+
+
 alegg::alegg()
 {
     nafn[0] = '\0';

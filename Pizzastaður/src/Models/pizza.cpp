@@ -1,99 +1,90 @@
 #include "pizza.h"
 Pizza::Pizza()
 {
-    toppings = NULL;
-    toppingCount = 0;
-    currentToppingNum = 0;
-    name[0] = '\0';
-    menuPizza = false;
+    bottom = '\0';
+    size = '\0';
+    notMenuPizza = true;
 }
-
-Pizza::~Pizza()
-{
-    clean();
-}
-
-Pizza::Pizza(int numberOfToppings)
-{
-    initialize(numberOfToppings);
-}
-
-void Pizza::initialize(int numberOfToppings)
-{
-    toppingCount = numberOfToppings;
-    toppings = new alegg[toppingCount];
-}
-void Pizza::clean()
-{
-    if(toppings != NULL)
-    {
-        delete[] toppings;
-    }
-}
-void Pizza::addTopping(alegg topping)
-{
-    if(currentToppingNum < toppingCount)
-    {
-        toppings[currentToppingNum] = topping;
-        currentToppingNum++;
-    }
-}
-
-void Pizza::write(ofstream& fout) const
-{
-    fout.write((char*)(&toppingCount), sizeof(int));
-    fout.write((char*)toppings, sizeof(alegg) * toppingCount);
-
-}
-void Pizza::read(ifstream& fin)
-{
-    int topCnt;
-    fin.read((char*)(&topCnt), sizeof(int));
-
-    initialize(topCnt);
-    fin.read((char*)toppings, sizeof(alegg) * toppingCount);
-    currentToppingNum = toppingCount;
-}
-
-
 void Pizza::setMenuPizza(bool n)
 {
-    menuPizza = n;
+    this->notMenuPizza = n;
 }
-
-ostream& operator <<(ostream& out ,const Pizza& pizza)
+ostream& operator <<(ostream& out, const Pizza& pizza)
 {
-    if(pizza.menuPizza)
+    if(pizza.notMenuPizza == true)
     {
-        cout << "Name of the Pizza : ";
-        out << pizza.name << endl;
+        cout << "Bottom type: ";
+        out << pizza.bottom;
+
+        cout << "Pizza Size: ";
+        out << pizza.size;
     }
-    for(int i = 0; i < pizza.toppingCount;i++)
+    cout << "Toppings: " << endl;
+    for ( vector<alegg>::const_iterator i = pizza.aleggVector.begin(); i != pizza.aleggVector.end(); ++i)
     {
-        out << pizza.toppings[i];
+        cout << *i << ' ' << endl;
     }
+
+    return out;
 }
 istream& operator >>(istream& in, Pizza& pizza)
 {
     int topCnt;
-    bool n = false;
-
-    if(pizza.menuPizza)
+    int input;
+    if(pizza.notMenuPizza == false)
     {
-        cout << "Enter Name For the Pizza: ";
-        in >> pizza.name;
+
+        char *bottom1 = (char*)"Normal";
+        char *bottom2 = (char*)"Thin";
+        char *bottom3 = (char*)"pan";
+
+        cout << "Choose a bottom: " << endl;
+        cout << "1." << bottom1 << endl;
+        cout << "2." << bottom2 << endl;
+        cout << "3." <<  bottom3 << endl;
+        in >> input;
+
+        if(input == 1)
+        {
+            pizza.bottom = bottom1;
+        }
+        else if (input == 2)
+        {
+            pizza.bottom = bottom2;
+        }
+        else if(input == 3)
+        {
+            pizza.bottom = bottom3;
+        }
+        char *sizeSmall = (char*)"small";
+        char *sizeMedium = (char*)"medium";
+        char *sizeLarge = (char*)"large";
+        cout << "choose a size " << endl;
+        cout << "1." << sizeSmall << endl;
+        cout << "2." << sizeMedium << endl;
+        cout << "3." <<  sizeLarge << endl;
+        if(input == 1)
+        {
+            pizza.size = sizeSmall;
+        }
+        else if (input == 2)
+        {
+            pizza.size = sizeMedium;
+        }
+        else if(input == 3)
+        {
+            pizza.size = sizeLarge;
+        }
+
     }
     cout << "Enter Number Of Toppings: ";
     in >> topCnt;
-
-    pizza.initialize(topCnt);
-
     alegg topping;
-    topping.setAddOrNot(n);
+    topping.setAddOrNot(false);
     for(int i = 0; i < topCnt;i++)
     {
         in >> topping;
-        pizza.addTopping(topping);
+        pizza.aleggVector.push_back(topping);
     }
     return in;
 

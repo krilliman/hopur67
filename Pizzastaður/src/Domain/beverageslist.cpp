@@ -6,7 +6,7 @@ Beverageslist::Beverageslist()
 }
 
 
-void Beverageslist::getNewBeverges(Beverages beverage)
+void Beverageslist::setNewBeverges(Beverages beverage)
 {
     ///validate beverage then call the repo;
     extrasRepository extraRepo;
@@ -19,26 +19,6 @@ void Beverageslist::getBevergeList()
     ///tala viğ repo og setja inní pointerinn
 
     ///extraRepo.readBevergesList(); virkar til ağ prenta út bara
-    /*
-    int listLize = extraRepo.getBeverageSize();
+    extraRepo.printBevergesListStandard();
 
-    BeverageList = new Beverages[listSize];
-
-    for(int i = 0 ; i < listLize; i++)
-    {
-        this->BeverageList[i] = extraRepo.readBevergesList();
-    }
-    */
-    BeverageList = extraRepo.readBevergesList();
-
-
-
-}
-
-void Beverageslist::printList()
-{
-    for(int i = 0; i < listSize;i++)
-    {
-        cout << BeverageList[i];
-    }
 }

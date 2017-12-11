@@ -3,35 +3,26 @@
 #include "alegg.h"
 #include <iostream>
 #include <fstream>
-
+#include <vector>
 
 class Pizza
 {
     public:
         Pizza();
-        Pizza(int numberOfToppings);
-        virtual ~Pizza();
 
-        void initialize(int numberOfToppings);
-        void clean();
-        void addTopping(alegg topping);
-
-        void write(ofstream& fout) const;
-        void read(ifstream& fin);
+        friend ostream& operator <<(ostream& out, const Pizza& pizza);
+        friend istream& operator >>(istream& in, Pizza& pizza);
 
         void setMenuPizza(bool n);
 
-        friend ostream& operator <<(ostream& out ,const Pizza& pizza);
-        friend istream& operator >>(istream& in, Pizza& pizza);
 
     protected:
 
     private:
-        char name[20];
-        alegg *toppings;
-        int toppingCount;
-        int currentToppingNum;
-        bool menuPizza;
+        char* bottom;
+        char* size;
+        vector<alegg> aleggVector;
+        bool notMenuPizza;
 
 };
 

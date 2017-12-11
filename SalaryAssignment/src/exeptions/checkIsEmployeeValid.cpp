@@ -1,5 +1,6 @@
 #include "checkIsEmployeeValid.h"
 #include <string>
+#include <cstdlib>
 
 checkIsEmployeeValid::checkIsEmployeeValid()
 {
@@ -29,14 +30,12 @@ bool checkIsEmployeeValid::checkEmployeeSNN(employee Employee)
 
 
     int SSNsize = testSSN.size();
-    cout << "SSN SIZE: " << SSNsize << endl;
     if(SSNsize == 10)
     {
         for(int i = 0;i < 10;i++)
         {
             if(!isdigit(SSN[i]))
             {
-                cout << "Fer inni IF" << endl;
                 return true;
             }
         }

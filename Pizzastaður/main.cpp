@@ -2,8 +2,7 @@
 #include <fstream>
 #include "./ui/mainui.h"
 using namespace std;
-///when you clone the project for the first time u need to delete the old cpp and h files and right click on project and press add file recursively and pick the project path
-///don't know how to fix so this just loads on start up
+
 
 int main()
 {

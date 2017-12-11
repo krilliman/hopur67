@@ -14,6 +14,10 @@
 				<Compiler>
 					<Add option="-g" />
 					<Add directory="include" />
+					<Add directory="include/Models" />
+					<Add directory="include/Domain" />
+					<Add directory="include/Data" />
+					<Add directory="include/UI" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -24,6 +28,10 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add directory="include" />
+					<Add directory="include/Models" />
+					<Add directory="include/Domain" />
+					<Add directory="include/Data" />
+					<Add directory="include/UI" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -34,34 +42,47 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Data/PizzaPlaceRepo.h" />
 		<Unit filename="include/Data/aleggrepository.h" />
 		<Unit filename="include/Data/extrasrepository.h" />
 		<Unit filename="include/Data/pizzarepository.h" />
+		<Unit filename="include/Domain/ListOfPizzaPlaces.h" />
 		<Unit filename="include/Domain/beverageslist.h" />
-		<Unit filename="include/Domain/matseðill.h" />
 		<Unit filename="include/Domain/menu.h" />
+		<Unit filename="include/Domain/newOrder.h" />
 		<Unit filename="include/Domain/sideorderlist.h" />
 		<Unit filename="include/Domain/toppinglist.h" />
+		<Unit filename="include/Models/PizzaPlaces.h" />
 		<Unit filename="include/Models/alegg.h" />
 		<Unit filename="include/Models/beverages.h" />
 		<Unit filename="include/Models/pizza.h" />
 		<Unit filename="include/Models/sideorders.h" />
+		<Unit filename="include/UI/SalesUI.h" />
 		<Unit filename="include/UI/adminui.h" />
+		<Unit filename="include/UI/bakingui.h" />
+		<Unit filename="include/UI/deliveryui.h" />
 		<Unit filename="include/UI/mainui.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Data/PizzaPlaceRepo.cpp" />
 		<Unit filename="src/Data/aleggrepository.cpp" />
 		<Unit filename="src/Data/extrasrepository.cpp" />
 		<Unit filename="src/Data/pizzarepository.cpp" />
+		<Unit filename="src/Domain/ListOfPizzaPlaces.cpp" />
 		<Unit filename="src/Domain/beverageslist.cpp" />
 		<Unit filename="src/Domain/matseðill.cpp" />
 		<Unit filename="src/Domain/menu.cpp" />
+		<Unit filename="src/Domain/newOrder.cpp" />
 		<Unit filename="src/Domain/sideorderlist.cpp" />
 		<Unit filename="src/Domain/toppinglist.cpp" />
+		<Unit filename="src/Models/PizzaPlaces.cpp" />
 		<Unit filename="src/Models/alegg.cpp" />
 		<Unit filename="src/Models/beverages.cpp" />
 		<Unit filename="src/Models/pizza.cpp" />
 		<Unit filename="src/Models/sideorders.cpp" />
+		<Unit filename="src/UI/SalesUI.cpp" />
 		<Unit filename="src/UI/adminui.cpp" />
+		<Unit filename="src/UI/bakingui.cpp" />
+		<Unit filename="src/UI/deliveryui.cpp" />
 		<Unit filename="src/UI/mainui.cpp" />
 		<Extensions>
 			<code_completion />

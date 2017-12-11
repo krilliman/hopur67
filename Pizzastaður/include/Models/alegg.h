@@ -12,9 +12,6 @@ class alegg
         void setAddOrNot(bool n);
 
 
-
-
-
     private:
         char nafn[20];
         int verdLitil;

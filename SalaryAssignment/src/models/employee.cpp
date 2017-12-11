@@ -41,13 +41,13 @@ char* employee::getAmount()
 
 ostream& operator <<(ostream& out, const employee Employee)
 {
-    cout << "Name of the employee: ";
+    cout << "Employee name: ";
     out << Employee.name << endl;
 
-    cout << "Employee's SSN: ";
+    cout << "Employee social security number: ";
     out << Employee.SSN << endl;
 
-    cout << "-- Employees salary --" << endl;
+    cout << "-- Employee salary --" << endl;
     out << Employee.month << "." << Employee.year << ": " << Employee.amount << endl;
 
     return out;
@@ -63,19 +63,19 @@ istream& operator >>(istream& in, employee& Employee)
     //Employee.name = (char *)malloc(temp.size() + 1);
     //memcpy(Employee.name, temp.c_str(), temp.size() + 1);
 
-    cout << "Enter SSN of the employee: ";
+    cout << "Enter social security number of the employee: ";
     in >> Employee.SSN;
     cout << endl;
 
-    cout << "Enter year for a given salary: ";
+    cout << "Enter year for the given salary: ";
     in >> Employee.year;
     cout << endl;
 
-    cout << "Enter the month for a given salary: ";
+    cout << "Enter the month for the given salary: ";
     in >> Employee.month;
     cout << endl;
 
-    cout << "Enter the amount: ";
+    cout << "Enter salary amount: ";
     in >> Employee.amount;
     cout << endl;
 

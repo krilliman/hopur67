@@ -1,28 +1,32 @@
-#ifndef MENU_H
-#define MENU_H
-#include "pizza.h"
+#ifndef MATSEDILL_H
+#define MATSEDILL_H
+
 #include <fstream>
+#include <iostream>
+#include <pizza.h>
+#include <vector>
+
+using namespace std;
 class Menu
 {
     public:
         Menu();
-        virtual ~Menu();
 
-        void write(ofstream& fout) const;
-        void read(ifstream& fin);
+        friend ostream& operator << (ostream& out,const Menu& menu);
+        friend istream& operator >> (istream& in, Menu& menu);
 
-        void setListMemory(int menuLength);
-        void setPizzaToAdd(Pizza newPizza);
-
-
-
-
-    protected:
+        void addNewPizza(Menu menu);
+        void getMenu();
 
     private:
-        Pizza addPizza;
-        Pizza *pizzaMenu;
-        int menuLength;
+        char name[32];
+        int verdLitil;
+        int verdMid;
+        int verdStor;
+        Pizza pizza;
+
 };
 
-#endif // MENU_H
+#endif // MATSEDILL_H
+
+

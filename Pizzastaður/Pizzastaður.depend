@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1512555328 source:c:\users\kristmannk\documents\for100\pizzastaður\main.cpp
+1512592074 source:c:\users\kristmannk\documents\for100\pizzastaður\main.cpp
 	<iostream>
 	<fstream>
 	"./ui/mainui.h"
@@ -118,64 +118,65 @@
 	"alegg.h"
 	<fstream>
 
-1512590583 source:c:\users\kristmannk\documents\for100\pizzastaður\src\data\aleggrepository.cpp
+1512952275 source:c:\users\kristmannk\documents\for100\pizzastaður\src\data\aleggrepository.cpp
 	"aleggrepository.h"
 	<fstream>
 
-1512591328 source:c:\users\kristmannk\documents\for100\pizzastaður\src\data\extrasrepository.cpp
+1512993534 source:c:\users\kristmannk\documents\for100\pizzastaður\src\data\extrasrepository.cpp
 	"extrasrepository.h"
 	<fstream>
 
-1512090228 source:c:\users\kristmannk\documents\for100\pizzastaður\src\data\pizzarepository.cpp
+1512952251 source:c:\users\kristmannk\documents\for100\pizzastaður\src\data\pizzarepository.cpp
 	"pizzarepository.h"
 	<fstream>
 	"menu.h"
 
-1511901377 source:c:\users\kristmannk\documents\for100\pizzastaður\src\domain\matseðill.cpp
+1512942402 source:c:\users\kristmannk\documents\for100\pizzastaður\src\domain\matseðill.cpp
 	"matseðill.h"
 	<fstream>
 
-1512138939 source:c:\users\kristmannk\documents\for100\pizzastaður\src\domain\menu.cpp
+1512949634 source:c:\users\kristmannk\documents\for100\pizzastaður\src\domain\menu.cpp
 	"menu.h"
-	"pizza.h"
+	<fstream>
+	"pizzarepository.h"
 
-1512591446 source:c:\users\kristmannk\documents\for100\pizzastaður\src\domain\sideorderlist.cpp
+1512751660 source:c:\users\kristmannk\documents\for100\pizzastaður\src\domain\sideorderlist.cpp
 	"sideorderlist.h"
 	"sideorders.h"
 
-1512588896 source:c:\users\kristmannk\documents\for100\pizzastaður\src\domain\toppinglist.cpp
+1512750969 source:c:\users\kristmannk\documents\for100\pizzastaður\src\domain\toppinglist.cpp
 	"toppinglist.h"
 	"alegg.h"
 
-1512139231 source:c:\users\kristmannk\documents\for100\pizzastaður\src\models\pizza.cpp
+1512992514 source:c:\users\kristmannk\documents\for100\pizzastaður\src\models\pizza.cpp
 	"pizza.h"
 
 1512148916 source:c:\users\kristmannk\documents\for100\pizzastaður\src\models\sideorders.cpp
 	"sideorders.h"
 
-1512591016 source:c:\users\kristmannk\documents\for100\pizzastaður\src\ui\adminui.cpp
+1512947364 source:c:\users\kristmannk\documents\for100\pizzastaður\src\ui\adminui.cpp
 	"adminui.h"
-	"alegg.h"
-	<iostream>
 	"toppinglist.h"
-	"pizzarepository.h"
 	"sideorderlist.h"
-	"extrasrepository.h"
-	"sideorders.h"
 	"beverageslist.h"
-	"beverages.h"
+	"ListOfPizzaPlaces.h"
+	"menu.h"
 
-1512065026 source:c:\users\kristmannk\documents\for100\pizzastaður\src\ui\mainui.cpp
+1512938229 source:c:\users\kristmannk\documents\for100\pizzastaður\src\ui\mainui.cpp
 	"mainui.h"
 	"adminui.h"
+	"SalesUI.h"
+	"bakingui.h"
+	"deliveryui.h"
 	<iostream>
 
-1512138939 c:\users\kristmannk\documents\for100\pizzastaður\include\models\pizza.h
+1512991004 c:\users\kristmannk\documents\for100\pizzastaður\include\models\pizza.h
 	"alegg.h"
 	<iostream>
 	<fstream>
+	<vector>
 
-1512140133 c:\users\kristmannk\documents\for100\pizzastaður\include\models\alegg.h
+1512592385 c:\users\kristmannk\documents\for100\pizzastaður\include\models\alegg.h
 	<iostream>
 
 1512148185 c:\users\kristmannk\documents\for100\pizzastaður\include\models\sideorders.h
@@ -187,91 +188,87 @@
 	"aleggrepository.h"
 	<fstream>
 
-1512139921 c:\users\kristmannk\documents\for100\pizzastaður\include\domain\menu.h
-	"pizza.h"
-	<fstream>
-
-1511901377 c:\users\kristmannk\documents\for100\pizzastaður\include\domain\matseðill.h
+1512946984 c:\users\kristmannk\documents\for100\pizzastaður\include\domain\menu.h
 	<fstream>
 	<iostream>
+	<pizza.h>
+	<vector>
 
-1512590622 c:\users\kristmannk\documents\for100\pizzastaður\include\domain\sideorderlist.h
+1512942392 c:\users\kristmannk\documents\for100\pizzastaður\include\domain\matseðill.h
+	<fstream>
+	<iostream>
+	<pizza.h>
+	<vector>
+
+1512751635 c:\users\kristmannk\documents\for100\pizzastaður\include\domain\sideorderlist.h
 	"sideorders.h"
 	"extrasrepository.h"
 	<fstream>
 
-1512587703 source:c:\users\kristmannk\documents\for100\pizzastaður\src\models\beverages.cpp
+1512591861 source:c:\users\kristmannk\documents\for100\pizzastaður\src\models\beverages.cpp
 	"beverages.h"
 
-1512586128 c:\users\kristmannk\documents\for100\pizzastaður\include\models\beverages.h
+1512591863 c:\users\kristmannk\documents\for100\pizzastaður\include\models\beverages.h
 	<iostream>
 
-1512587703 source:c:\users\kristmannk\documents\for100\pizzastaður\src\domain\beverageslist.cpp
+1512752048 source:c:\users\kristmannk\documents\for100\pizzastaður\src\domain\beverageslist.cpp
 	"beverageslist.h"
 
-1512569351 c:\users\kristmannk\documents\for100\pizzastaður\include\domain\beverageslist.h
+1512752048 c:\users\kristmannk\documents\for100\pizzastaður\include\domain\beverageslist.h
 	"beverages.h"
 	"extrasrepository.h"
 
-1512593398 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\main.cpp
-	<iostream>
-	<fstream>
-	"./ui/mainui.h"
-
-1512590583 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\ui\mainui.h
-
-1512590583 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\data\aleggrepository.cpp
-	"aleggrepository.h"
-	<fstream>
-
-1512090228 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\data\pizzarepository.cpp
-	"pizzarepository.h"
-	<fstream>
-	"menu.h"
-
-1512587703 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\domain\beverageslist.cpp
-	"beverageslist.h"
-
-1511901377 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\domain\matseðill.cpp
-	"matseðill.h"
-	<fstream>
-
-1512138939 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\domain\menu.cpp
-	"menu.h"
-	"pizza.h"
-
-1512591446 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\domain\sideorderlist.cpp
-	"sideorderlist.h"
-	"sideorders.h"
-
-1512588896 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\domain\toppinglist.cpp
-	"toppinglist.h"
+1512592385 source:c:\users\kristmannk\documents\for100\pizzastaður\src\models\alegg.cpp
 	"alegg.h"
 
-1512139231 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\models\pizza.cpp
-	"pizza.h"
-
-1512148916 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\models\sideorders.cpp
-	"sideorders.h"
-
-1512065026 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\ui\mainui.cpp
-	"mainui.h"
-	"adminui.h"
-	<iostream>
-
-1512591768 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\data\extrasrepository.cpp
-	"extrasrepository.h"
-	<fstream>
-
-1512140176 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\models\alegg.cpp
+1512750951 c:\users\kristmannk\documents\for100\pizzastaður\include\data\aleggrepository.h
 	"alegg.h"
-	<fstream>
+	<vector>
 
-1512591861 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\models\beverages.cpp
+1512994552 c:\users\kristmannk\documents\for100\pizzastaður\include\data\extrasrepository.h
+	"sideorders.h"
 	"beverages.h"
+	<vector>
 
-1512593398 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\ui\adminui.cpp
-	"adminui.h"
+1512947846 c:\users\kristmannk\documents\for100\pizzastaður\include\data\pizzarepository.h
+	"pizza.h"
+	"menu.h"
+
+1512753926 source:c:\users\kristmannk\documents\for100\pizzastaður\src\data\pizzaplacerepo.cpp
+	"PizzaPlaceRepo.h"
+
+1512753576 c:\users\kristmannk\documents\for100\pizzastaður\include\data\pizzaplacerepo.h
+	"PizzaPlaces.h"
+	<vector>
+	<fstream>
+
+1512753576 c:\users\kristmannk\documents\for100\pizzastaður\include\models\pizzaplaces.h
+	<iostream>
+
+1512754352 source:c:\users\kristmannk\documents\for100\pizzastaður\src\domain\listofpizzaplaces.cpp
+	"ListOfPizzaPlaces.h"
+
+1512755032 c:\users\kristmannk\documents\for100\pizzastaður\include\domain\listofpizzaplaces.h
+	<PizzaPlaces.h>
+	<PizzaPlaceRepo.h>
+
+1512752936 source:c:\users\kristmannk\documents\for100\pizzastaður\src\models\pizzaplaces.cpp
+	"PizzaPlaces.h"
+
+1512558168 c:\users\kristmannk\documents\for100\pizzastaður\include\ui\adminui.h
+
+1512937923 source:c:\users\kristmannk\documents\for100\pizzastaður\src\ui\bakingui.cpp
+	"bakingui.h"
+
+1512937923 c:\users\kristmannk\documents\for100\pizzastaður\include\ui\bakingui.h
+
+1512937970 source:c:\users\kristmannk\documents\for100\pizzastaður\src\ui\deliveryui.cpp
+	"deliveryui.h"
+
+1512937970 c:\users\kristmannk\documents\for100\pizzastaður\include\ui\deliveryui.h
+
+1512991959 source:c:\users\kristmannk\documents\for100\pizzastaður\src\ui\salesui.cpp
+	"salesui.h"
 	"alegg.h"
 	"toppinglist.h"
 	"pizzarepository.h"
@@ -279,4 +276,16 @@
 	"sideorders.h"
 	"beverageslist.h"
 	"beverages.h"
+
+1512936629 c:\users\kristmannk\documents\for100\pizzastaður\include\ui\salesui.h
+
+1512993961 source:c:\users\kristmannk\documents\for100\pizzastaður\src\domain\neworder.cpp
+	"newOrder.h"
+
+1512994412 c:\users\kristmannk\documents\for100\pizzastaður\include\domain\neworder.h
+	<pizza.h>
+	<beverageslist.h>
+	<sideorderlist.h>
+	<extrasrepository.h>
+	<pizzarepository.h>
 

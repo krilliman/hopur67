@@ -7,35 +7,22 @@ matsedill::matsedill()
     verdMid = 0;
     verdStor = 0;
 
-    verbose = true;
 }
 
-bool matsedill::check(bool verbose)
-{
-    this->verbose = verbose;
-}
 
 ostream& operator << (ostream& out, const matsedill listi)
 {
-    if(listi.verbose)
-    {
-        cout << "Nafn: ";
-    }
+
+    cout << "Nafn: ";
     out << listi.nafn << endl;
-    if(listi.verbose)
-    {
-        cout << "verdLitil: ";
-    }
+
+    cout << "verdLitil: ";
     out << listi.verdLitil << endl;
-    if(listi.verbose)
-    {
-        cout << "verdMid: ";
-    }
+
+    cout << "verdMid: ";
     out << listi.verdMid << endl;
-    if(listi.verbose)
-    {
-        cout << "verdStor: ";
-    }
+
+    cout << "verdStor: ";
     out << listi.verdStor << endl;
 
     return out;
@@ -43,25 +30,17 @@ ostream& operator << (ostream& out, const matsedill listi)
 
 istream& operator >> (istream& in, matsedill& listi)
 {
-    if(listi.verbose)
-    {
-        cout << "Nafn: ";
-    }
+
+    cout << "Nafn: ";
     in >> listi.nafn;
-    if(listi.verbose)
-    {
-        cout << "VerdLitil: ";
-    }
+
+    cout << "VerdLitil: ";
     in >> listi.verdLitil;
-    if(listi.verbose)
-    {
-        cout << "VerdMid: ";
-    }
+
+    cout << "VerdMid: ";
     in >> listi.verdMid;
-    if(listi.verbose)
-    {
-        cout << "verdStor: ";
-    }
+
+    cout << "verdStor: ";
     in >> listi.verdStor;
 
     return in;

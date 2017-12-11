@@ -22,5 +22,5 @@ void ToppingList::getToppingList()
 {
     AleggRepository aleggRepo;
 
-    this->toppinglist = aleggRepo.getTopList();
+    aleggRepo.printTopListStandard();
 }

@@ -5,12 +5,6 @@ AleggRepository::AleggRepository()
     //ctor
 }
 
-AleggRepository::~AleggRepository()
-{
-    //dtor
-}
-
-
 void AleggRepository::storeAlegg( alegg aleggToAdd)
 {
 
@@ -21,20 +15,10 @@ void AleggRepository::storeAlegg( alegg aleggToAdd)
     fout.write((char*)(&aleggToAdd), sizeof(alegg));
 
     fout.close();
-    /*
-    ofstream fout;
-
-    fout.open("Topping_list.dat", ios::binary | ios::app);
-
-    toppinglist.write(fout);
-
-
-    fout.close();
-    */
 }
 
 ///not a good idea to return a pointer so need to find another way/if this even works.
-alegg* AleggRepository::getTopList()
+void AleggRepository::readTopList()
 {
     ifstream ifin;
 
@@ -49,16 +33,13 @@ alegg* AleggRepository::getTopList()
             int listSize = ifin.tellg() / sizeof(alegg);
             ifin.seekg(0, ifin.beg);
 
-            alegg arrayOfAlegg[listSize];
 
             for(int i = 0; i < listSize;i++)
             {
                 ifin.read((char*)(&newAlegg),sizeof(alegg));
+                vectorAlegg.push_back(newAlegg);
 
-                arrayOfAlegg[i] = newAlegg;
-                cout << newAlegg << endl;
             }
-             return arrayOfAlegg;
         }
         else
         {
@@ -67,4 +48,20 @@ alegg* AleggRepository::getTopList()
 
     ifin.close();
 
+}
+
+void AleggRepository::printTopList(vector<alegg> vectorAlegg)
+{
+    for ( vector<alegg>::iterator i = vectorAlegg.begin(); i != vectorAlegg.end(); ++i)
+    {
+        cout << *i << ' ' << endl;
+    }
+}
+void AleggRepository::printTopListStandard()
+{
+    readTopList();
+    for ( vector<alegg>::iterator i = vectorAlegg.begin(); i != vectorAlegg.end(); ++i)
+    {
+        cout << *i << ' ' << endl;
+    }
 }

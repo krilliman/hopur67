@@ -1,19 +1,13 @@
 #include "sideorderlist.h"
 #include "sideorders.h"
+
 SideOrderList::SideOrderList()
 {
 
-        //SOList = NULL;
-            //listLength = 0;
 }
-
 SideOrderList::~SideOrderList()
-{/*
-    if(SOList != 0)
-    {
-        delete[] SOList;
-    }
-*/
+{
+
 }
 
 void SideOrderList::setNewSideOrder(SideOrders sideorder)
@@ -26,5 +20,5 @@ void SideOrderList::setNewSideOrder(SideOrders sideorder)
 void SideOrderList::getListOfSideOrders()
 {
     extrasRepository extrasRepo;
-    SOList = extrasRepo.readSOList();
+    extrasRepo.printSOListStandard();
 }

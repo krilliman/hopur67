@@ -7,17 +7,21 @@ class PizzaRepository
 {
     public:
         PizzaRepository();
-        virtual ~PizzaRepository();
-
 
     void storePizza(const Pizza& pizza);
-    Pizza readPizza();
+    void readPizza();
+    void printPizza(vector<Pizza> pizzas);
+    void printAllPizzas();
+
+
 
     void storeMenu(const Menu& menu);
-    Menu readMenu();
-    protected:
-
+    void readMenu();
+    void printMenu();
     private:
+        vector<Menu> menuList;
+        vector<Pizza> pizzas;
+
 };
 
 #endif // PIZZAREPOSITORY_H

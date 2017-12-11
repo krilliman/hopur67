@@ -44,23 +44,23 @@ void EmployeeSalaray::writeSalary(employee Employee)
     }
     catch(InvalidSSNException)
     {
-        cout << "Invalid SSN! " <<  endl;
+        cout << "Invalid social security number! " <<  endl;
     }
     catch(InvalidMonthExceptions)
     {
-        cout << "Invalid Month! " <<  endl;
+        cout << "Invalid month! " <<  endl;
     }
      catch(InvalidSalaryExceptions)
     {
-        cout << "Invalid Salary! " <<  endl;
+        cout << "Invalid salary! " <<  endl;
     }
      catch(InvalidYearException)
     {
-        cout << "Invalid Year! " <<  endl;
+        cout << "Invalid year! " <<  endl;
     }
     catch(InvalidEmployeeName)
     {
-        cout << "Invalid Name! " <<  endl;
+        cout << "Invalid name! " <<  endl;
     }
 
 

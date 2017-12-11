@@ -1,11 +1,9 @@
 #include "adminui.h"
-#include "alegg.h"
 #include "toppinglist.h"
-#include "pizzarepository.h"
 #include "sideorderlist.h"
-#include "sideorders.h"
 #include "beverageslist.h"
-#include "beverages.h"
+#include "ListOfPizzaPlaces.h"
+#include "menu.h"
 using namespace std;
 AdminUI::AdminUI()
 {
@@ -19,18 +17,20 @@ AdminUI::~AdminUI()
 
 void AdminUI::startUI()
 {
-    PizzaRepository pizzaRepo; ///fix pizza in general and get rid of this , the domain should be the only one that talks to the repo
+
     char Selection = '\0';
     while(Selection != 'q')
     {
         cout << endl<< "t: to add to Toppings: " << endl;
         cout << "m: to add to Menu: " << endl;
         cout << "b: to add to Beverages: " << endl;
+        cout << "c: to add a Pizza Place: " << endl;
         cout << "s: to add to Side Orders: " << endl << endl << endl;
         cout << "p: to print Toppings: " << endl;
         cout << "l: to print Menu: //ERROR" << endl;
-        cout << "o: to print Toppings: " << endl;
+        cout << "o: to print Side Orders: " << endl;
         cout << "i: to print Beverages" << endl;
+        cout << "r: to print Pizza Places" << endl;
         cin >> Selection;
 
         if(Selection == 't' ||Selection == 'T' )
@@ -61,13 +61,10 @@ void AdminUI::startUI()
             for(int i = 0; i < addPizza;i++)
             {
                 cout << endl;
-                Pizza nyPizza;
-                nyPizza.setMenuPizza(true);
-                cin >> nyPizza;
+                Menu menu;
+                cin >> menu;
 
-                menu.setPizzaToAdd(nyPizza);
-                pizzaRepo.storeMenu(menu);
-
+                menu.addNewPizza(menu);
             }
         }
         else if(Selection == 's' || Selection == 'S')
@@ -102,7 +99,26 @@ void AdminUI::startUI()
                 Beverages beverage;
                 cin >> beverage;
                 cout << "test: " << beverage << endl;
-                beveragelist.getNewBeverges(beverage);
+                beveragelist.setNewBeverges(beverage);
+            }
+
+
+        }
+        else if(Selection == 'c' || Selection == 'C' )
+        {
+            int PizzaPlacesToAdd;
+
+            ListOfPizzaPlaces listOfpizzaplaces;
+
+            cout << endl << "How many Pizza Places would you like to add ? ";
+            cin >> PizzaPlacesToAdd;
+
+            for(int i = 0; i < PizzaPlacesToAdd;i++)
+            {
+                PizzaPlaces pizzaplace;
+                cin >> pizzaplace;
+                cout << "test: " << pizzaplace << endl;
+                listOfpizzaplaces.setNewPizzaPlace(pizzaplace);
             }
 
 
@@ -123,7 +139,8 @@ void AdminUI::startUI()
         else if(Selection == 'l'||Selection == 'L')
         {
             cout << endl;
-            pizzaRepo.readMenu();
+            Menu menu;
+            menu.getMenu();
         }
         else if(Selection == 'i' ||Selection == 'I')
         {
@@ -131,6 +148,13 @@ void AdminUI::startUI()
             Beverageslist beverageslist;
 
             beverageslist.getBevergeList();
+        }
+         else if(Selection == 'r' ||Selection == 'R')
+        {
+            cout << endl;
+            ListOfPizzaPlaces listOfPizzaplaces;
+
+            listOfPizzaplaces.printListOfPizzaPlaces();
         }
     }
 }

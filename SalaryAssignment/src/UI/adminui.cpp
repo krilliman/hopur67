@@ -1,6 +1,7 @@
 #include "adminui.h"
 #include <stdlib.h>
 #include <cstring>
+#include <sstream>
 AdminUI::AdminUI()
 {
     //ctor

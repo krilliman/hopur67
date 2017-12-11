@@ -76,11 +76,15 @@ void EmployeeRepository::checkHighestSalary(char* year)
     }
     if(counter == 0)
     {
-        cout << "No records of the Year: " << newYear << endl;
+        cout << "------------------------------------------------------------------" << endl;
+        cout << "There are no records available for the year: " << newYear << endl;
+        cout << "------------------------------------------------------------------" << endl;
     }
     else
     {
-        cout << "Name of the person with the Highest total salary in " << newYear << " is: " << name << endl;
+        cout << "------------------------------------------------------------------" << endl;
+        cout << "The person with the highest total salary in " << newYear << " is: " << name << endl;
+        cout << "------------------------------------------------------------------" << endl;
     }
 
 }
@@ -95,7 +99,6 @@ void EmployeeRepository::readEmployeesSalary(char* SSN)
         int value2 = atoll(employeeArray[i].getSSN());
         if(value1 == value2)
         {
-            cout << "match " << endl;
             givenEmployee.push_back(employeeArray[i]);
         }
     }
@@ -122,6 +125,8 @@ void EmployeeRepository::getTotalSalary(char year[] , char SSN[])
         }
 
     }
+    cout << "------------------------------------------------------------------" << endl;
     cout << "Total salary is: " << totalSalary << endl;
+    cout << "------------------------------------------------------------------" << endl;
 
 }

@@ -3,6 +3,9 @@
 
 #include <fstream>
 #include <iostream>
+#include <pizza.h>
+#include <vector>
+
 using namespace std;
 class matsedill
 {
@@ -13,14 +16,14 @@ class matsedill
         friend istream& operator >> (istream& in, matsedill& listi);
 
 
-        bool check(bool verbose);
 
     private:
         char nafn[25];
         int verdLitil;
         int verdMid;
         int verdStor;
-        bool verbose = true;
+        vector<Pizza> MenuVector;
+
 };
 
 #endif // MATSEDILL_H
