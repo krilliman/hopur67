@@ -11,8 +11,9 @@ class PizzaPlaceRepo
 
         void writeNewPizzaPlace(PizzaPlaces pizzaplace);
         void readListOfPizzaPlaces();
-        void printPizzaPlacesStandard();
-        void printPizzaPlace(vector<PizzaPlaces> vectorOfPizzaPlaces);
+        int readFromListOFPizzaPlaces();
+        PizzaPlaces getPizzaPlaceFromList(int element);
+        void printPizzaPlace(vector<PizzaPlaces> vectorOfPizzaPlaces); /// might not need this function
 
     private:
         vector<PizzaPlaces> vectorOfPizzaPlaces;

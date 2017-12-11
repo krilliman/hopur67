@@ -5,10 +5,6 @@ SideOrderList::SideOrderList()
 {
 
 }
-SideOrderList::~SideOrderList()
-{
-
-}
 
 void SideOrderList::setNewSideOrder(SideOrders sideorder)
 {
@@ -16,9 +12,24 @@ void SideOrderList::setNewSideOrder(SideOrders sideorder)
     extrasRepository extraRepo;
     extraRepo.writeSideOrder(sideorder);
 }
-
+///can remove this function ?
 void SideOrderList::getListOfSideOrders()
 {
+    int input;
     extrasRepository extrasRepo;
-    extrasRepo.printSOListStandard();
+    input = extrasRepo.printSOListStandard();
+
+}
+
+SideOrders SideOrderList::getOutOfSideOrderList()
+{
+
+    int input;
+    extrasRepository extrasRepo;
+    input = extrasRepo.printSOListStandard();
+    SideOrders newSideorder;
+    newSideorder = extrasRepo.getSideOrderFromList(input);
+
+    cout << newSideorder << endl;
+    return newSideorder;
 }

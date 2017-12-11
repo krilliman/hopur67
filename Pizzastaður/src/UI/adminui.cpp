@@ -128,7 +128,7 @@ void AdminUI::startUI()
         {
             cout << endl;
             SideOrderList sideorderlist;
-            sideorderlist.getListOfSideOrders();
+            sideorderlist.getOutOfSideOrderList();
         }
         else if(Selection == 'p' || Selection == 'P')
         {
@@ -147,14 +147,14 @@ void AdminUI::startUI()
             cout << endl;
             Beverageslist beverageslist;
 
-            beverageslist.getBevergeList();
+            beverageslist.getFromBevergeList();
         }
          else if(Selection == 'r' ||Selection == 'R')
         {
             cout << endl;
             ListOfPizzaPlaces listOfPizzaplaces;
 
-            listOfPizzaplaces.printListOfPizzaPlaces();
+            listOfPizzaplaces.getFromListOfPizzaPlaces();
         }
     }
 }

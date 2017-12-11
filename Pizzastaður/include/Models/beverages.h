@@ -14,6 +14,11 @@ class Beverages
         friend ostream& operator << (ostream& out, const Beverages& beverages);
         friend istream& operator >>(istream& in, Beverages& beverages);
 
+        char* getName();
+        int getPriceSmall();
+        int getPriceMedium();
+        int getPriceLarge();
+
     private:
         char name[20];
         int smallPrice; /// 0.5L

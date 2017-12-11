@@ -17,6 +17,13 @@ void AleggRepository::storeAlegg( alegg aleggToAdd)
     fout.close();
 }
 
+alegg AleggRepository::getAleggFromList(int element)
+{
+    alegg newAlegg;
+    newAlegg = this->vectorAlegg[element-1];
+    return newAlegg;
+}
+
 ///not a good idea to return a pointer so need to find another way/if this even works.
 void AleggRepository::readTopList()
 {
@@ -38,7 +45,6 @@ void AleggRepository::readTopList()
             {
                 ifin.read((char*)(&newAlegg),sizeof(alegg));
                 vectorAlegg.push_back(newAlegg);
-
             }
         }
         else
@@ -57,11 +63,18 @@ void AleggRepository::printTopList(vector<alegg> vectorAlegg)
         cout << *i << ' ' << endl;
     }
 }
-void AleggRepository::printTopListStandard()
+int AleggRepository::printTopListStandard()
 {
     readTopList();
+    int counter = 1;
+    int input = 0;
     for ( vector<alegg>::iterator i = vectorAlegg.begin(); i != vectorAlegg.end(); ++i)
     {
+        cout << "Select topping number: " << endl;
+        cout << counter << ": ";
         cout << *i << ' ' << endl;
+        counter++;
     }
+    cin >> input;
+    return input;
 }

@@ -12,9 +12,14 @@ void ListOfPizzaPlaces::setNewPizzaPlace(PizzaPlaces pizzaplace)
     pizzaplaceRepo.writeNewPizzaPlace(pizzaplace);
 
 }
-void ListOfPizzaPlaces::printListOfPizzaPlaces()
+PizzaPlaces ListOfPizzaPlaces::getFromListOfPizzaPlaces()
 {
     PizzaPlaceRepo pizzaplaceRepo;
-    pizzaplaceRepo.printPizzaPlacesStandard();
+    int input = pizzaplaceRepo.readFromListOFPizzaPlaces();
+    PizzaPlaces newPizzaplace;
+    newPizzaplace = pizzaplaceRepo.getPizzaPlaceFromList(input);
+
+    cout << "TEST::" << endl << newPizzaplace << endl;
+    return newPizzaplace;
 }
 

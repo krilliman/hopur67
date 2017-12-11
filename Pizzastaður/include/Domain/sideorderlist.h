@@ -8,9 +8,10 @@ class SideOrderList
 {
     public:
         SideOrderList();
-        ~SideOrderList();
        void setNewSideOrder(SideOrders sideorder);
        void getListOfSideOrders();
+
+       SideOrders getOutOfSideOrderList();
 
 
 

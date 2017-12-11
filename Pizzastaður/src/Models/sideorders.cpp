@@ -6,10 +6,6 @@ SideOrders::SideOrders()
     price = 0;
 }
 
-SideOrders::~SideOrders()
-{
-    //dtor
-}
 
 ostream& operator <<(ostream& out, const SideOrders sideorders)
 {

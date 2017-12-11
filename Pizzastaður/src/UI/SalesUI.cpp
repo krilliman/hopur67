@@ -3,9 +3,8 @@
 #include "toppinglist.h"
 #include "pizzarepository.h"
 #include "sideorderlist.h"
-#include "sideorders.h"
 #include "beverageslist.h"
-#include "beverages.h"
+#include "OrderList.h"
 
 using namespace std;
 
@@ -24,6 +23,7 @@ void SalesUI::startUI()
         cout << "1: Offers / Missing" << endl;
         cout << "2: Pizza from Menu / Missing" << endl;
         cout << "3: Make your own / Missing" << endl;
+        cout << "4: to Print order" << endl;
         cout << "r: Press r to go back to - Main Menu -" << endl;
         cin >> Selection;
 
@@ -58,18 +58,26 @@ void SalesUI::startUI()
         }
         if (Selection == '3')
         {
+            OrderList newOrderList;
+            int input = 0;
+            cout << "Enter the amount of orders: ";
+            cin >> input;
+            for(int i = 0 ; i < input; i++)
+            {
+                newOrder neworder;
+
+                cin >> neworder;
+                cout << "TEST: " << neworder << endl;
+                newOrderList.setNewOrder(neworder);
+            }
+
+
 
         }
         if (Selection == '4')
         {
-            ///char side.selection;
-            cout << "Please select side: " << endl;
-            cout << "1: Breadsticks A " << endl;
-            cout << "2: Breadsticks B " << endl;
-            cout << "3: Breadsticks C" << endl;
-
-            ///cin >> side.selection;
-            //Service
+           OrderList newOrderList;
+           newOrderList.getOrderList();
         }
         if (Selection == '5')
         {

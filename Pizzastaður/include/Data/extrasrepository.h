@@ -10,22 +10,21 @@ class extrasRepository
 
         void writeSideOrder(SideOrders sideorder);
         void readSOList();
-        void printSOList(vector<SideOrders> vectorSideOrders);
-        int printSOListStandard();///testing the int function
-        vector<SideOrders> SOfunctionTest(int element);
+        void printSOList(vector<SideOrders> vectorSideOrders);///can remove this function
+        int printSOListStandard();
+        SideOrders getSideOrderFromList(int element);
 
 
         void writeBeverageToList(Beverages beverage);
         void readBevergesList();
-        void printBevergesList(vector<Beverages> vectorBeverages);
-        void printBevergesListStandard();
+        void printBevergesList(vector<Beverages> vectorBeverages);///can remove this function
+        int printBevergesListStandard();
+        Beverages getBeverageFromList(int element);
 
-
-    protected:
-        vector<SideOrders> vectorSideOrders;
-        vector<Beverages> vectorBeverages;
 
     private:
+        vector<SideOrders> vectorSideOrders;
+        vector<Beverages> vectorBeverages;
 };
 
 #endif // EXTRASREPOSITORY_H

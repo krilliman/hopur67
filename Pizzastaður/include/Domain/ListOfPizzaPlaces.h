@@ -9,7 +9,7 @@ class ListOfPizzaPlaces
         ListOfPizzaPlaces();
 
         void setNewPizzaPlace(PizzaPlaces pizzaplace);
-        void printListOfPizzaPlaces();
+        PizzaPlaces getFromListOfPizzaPlaces();
 
     private:
 };

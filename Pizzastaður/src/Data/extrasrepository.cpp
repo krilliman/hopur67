@@ -20,7 +20,7 @@ void extrasRepository::writeSideOrder(SideOrders sideorder)
 void extrasRepository::readSOList()
 {
     ifstream fin;
-
+    cout << "test:" << endl;
     SideOrders sideorder;
     fin.open("Side_Order_List.dat", ios::binary);
 
@@ -54,38 +54,18 @@ void extrasRepository::writeBeverageToList(Beverages beverage)
 
     fout.close();
 }
-vector<SideOrders> extrasRepository::SOfunctionTest(int element)
+SideOrders extrasRepository::getSideOrderFromList(int element)
 {
+    SideOrders newSideorder;
+    newSideorder = this->vectorSideOrders[element-1];
+    return newSideorder;
 
-    vector<SideOrders> store;
-    ifstream fin;
-
-    SideOrders sideorder;
-    fin.open("Side_Order_List.dat", ios::binary);
-
-    if(fin.is_open())
-    {
-        fin.seekg(0,fin.end);
-        int listSize = fin.tellg() / sizeof(SideOrders);
-        fin.seekg(0,fin.beg);
-
-        for(int i = 0; i < listSize;i++)
-        {
-            if(i == element-1)
-            {
-                fin.read((char*)(&sideorder),sizeof(SideOrders));
-                store.push_back(sideorder);
-            }
-        }
-    }
-    else
-    {
-        cout << "Could not open file." << endl;
-    }
-
-    fin.close();
-    return store;
-
+}
+Beverages extrasRepository::getBeverageFromList(int element)
+{
+    Beverages newBeverage;
+    newBeverage = this->vectorBeverages[element-1];
+    return newBeverage;
 }
 
 void extrasRepository::readBevergesList()
@@ -100,7 +80,6 @@ void extrasRepository::readBevergesList()
             fin.seekg(0,fin.end);
             int listSize = fin.tellg() / sizeof(Beverages);
             fin.seekg(0, fin.beg);
-            Beverages arrayOfBeverages[listSize];
 
             for(int i = 0; i < listSize;i++)
             {
@@ -116,6 +95,9 @@ void extrasRepository::readBevergesList()
 
     fin.close();
 }
+
+
+
 void extrasRepository::printBevergesList(vector<Beverages> vectorBeverages)
 {
     for ( vector<Beverages>::iterator i = vectorBeverages.begin(); i != vectorBeverages.end(); ++i)
@@ -130,19 +112,27 @@ void extrasRepository::printSOList(vector<SideOrders> vectorSideOrders)
         cout << *i << ' ' << endl;
     }
 }
-void extrasRepository::printBevergesListStandard()
+int extrasRepository::printBevergesListStandard()
 {
     readBevergesList();
-
+    int counter = 1;
+    int input = 0;
+    cout << "Pick a Beverage: " << endl;
     for ( vector<Beverages>::iterator i = vectorBeverages.begin(); i != vectorBeverages.end(); ++i)
     {
+        cout << counter << ": ";
         cout << *i << ' ' << endl;
+        counter++;
     }
+    cin >> input;
+    return input;
 }
 int extrasRepository::printSOListStandard()
 {
+
     readSOList();
-    int counter = 1,input;
+    int counter = 1;
+    int input = 0;
     cout << "Pick a sideOrder: " << endl;
 
     for ( vector<SideOrders>::iterator i = vectorSideOrders.begin(); i != vectorSideOrders.end(); ++i)

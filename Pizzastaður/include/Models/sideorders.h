@@ -9,13 +9,9 @@ class SideOrders
 {
     public:
         SideOrders();
-        virtual ~SideOrders();
 
         friend ostream& operator <<(ostream& out, const SideOrders sideorders);
         friend istream& operator >> (istream& in, SideOrders& sideorders);
-
-
-    protected:
 
     private:
         char name[32];

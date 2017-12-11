@@ -5,8 +5,26 @@ Beverages::Beverages()
     smallPrice = 0;
     midPrice = 0;
     bigPrice = 0;
-    name[20] = '\0';
+    name[0] = '\0';
 }
+
+char* Beverages::getName()
+{
+    return this->name;
+}
+int Beverages::getPriceSmall()
+{
+    return this->smallPrice;
+}
+int Beverages::getPriceMedium()
+{
+    return this->midPrice;
+}
+int Beverages::getPriceLarge()
+{
+    return this->bigPrice;
+}
+
 ostream& operator << (ostream& out, const Beverages& beverages)
 {
     cout << "Name: ";

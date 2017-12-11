@@ -18,9 +18,17 @@ void ToppingList::setNewTopping(alegg newTopping)
     aleggRepo.storeAlegg(newTopping);
 
 }
-void ToppingList::getToppingList()
+alegg ToppingList::getToppingList()
 {
     AleggRepository aleggRepo;
 
-    aleggRepo.printTopListStandard();
+    int input = 0;
+    input = aleggRepo.printTopListStandard();
+    alegg newAlegg;
+    newAlegg = aleggRepo.getAleggFromList(input);
+
+    cout << "TEST: "<< newAlegg << endl;
+
+    return newAlegg;
+
 }

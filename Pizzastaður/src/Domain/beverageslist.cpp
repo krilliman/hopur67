@@ -13,12 +13,14 @@ void Beverageslist::setNewBeverges(Beverages beverage)
     extraRepo.writeBeverageToList(beverage);
 
 }
-void Beverageslist::getBevergeList()
+Beverages Beverageslist::getFromBevergeList()
 {
+    int input = 0;
     extrasRepository extraRepo;
-    ///tala viğ repo og setja inní pointerinn
+    input = extraRepo.printBevergesListStandard();
 
-    ///extraRepo.readBevergesList(); virkar til ağ prenta út bara
-    extraRepo.printBevergesListStandard();
+    Beverages newBeverage;
+    newBeverage = extraRepo.getBeverageFromList(input);
+    return newBeverage;
 
 }

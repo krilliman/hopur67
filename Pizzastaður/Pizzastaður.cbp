@@ -42,11 +42,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Data/OrderRepository.h" />
 		<Unit filename="include/Data/PizzaPlaceRepo.h" />
 		<Unit filename="include/Data/aleggrepository.h" />
 		<Unit filename="include/Data/extrasrepository.h" />
 		<Unit filename="include/Data/pizzarepository.h" />
 		<Unit filename="include/Domain/ListOfPizzaPlaces.h" />
+		<Unit filename="include/Domain/OrderList.h" />
 		<Unit filename="include/Domain/beverageslist.h" />
 		<Unit filename="include/Domain/menu.h" />
 		<Unit filename="include/Domain/newOrder.h" />
@@ -63,11 +65,13 @@
 		<Unit filename="include/UI/deliveryui.h" />
 		<Unit filename="include/UI/mainui.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Data/OrderRepository.cpp" />
 		<Unit filename="src/Data/PizzaPlaceRepo.cpp" />
 		<Unit filename="src/Data/aleggrepository.cpp" />
 		<Unit filename="src/Data/extrasrepository.cpp" />
 		<Unit filename="src/Data/pizzarepository.cpp" />
 		<Unit filename="src/Domain/ListOfPizzaPlaces.cpp" />
+		<Unit filename="src/Domain/OrderList.cpp" />
 		<Unit filename="src/Domain/beverageslist.cpp" />
 		<Unit filename="src/Domain/matseðill.cpp" />
 		<Unit filename="src/Domain/menu.cpp" />

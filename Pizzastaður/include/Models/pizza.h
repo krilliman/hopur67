@@ -15,6 +15,8 @@ class Pizza
 
         void setMenuPizza(bool n);
 
+        char *getBottom();
+        char *getSize();
 
     protected:
 

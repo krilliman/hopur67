@@ -43,14 +43,30 @@ void PizzaPlaceRepo::readListOfPizzaPlaces()
 
     fin.close();
 }
-void PizzaPlaceRepo::printPizzaPlacesStandard()
+PizzaPlaces PizzaPlaceRepo::getPizzaPlaceFromList(int element)
 {
+    PizzaPlaces newPizzaplace;
+
+    newPizzaplace = this->vectorOfPizzaPlaces[element-1];
+    return newPizzaplace;
+}
+
+int PizzaPlaceRepo::readFromListOFPizzaPlaces()
+{
+    int input = 0;
+    int counter = 1;
     readListOfPizzaPlaces();
+    cout << "Select a pizza place" << endl;
     for ( vector<PizzaPlaces>::iterator i = vectorOfPizzaPlaces.begin(); i != vectorOfPizzaPlaces.end(); ++i)
     {
-        cout << *i << ' ' << endl;
+        cout << counter  << ": ";
+        cout << *i << ' ' << endl << endl;
+        counter++;
     }
+    cin >> input;
+    return input;
 }
+
 void PizzaPlaceRepo::printPizzaPlace(vector<PizzaPlaces> vectorOfPizzaPlaces)
 {
     for ( vector<PizzaPlaces>::iterator i = vectorOfPizzaPlaces.begin(); i != vectorOfPizzaPlaces.end(); ++i)

@@ -12,7 +12,7 @@ class ToppingList
         virtual ~ToppingList();
 
         void setNewTopping(alegg newTopping);
-        void getToppingList();
+        alegg getToppingList();
 
         //void setList();
         //void printList();

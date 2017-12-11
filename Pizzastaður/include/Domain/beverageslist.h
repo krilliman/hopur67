@@ -10,7 +10,7 @@ class Beverageslist
         Beverageslist();
 
         void setNewBeverges(Beverages beverage);
-        void getBevergeList();
+        Beverages getFromBevergeList();
 
     private:
 };

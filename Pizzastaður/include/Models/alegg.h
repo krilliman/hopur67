@@ -9,11 +9,15 @@ class alegg
         alegg();
         friend istream& operator >> (istream& in, alegg& nyttalegg);
         friend ostream& operator << (ostream& out, const alegg skrifalegg);
-        void setAddOrNot(bool n);
+
+        char* getName();
+        int getPriceSmall();
+        int getPriceMedium();
+        int getPriceLarge();
 
 
     private:
-        char nafn[20];
+        char nafn[32];
         int verdLitil;
         int verdMid;
         int verdStor;

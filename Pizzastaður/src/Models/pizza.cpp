@@ -1,4 +1,5 @@
 #include "pizza.h"
+#include "toppinglist.h"
 Pizza::Pizza()
 {
     bottom = '\0';
@@ -9,35 +10,42 @@ void Pizza::setMenuPizza(bool n)
 {
     this->notMenuPizza = n;
 }
+
+char *Pizza::getBottom()
+{
+    return this->bottom;
+}
+char *Pizza::getSize()
+{
+    return this->size;
+}
+
 ostream& operator <<(ostream& out, const Pizza& pizza)
 {
-    if(pizza.notMenuPizza == true)
-    {
-        cout << "Bottom type: ";
-        out << pizza.bottom;
 
-        cout << "Pizza Size: ";
-        out << pizza.size;
-    }
-    cout << "Toppings: " << endl;
+    cout << "Bottom type: ";
+    out << pizza.bottom << endl;
+
+    cout << "Pizza Size: ";
+    out << pizza.size << endl;
+
     for ( vector<alegg>::const_iterator i = pizza.aleggVector.begin(); i != pizza.aleggVector.end(); ++i)
     {
         cout << *i << ' ' << endl;
     }
-
     return out;
 }
 istream& operator >>(istream& in, Pizza& pizza)
 {
     int topCnt;
-    int input;
+
     if(pizza.notMenuPizza == false)
     {
 
         char *bottom1 = (char*)"Normal";
         char *bottom2 = (char*)"Thin";
         char *bottom3 = (char*)"pan";
-
+        int input;
         cout << "Choose a bottom: " << endl;
         cout << "1." << bottom1 << endl;
         cout << "2." << bottom2 << endl;
@@ -63,15 +71,17 @@ istream& operator >>(istream& in, Pizza& pizza)
         cout << "1." << sizeSmall << endl;
         cout << "2." << sizeMedium << endl;
         cout << "3." <<  sizeLarge << endl;
-        if(input == 1)
+        int input2;
+        cin >> input2;
+        if(input2 == 1)
         {
             pizza.size = sizeSmall;
         }
-        else if (input == 2)
+        else if (input2 == 2)
         {
             pizza.size = sizeMedium;
         }
-        else if(input == 3)
+        else if(input2 == 3)
         {
             pizza.size = sizeLarge;
         }
@@ -79,13 +89,14 @@ istream& operator >>(istream& in, Pizza& pizza)
     }
     cout << "Enter Number Of Toppings: ";
     in >> topCnt;
-    alegg topping;
-    topping.setAddOrNot(false);
+    ToppingList newToppingList;
     for(int i = 0; i < topCnt;i++)
     {
-        in >> topping;
+        alegg topping;
+        topping = newToppingList.getToppingList();
         pizza.aleggVector.push_back(topping);
     }
+
     return in;
 
 }

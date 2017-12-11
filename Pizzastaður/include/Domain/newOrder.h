@@ -3,22 +3,28 @@
 #include <pizza.h>
 #include <beverageslist.h>
 #include <sideorderlist.h>
-#include <extrasrepository.h>
-#include <pizzarepository.h>
+#include <ListOfPizzaPlaces.h>
 
 class newOrder
 {
     public:
         newOrder();
 
-        friend istream& operator >>(istream& in, newOrder neworder);
+        friend istream& operator >>(istream& in, newOrder& neworder);
         friend ostream& operator <<(ostream& out, newOrder neworder);
+
+        void addToSideOrderVector(SideOrders newSideorder);
+        void addToPizzaVector(Pizza newPizza);
+        void addToBeveragesVector(Beverages newBeverages);
+
 
 
     private:
         vector<Pizza> pizzaVector;
-        vector<SideOrderList> sideOrderVector;
-        vector<Beverageslist> beverageVector;
+        vector<SideOrders> sideOrderVector;
+        vector<Beverages> beverageVector;
+        PizzaPlaces pizzaplace;
+
 };
 
 #endif // NEWORDER_H

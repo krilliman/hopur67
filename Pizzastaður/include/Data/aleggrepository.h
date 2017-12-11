@@ -11,7 +11,8 @@ class AleggRepository
         void storeAlegg( alegg topping);
         void readTopList();
         void printTopList(vector<alegg> vectorAlegg);
-        void printTopListStandard();
+        int printTopListStandard();
+        alegg getAleggFromList(int element);
 
     protected:
 
