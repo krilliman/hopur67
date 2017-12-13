@@ -7,6 +7,10 @@ SideOrders::SideOrders()
 }
 
 
+int SideOrders::getPrice()
+{
+    return this->price;
+}
 ostream& operator <<(ostream& out, const SideOrders sideorders)
 {
     cout << "Side Order Name: ";

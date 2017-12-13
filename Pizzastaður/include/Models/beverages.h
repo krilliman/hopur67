@@ -15,15 +15,11 @@ class Beverages
         friend istream& operator >>(istream& in, Beverages& beverages);
 
         char* getName();
-        int getPriceSmall();
-        int getPriceMedium();
-        int getPriceLarge();
+        int getPrice();
 
     private:
-        char name[20];
-        int smallPrice; /// 0.5L
-        int midPrice;   /// 1.5L
-        int bigPrice;   /// 2.0L
+        char name[32];
+        int price;
 };
 
 #endif // BEVERAGES_H

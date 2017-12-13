@@ -5,6 +5,7 @@
 #include <iostream>
 #include <pizza.h>
 #include <vector>
+#include <string>
 
 using namespace std;
 class Menu
@@ -12,18 +13,30 @@ class Menu
     public:
         Menu();
 
-        friend ostream& operator << (ostream& out,const Menu& menu);
+        friend ostream& operator << (ostream& out, Menu& menu);
         friend istream& operator >> (istream& in, Menu& menu);
 
         void addNewPizza(Menu menu);
-        void getMenu();
+        Menu getMenu();
+
+        string getName();
+        int getPriceSmall();
+        int getPriceMedium();
+        int getPriceLarge();
+        vector<alegg> getToppingVector();
+
+        void setName(string name);
+        void setPiceSmall(int priceSmall);
+        void setPiceMedium(int priceMedium);
+        void setPiceLarge(int priceLarge);
+        void setToppinNames(vector<alegg> toppings);
 
     private:
-        char name[32];
+        string name;
         int verdLitil;
         int verdMid;
         int verdStor;
-        Pizza pizza;
+        vector<alegg> toppings;
 
 };
 

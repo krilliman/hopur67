@@ -8,7 +8,6 @@ alegg::alegg()
     verdLitil = 0;
     verdMid = 0;
     verdStor = 0;
-    addOrNot = true;
 }
 
 char* alegg::getName()

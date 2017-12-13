@@ -304,10 +304,10 @@
 	"alegg.h"
 	<vector>
 
-1513027391 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\models\alegg.h
+1513109847 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\models\alegg.h
 	<iostream>
 
-1513029312 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\data\pizzaplacerepo.cpp
+1513030271 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\data\pizzaplacerepo.cpp
 	"PizzaPlaceRepo.h"
 
 1513029740 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\data\pizzaplacerepo.h
@@ -318,26 +318,27 @@
 1512753576 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\models\pizzaplaces.h
 	<iostream>
 
-1512952251 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\data\pizzarepository.cpp
+1513196086 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\data\pizzarepository.cpp
 	"pizzarepository.h"
 	<fstream>
 	"menu.h"
 
-1512947846 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\data\pizzarepository.h
+1513193781 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\data\pizzarepository.h
 	"pizza.h"
 	"menu.h"
 
-1513027237 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\models\pizza.h
+1513187458 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\models\pizza.h
 	"alegg.h"
 	<iostream>
 	<fstream>
 	<vector>
 
-1512946984 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\domain\menu.h
+1513196071 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\domain\menu.h
 	<fstream>
 	<iostream>
 	<pizza.h>
 	<vector>
+	<string>
 
 1513023468 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\domain\beverageslist.cpp
 	"beverageslist.h"
@@ -346,7 +347,7 @@
 	"beverages.h"
 	"extrasrepository.h"
 
-1513027651 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\models\beverages.h
+1513186018 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\models\beverages.h
 	<iostream>
 
 1513022062 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\data\extrasrepository.h
@@ -354,7 +355,7 @@
 	"beverages.h"
 	<vector>
 
-1513021046 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\models\sideorders.h
+1513186240 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\models\sideorders.h
 	<iostream>
 	<fstream>
 
@@ -375,10 +376,11 @@
 	<pizza.h>
 	<vector>
 
-1512949634 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\domain\menu.cpp
+1513196071 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\domain\menu.cpp
 	"menu.h"
 	<fstream>
 	"pizzarepository.h"
+	"aleggrepository.h"
 
 1513022285 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\domain\sideorderlist.cpp
 	"sideorderlist.h"
@@ -393,28 +395,29 @@
 	"toppinglist.h"
 	"alegg.h"
 
-1513012355 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\domain\toppinglist.h
+1513169040 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\domain\toppinglist.h
 	"alegg.h"
 	"aleggrepository.h"
 	<fstream>
 
-1513027391 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\models\alegg.cpp
+1513109837 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\models\alegg.cpp
 	"alegg.h"
 
-1513027650 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\models\beverages.cpp
+1513186120 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\models\beverages.cpp
 	"beverages.h"
 
-1513027266 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\models\pizza.cpp
+1513187521 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\models\pizza.cpp
 	"pizza.h"
 	"toppinglist.h"
+	<aleggrepository.h>
 
 1512752936 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\models\pizzaplaces.cpp
 	"PizzaPlaces.h"
 
-1513021053 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\models\sideorders.cpp
+1513186260 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\models\sideorders.cpp
 	"sideorders.h"
 
-1513030080 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\ui\adminui.cpp
+1513174069 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\ui\adminui.cpp
 	"adminui.h"
 	"toppinglist.h"
 	"sideorderlist.h"
@@ -444,11 +447,11 @@
 
 1512936629 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\ui\salesui.h
 
-1513027662 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\data\extrasrepository.cpp
+1513078714 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\data\extrasrepository.cpp
 	"extrasrepository.h"
 	<fstream>
 
-1513023595 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\ui\salesui.cpp
+1513203119 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\ui\salesui.cpp
 	"salesui.h"
 	"alegg.h"
 	"toppinglist.h"
@@ -457,27 +460,41 @@
 	"beverageslist.h"
 	"OrderList.h"
 
-1513030154 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\domain\neworder.cpp
+1513200770 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\domain\neworder.cpp
 	"newOrder.h"
 	<cstdlib>
 
-1513029593 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\domain\neworder.h
+1513199987 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\domain\neworder.h
 	<pizza.h>
 	<beverageslist.h>
 	<sideorderlist.h>
 	<ListOfPizzaPlaces.h>
+	<menu.h>
 
-1513013751 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\domain\orderlist.cpp
+1513202969 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\domain\orderlist.cpp
 	"OrderList.h"
 
-1513013581 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\domain\orderlist.h
+1513201684 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\domain\orderlist.h
 	<newOrder.h>
 	<OrderRepository.h>
+	<orderFromMenu.h>
 
-1513026262 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\data\orderrepository.cpp
+1513204322 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\data\orderrepository.cpp
 	"OrderRepository.h"
 	<fstream>
 
-1513013054 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\data\orderrepository.h
+1513201644 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\data\orderrepository.h
 	<newOrder.h>
+	<orderFromMenu.h>
+
+1513201686 c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\include\models\orderfrommenu.h
+	<pizza.h>
+	<beverageslist.h>
+	<sideorderlist.h>
+	<ListOfPizzaPlaces.h>
+	<menu.h>
+
+1513203342 source:c:\users\kristmannk\documents\3viknarepo\hopur67\pizzastaður\src\models\orderfrommenu.cpp
+	"orderFromMenu.h"
+	<pizzarepository.h>
 

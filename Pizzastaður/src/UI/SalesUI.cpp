@@ -24,6 +24,7 @@ void SalesUI::startUI()
         cout << "2: Pizza from Menu / Missing" << endl;
         cout << "3: Make your own / Missing" << endl;
         cout << "4: to Print order" << endl;
+        cout << "5. to print orders from menu" << endl;
         cout << "r: Press r to go back to - Main Menu -" << endl;
         cin >> Selection;
 
@@ -41,20 +42,18 @@ void SalesUI::startUI()
         }
         if (Selection == '2')
         {
-            ///int menu.pizza;
-            ///Here we need to make an instance of menuList and print out the list
+            OrderList newOrderList;
+            int input = 0;
+            cout << "Enter the amount of orders: ";
+            cin >> input;
+            for(int i = 0 ; i < input; i++)
+            {
+                orderFromMenu neworder;
 
-            cout << "Please select pizza: " << endl;
-            cout << "1: Pizza A " << endl;
-            cout << "2: Pizza B " << endl;
-            cout << "3: Pizza C " << endl;
-            cout << "4: Pizza D " << endl;
-            cout << "5: Pizza E " << endl;
-            cout << "6: Pizza F " << endl;
-            cout << "7: Pizza G " << endl;
-
-           // cin >> menu.pizza;
-            //checkmenublabla
+                cin >> neworder;
+                cout << "TEST: " << neworder << endl;
+                newOrderList.setNewOrderFromMenu(neworder);
+            }
         }
         if (Selection == '3')
         {
@@ -81,14 +80,8 @@ void SalesUI::startUI()
         }
         if (Selection == '5')
         {
-            ///char beverage.selection;
-            cout << "Please select beverage: " << endl;
-            cout << "1: Coke " << endl;
-            cout << "2: Sprite " << endl;
-            cout << "3: Fanta " << endl;
-
-            ///cin >> beverage.selection;
-            //Service
+            OrderList newOrderList;
+            newOrderList.getOrdersFromMenu();
         }
     }
 }

@@ -9,17 +9,144 @@ void newOrder::addToSideOrderVector(SideOrders newSideorder)
 {
     this->sideOrderVector.push_back(newSideorder);
 }
+
 void newOrder::addToPizzaVector(Pizza newPizza)
 {
     this->pizzaVector.push_back(newPizza);
 }
+
 void newOrder::addToBeveragesVector(Beverages newBeverages)
 {
     this->beverageVector.push_back(newBeverages);
 }
 
+
+void newOrder::setNewPricePerOrder()
+{
+    int total = 0, smallPizza = 1500 , mediumPizza = 2000 , largePizza = 2500;
+    int pizzaVectorSize = pizzaVector.size();
+    int sideOrderVectorSize = sideOrderVector.size();
+    int beverageVectorSize = beverageVector.size();
+    for(int i = 0; i < pizzaVectorSize;i++)
+    {
+        vector<alegg> newAlegg = pizzaVector[i].getAleggVector();
+        if(pizzaVector[i].getSize() == 1)
+        {
+            cout << "in small: " << endl;
+            for(int i = 0; i < newAlegg.size();i++)
+            {
+                int small = newAlegg[i].getPriceSmall();
+                total += small;
+            }
+            total += smallPizza;
+        }
+        else if(pizzaVector[i].getSize() == 2)
+        {
+            cout << "in medium: " << endl;
+            for(int i = 0; i < newAlegg.size();i++)
+            {
+                int medium = newAlegg[i].getPriceMedium();
+                total += medium;
+            }
+            total += mediumPizza;
+
+        }
+        else if(pizzaVector[i].getSize() == 3)
+        {
+            cout << "in large: " << endl;
+            for(int i = 0; i < newAlegg.size();i++)
+            {
+                 int large = newAlegg[i].getPriceLarge();
+                 total += large;
+            }
+            total += largePizza;
+
+        }
+    }
+    cout << "Total after pizza: " << total << endl;
+    for(int i = 0; i < sideOrderVectorSize; i++)
+    {
+        int price =sideOrderVector[i].getPrice();
+        total += price;
+    }
+
+    cout << "Total after sideOrders: " << total << endl;
+    for(int i = 0; i < beverageVectorSize;i++)
+    {
+        int price = beverageVector[i].getPrice();
+        total += price;
+    }
+
+    cout << "total price after beverage: " << total << endl;
+    this->pricePerOrder = total;
+
+}
+vector<Pizza> newOrder::getPizzaVector()
+{
+    return this->pizzaVector;
+}
+
+vector<SideOrders> newOrder::getSideOrderVector()
+{
+    return this->sideOrderVector;
+}
+vector<Beverages> newOrder::getBeverageVector()
+{
+    return this->beverageVector;
+}
+
+
+PizzaPlaces newOrder::getPizzaPlace()
+{
+    return this->pizzaplace;
+}
+
+int newOrder::getPricePerPizza()
+{
+    return this->pricePerPizza;
+}
+int newOrder::getPricePerOrder()
+{
+    return this->pricePerOrder;
+}
+bool newOrder::getOrderStatus()
+{
+    return this->status;
+}
+
+void newOrder::setPizzaVector(vector<Pizza> pizzaVector)
+{
+    this->pizzaVector = pizzaVector;
+}
+
+void newOrder::setSideOrderVector(vector<SideOrders> sideOrderVector)
+{
+    this->sideOrderVector = sideOrderVector;
+}
+void newOrder::setBeverageVector(vector<Beverages> beverageVector)
+{
+    this->beverageVector = beverageVector;
+}
+
+
+void newOrder::setPizzaPlace(PizzaPlaces pizzaplace)
+{
+    this->pizzaplace = pizzaplace;
+}
+
+void newOrder::setPizzaStatus(bool status)
+{
+    this->status = status;
+}
+
+void newOrder::setPricePerOrder(int pricePerOrder)
+{
+    this->pricePerOrder = pricePerOrder;
+}
+
 istream& operator >>(istream& in, newOrder& neworder)
 {
+
     (system("CLS"));
     int pizzas;
     cout << "How many pizzas would you like ? ";
@@ -31,6 +158,7 @@ istream& operator >>(istream& in, newOrder& neworder)
         in >> newPizza;
         neworder.addToPizzaVector(newPizza);
     }
+
     (system("CLS"));
     int sideorder;
     cout << "How many Side orders would you like ? ";
@@ -61,14 +189,20 @@ istream& operator >>(istream& in, newOrder& neworder)
 
     }
     (system("CLS"));
+
+
     ListOfPizzaPlaces newPizzaPlaceList;
     PizzaPlaces newPizzaplace;
     newPizzaplace = newPizzaPlaceList.getFromListOfPizzaPlaces();
     neworder.pizzaplace = newPizzaplace;
+
     return in;
 }
 ostream& operator <<(ostream& out, newOrder neworder)
 {
+
+
+
     out << "---Pizza-- " << endl;
     for ( vector<Pizza>::iterator i = neworder.pizzaVector.begin(); i != neworder.pizzaVector.end(); ++i)
     {
@@ -85,8 +219,11 @@ ostream& operator <<(ostream& out, newOrder neworder)
     {
         out << *i << ' ' << endl;
     }
+
     out << endl << "---Pizza Place---" << endl;
     out << neworder.pizzaplace << endl;
 
+    out << endl << "Price Of Order: ";
+    out << neworder.pricePerOrder << endl;
     return out;
 }

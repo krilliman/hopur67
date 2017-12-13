@@ -13,6 +13,8 @@ class SideOrders
         friend ostream& operator <<(ostream& out, const SideOrders sideorders);
         friend istream& operator >> (istream& in, SideOrders& sideorders);
 
+        int getPrice();
+
     private:
         char name[32];
         int price;

@@ -53,7 +53,7 @@ void AdminUI::startUI()
         else if(Selection == 'm' || Selection == 'M' )
         {
             int addPizza;
-            Menu menu;
+            Menu menuList;
 
             cout << endl << "How many Pizza's would you like to add to the menu ? ";
             cin >> addPizza;
@@ -64,7 +64,7 @@ void AdminUI::startUI()
                 Menu menu;
                 cin >> menu;
 
-                menu.addNewPizza(menu);
+                menuList.addNewPizza(menu);
             }
         }
         else if(Selection == 's' || Selection == 'S')

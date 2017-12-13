@@ -1,25 +1,25 @@
-#ifndef NEWORDER_H
-#define NEWORDER_H
+#ifndef ORDERFROMMENU_H
+#define ORDERFROMMENU_H
+
 #include <pizza.h>
 #include <beverageslist.h>
 #include <sideorderlist.h>
 #include <ListOfPizzaPlaces.h>
 #include <menu.h>
 
-class newOrder
+
+class orderFromMenu
 {
     public:
-        newOrder();
+        orderFromMenu();
 
-        friend istream& operator >>(istream& in, newOrder& neworder);
-        friend ostream& operator <<(ostream& out, newOrder neworder);
+        friend istream& operator >>(istream& in, orderFromMenu& neworder);
+        friend ostream& operator <<(ostream& out, orderFromMenu neworder);
 
-        void addToSideOrderVector(SideOrders newSideorder);
-        void addToPizzaVector(Pizza newPizza);
-        void addToBeveragesVector(Beverages newBeverages);
         void setNewPricePerOrder();
 
-        vector<Pizza> getPizzaVector();
+        void getPizzaMenu();
+
         vector<SideOrders> getSideOrderVector();
         vector<Beverages> getBeverageVector();
         vector<Menu> getPizzaFromMenuVector();
@@ -43,14 +43,12 @@ class newOrder
 
 
     private:
-        vector<Pizza> pizzaVector;
+        vector<Menu> pizzaFromMenuVector;
         vector<SideOrders> sideOrderVector;
         vector<Beverages> beverageVector;
         PizzaPlaces pizzaplace;
-        int pricePerPizza;
         int pricePerOrder;
         bool status;
-
 };
 
-#endif // NEWORDER_H
+#endif // ORDERFROMMENU_H

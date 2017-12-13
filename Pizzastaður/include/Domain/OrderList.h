@@ -3,6 +3,7 @@
 
 #include <newOrder.h>
 #include <OrderRepository.h>
+#include <orderFromMenu.h>
 class OrderList
 {
     public:
@@ -10,6 +11,9 @@ class OrderList
 
         void setNewOrder(newOrder neworder);
         void getOrderList();
+
+        void setNewOrderFromMenu(orderFromMenu orderfromMenu);
+        void getOrdersFromMenu();
 
     private:
 };

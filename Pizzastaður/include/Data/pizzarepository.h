@@ -8,16 +8,19 @@ class PizzaRepository
     public:
         PizzaRepository();
 
-    void storePizza(const Pizza& pizza);
+    void storePizza(Pizza& pizza);
     void readPizza();
     void printPizza(vector<Pizza> pizzas);
     void printAllPizzas();
 
 
 
-    void storeMenu(const Menu& menu);
+    void storeMenu(Menu& menu);
     void readMenu();
-    void printMenu();
+
+    int selectFromMenu();
+    Menu selectElementFromMenu(int element);
+
     private:
         vector<Menu> menuList;
         vector<Pizza> pizzas;

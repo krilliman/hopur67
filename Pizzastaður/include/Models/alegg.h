@@ -21,7 +21,6 @@ class alegg
         int verdLitil;
         int verdMid;
         int verdStor;
-        bool addOrNot;
 };
 
 #endif // ALEGG_H

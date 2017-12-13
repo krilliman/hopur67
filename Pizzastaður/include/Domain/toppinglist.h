@@ -14,15 +14,8 @@ class ToppingList
         void setNewTopping(alegg newTopping);
         alegg getToppingList();
 
-        //void setList();
-        //void printList();
 
     private:
-       // int addToList;
-        alegg ToppingToAdd;
-        alegg *toppinglist;
-        int listLength;
-        bool add;
 };
 
 #endif // TOPPINGLIST_H
