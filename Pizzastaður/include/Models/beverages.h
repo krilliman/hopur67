@@ -1,8 +1,8 @@
 #ifndef BEVERAGES_H
 #define BEVERAGES_H
-
+#include <fstream>
 #include <iostream>
-
+#include <string>
 using namespace std;
 
 class Beverages
@@ -14,12 +14,18 @@ class Beverages
         friend ostream& operator << (ostream& out, const Beverages& beverages);
         friend istream& operator >>(istream& in, Beverages& beverages);
 
-        char* getName();
-        int getPrice();
+        void writeBeverage(ofstream &fout);
+        void readBeverage(ifstream &fin);
+
+        string getName();
+        string getPrice();
+
+        void setName(string name);
+        void setPrice(string price);
 
     private:
-        char name[32];
-        int price;
+        string name;
+        string price;
 };
 
 #endif // BEVERAGES_H

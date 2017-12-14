@@ -15,20 +15,23 @@ class Pizza
 
         void setMenuPizza(bool n);
 
-        void setNewBottom(char* bottom);
-        void setNewSize(int size);
+        void writePizza(ofstream &fout);
+        void readPizza(ifstream &fin);
+
+        void setNewBottom(string bottom);
+        void setNewSize(string size);
         void setNewAleggVector(vector<alegg> aleggVector);
 
         vector<alegg> getAleggVector();
 
-        char *getBottom();
-        int getSize();
+        string getBottom();
+        string getSize();
 
     protected:
 
     private:
-        char* bottom;
-        int size;
+        string bottom;
+        string size;
         vector<alegg> aleggVector;
         bool notMenuPizza;
 

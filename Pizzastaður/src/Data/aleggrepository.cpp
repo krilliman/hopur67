@@ -8,11 +8,13 @@ AleggRepository::AleggRepository()
 void AleggRepository::storeAlegg( alegg aleggToAdd)
 {
 
+    readTopList();
     ofstream fout;
+    int aleggVectorSize = this->vectorAlegg.size()+1;
 
     fout.open("Topping_list.dat", ios::binary | ios::app);
-
-    fout.write((char*)(&aleggToAdd), sizeof(alegg));
+    aleggToAdd.writeAlegg(fout);
+    fout.write((char*)(&aleggVectorSize),sizeof(aleggVectorSize));
 
     fout.close();
 }
@@ -27,24 +29,37 @@ alegg AleggRepository::getAleggFromList(int element)
 ///not a good idea to return a pointer so need to find another way/if this even works.
 void AleggRepository::readTopList()
 {
-    ifstream ifin;
+    ifstream fin;
 
-    alegg newAlegg;
-
-    ifin.open("Topping_list.dat", ios::binary);
+    fin.open("Topping_list.dat", ios::binary);
 
 
-    if(ifin.is_open())
+    if(fin.is_open())
         {
-            ifin.seekg(0,ifin.end);
-            int listSize = ifin.tellg() / sizeof(alegg);
-            ifin.seekg(0, ifin.beg);
-
-
-            for(int i = 0; i < listSize;i++)
+            fin.seekg(0,fin.end);
+            int testSize = fin.tellg();
+            fin.seekg(0,fin.beg);
+            if(testSize == 0)
             {
-                ifin.read((char*)(&newAlegg),sizeof(alegg));
-                vectorAlegg.push_back(newAlegg);
+
+            }
+            else
+            {
+                    int listSize;
+                    fin.seekg(-4,fin.end);
+                    fin.read((char*)(&listSize), sizeof(listSize));
+                    fin.seekg(0,fin.beg);
+
+                    cout << "List Size: " << listSize << endl;
+                    for(int i = 0; i < listSize;i++)
+                    {
+                            alegg newAlegg;
+                            newAlegg.readAlegg(fin);
+
+                            int aleggNum;
+                            fin.read((char*)(&aleggNum), sizeof(aleggNum));
+                            this->vectorAlegg.push_back(newAlegg);
+                    }
             }
         }
         else
@@ -52,7 +67,7 @@ void AleggRepository::readTopList()
             cout << "Could not open file." << endl;
         }
 
-    ifin.close();
+    fin.close();
 
 }
 

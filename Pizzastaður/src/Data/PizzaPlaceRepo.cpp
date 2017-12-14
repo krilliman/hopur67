@@ -8,32 +8,50 @@ PizzaPlaceRepo::PizzaPlaceRepo()
 
 void PizzaPlaceRepo::writeNewPizzaPlace(PizzaPlaces pizzaplace)
 {
+    readListOfPizzaPlaces();
     ofstream fout;
 
     fout.open("List_Of_PizzaPlaces.dat" , ios::binary|ios::app);
 
-    fout.write((char*)(&pizzaplace), sizeof(PizzaPlaces));
+    int pizzaplaceVectorSize = this->vectorOfPizzaPlaces.size()+1;
+    pizzaplace.writePizzaPlace(fout);
+    fout.write((char*)(&pizzaplaceVectorSize), sizeof(pizzaplaceVectorSize));
 
     fout.close();
 }
 void PizzaPlaceRepo::readListOfPizzaPlaces()
 {
     ifstream fin;
-
-    PizzaPlaces pizzaplace;
-
-    fin.open("List_Of_PizzaPlaces.dat", ios::binary|ios::app);
+    fin.open("List_Of_PizzaPlaces.dat", ios::binary);
         if(fin.is_open())
         {
             fin.seekg(0,fin.end);
-            int listSize = fin.tellg() / sizeof(PizzaPlaces);
-            fin.seekg(0, fin.beg);
-
-            for(int i = 0; i < listSize;i++)
+            int testSize = fin.tellg();
+            fin.seekg(0,fin.beg);
+            if(testSize == 0)
             {
-                fin.read((char*)(&pizzaplace),sizeof(PizzaPlaces));
 
-                vectorOfPizzaPlaces.push_back(pizzaplace);
+            }
+            else
+            {
+
+              int listSize;
+              fin.seekg(-4,fin.end);
+              fin.read((char*)(&listSize), sizeof(listSize));
+              fin.seekg(0,fin.beg);
+
+                cout << "List Size: " << listSize << endl;
+                for(int i = 0; i < listSize;i++)
+                {
+                    PizzaPlaces pizzaplace;
+
+                    pizzaplace.readPizzaPlace(fin);
+
+                    int pizzaplaceNum;
+                    fin.read((char*)(&pizzaplaceNum), sizeof(pizzaplaceNum));
+
+                    this->vectorOfPizzaPlaces.push_back(pizzaplace);
+                }
             }
         }
         else

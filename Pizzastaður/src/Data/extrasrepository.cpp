@@ -8,32 +8,58 @@ extrasRepository::extrasRepository()
 
 void extrasRepository::writeSideOrder(SideOrders sideorder)
 {
+    readSOList();
     ofstream fout;
 
     fout.open("Side_Order_List.dat", ios::binary|ios::app);
 
-    fout.write((char*)(&sideorder), sizeof(SideOrders));
+    int sideOrderVectorSize = this->vectorSideOrders.size() + 1;
+
+    sideorder.writeSideOrder(fout);
+
+    fout.write((char*)(&sideOrderVectorSize),sizeof(sideOrderVectorSize));
 
     fout.close();
 }
-///Might need to change that this function return a pointer , might not work
+
+
 void extrasRepository::readSOList()
 {
     ifstream fin;
-    cout << "test:" << endl;
-    SideOrders sideorder;
+
     fin.open("Side_Order_List.dat", ios::binary);
 
     if(fin.is_open())
     {
-        fin.seekg(0,fin.end);
-        int listSize = fin.tellg() / sizeof(SideOrders);
-        fin.seekg(0,fin.beg);
 
-        for(int i = 0; i < listSize;i++)
+        fin.seekg(0,fin.end);
+        int testSize = fin.tellg();
+        fin.seekg(0,fin.beg);
+        if(testSize == 0)
         {
-            fin.read((char*)(&sideorder),sizeof(SideOrders));
-            vectorSideOrders.push_back(sideorder);
+
+        }
+        else
+        {
+
+          int listSize;
+          fin.seekg(-4,fin.end);
+          fin.read((char*)(&listSize), sizeof(listSize));
+          fin.seekg(0,fin.beg);
+
+            cout << "List Size: " << listSize << endl;
+            for(int i = 0; i < listSize;i++)
+            {
+                SideOrders sideorder;
+
+                sideorder.readSideOrder(fin);
+
+                int sideorderNum;
+                fin.read((char*)(&sideorderNum), sizeof(sideorderNum));
+
+                this->vectorSideOrders.push_back(sideorder);
+
+            }
         }
     }
     else
@@ -46,11 +72,17 @@ void extrasRepository::readSOList()
 
 void extrasRepository::writeBeverageToList(Beverages beverage)
 {
+    readBevergesList();
     ofstream fout;
 
     fout.open("Beverage_list.dat", ios::binary|ios::app);
 
-    fout.write((char*)(&beverage),sizeof(Beverages));
+    int beverageVectorSize = this->vectorBeverages.size()+1;
+
+    beverage.writeBeverage(fout);
+
+    fout.write((char*)(&beverageVectorSize), sizeof(beverageVectorSize));
+
 
     fout.close();
 }
@@ -72,20 +104,35 @@ void extrasRepository::readBevergesList()
 {
     ifstream fin;
 
-    Beverages newBeverage;
-
     fin.open("Beverage_list.dat", ios::binary|ios::app);
         if(fin.is_open())
         {
             fin.seekg(0,fin.end);
-            int listSize = fin.tellg() / sizeof(Beverages);
-            fin.seekg(0, fin.beg);
-
-            for(int i = 0; i < listSize;i++)
+            int testSize = fin.tellg();
+            fin.seekg(0,fin.beg);
+            if(testSize == 0)
             {
-                fin.read((char*)(&newBeverage),sizeof(Beverages));
 
-                vectorBeverages.push_back(newBeverage);
+            }
+            else
+            {
+
+              int listSize;
+              fin.seekg(-4,fin.end);
+              fin.read((char*)(&listSize), sizeof(listSize));
+              fin.seekg(0,fin.beg);
+
+                for(int i = 0; i < listSize;i++)
+                {
+                    Beverages newBeverage;
+
+                    newBeverage.readBeverage(fin);
+                    int beverageNum;
+                    fin.read((char*)(&beverageNum), sizeof(beverageNum));
+
+                    this->vectorBeverages.push_back(newBeverage);
+
+                }
             }
         }
         else

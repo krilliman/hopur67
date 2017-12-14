@@ -19,23 +19,26 @@ class Menu
         void addNewPizza(Menu menu);
         Menu getMenu();
 
+        void writeMenu(ofstream &fout);
+        void readMenu(istream &fin);
+
         string getName();
-        int getPriceSmall();
-        int getPriceMedium();
-        int getPriceLarge();
+        string getPriceSmall();
+        string getPriceMedium();
+        string getPriceLarge();
         vector<alegg> getToppingVector();
 
         void setName(string name);
-        void setPiceSmall(int priceSmall);
-        void setPiceMedium(int priceMedium);
-        void setPiceLarge(int priceLarge);
+        void setPiceSmall(string priceSmall);
+        void setPiceMedium(string priceMedium);
+        void setPiceLarge(string priceLarge);
         void setToppinNames(vector<alegg> toppings);
 
     private:
         string name;
-        int verdLitil;
-        int verdMid;
-        int verdStor;
+        string verdLitil;
+        string verdMid;
+        string verdStor;
         vector<alegg> toppings;
 
 };

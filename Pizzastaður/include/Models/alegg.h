@@ -1,6 +1,7 @@
 #ifndef ALEGG_H
 #define ALEGG_H
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 class alegg
@@ -10,17 +11,25 @@ class alegg
         friend istream& operator >> (istream& in, alegg& nyttalegg);
         friend ostream& operator << (ostream& out, const alegg skrifalegg);
 
-        char* getName();
-        int getPriceSmall();
-        int getPriceMedium();
-        int getPriceLarge();
+        string getName();
+        string getPriceSmall();
+        string getPriceMedium();
+        string getPriceLarge();
+
+        void writeAlegg(ofstream &fout);
+        void readAlegg(istream &fin);
+
+        void setName(string name);
+        void setPriceSmall(string priceLittle);
+        void setPriceMiddle(string priceMiddle);
+        void setPriceLarge(string priceLarge);
 
 
     private:
-        char nafn[32];
-        int verdLitil;
-        int verdMid;
-        int verdStor;
+        string name;
+        string priceLittle;
+        string priceMiddle;
+        string priceLarge;
 };
 
 #endif // ALEGG_H

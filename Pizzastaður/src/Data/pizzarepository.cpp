@@ -6,7 +6,7 @@ PizzaRepository::PizzaRepository()
 {
     //ctor
 }
-
+/*
 void PizzaRepository::storePizza(Pizza& pizza)
 {
 
@@ -92,42 +92,25 @@ void PizzaRepository::printAllPizzas()
         cout << *i << ' ' << endl;
     }
 }
+*/
 
 void PizzaRepository::storeMenu( Menu& menu)
 {
 
     readMenu();
     ofstream fout;
-    string name = menu.getName();
-    int nameLength = name.length() + 1;
-
-    int priceSmall = menu.getPriceSmall();
-    int priceMedium = menu.getPriceMedium();
-    int piceLarge = menu.getPriceLarge();
-
     int menuSize = menuList.size() + 1;
-
 
     vector<alegg> newAleggVector = menu.getToppingVector();
     int VectorSize = newAleggVector.size();
 
     fout.open("Menu_list.dat", ios::binary|ios::app);
 
-    fout.write((char*)(&nameLength), sizeof(nameLength));
-    fout.write(name.c_str(),nameLength);
-
-    fout.write((char*)(&priceSmall), sizeof(priceSmall));
-
-    fout.write((char*)(&priceMedium), sizeof(priceMedium));
-
-    fout.write((char*)(&piceLarge), sizeof(piceLarge));
-
-
+    menu.writeMenu(fout);
     fout.write((char*)(&VectorSize), sizeof(VectorSize));
     for(int i = 0 ;i < VectorSize; i++)
     {
-            fout.write((char*)(&newAleggVector[i]), sizeof(alegg));
-
+            newAleggVector[i].writeAlegg(fout);
     }
 
     fout.write((char*)(&menuSize), sizeof(menuSize));
@@ -158,34 +141,17 @@ void PizzaRepository::readMenu()
                 {
                     Menu menu;
 
-                    int stringLength;
-                    fin.read((char*)(&stringLength), sizeof(stringLength));
-                    char *str = new char[stringLength];
-                    fin.read(str,stringLength);
-
-                    string name = str;
-                    menu.setName(name);
-
-                    int newPriceSmall;
-                    fin.read((char*)(&newPriceSmall), sizeof(newPriceSmall));
-                    menu.setPiceSmall(newPriceSmall);
-
-                    int newPriceMiddle;
-                    fin.read((char*)(&newPriceMiddle), sizeof(newPriceMiddle));
-                    menu.setPiceMedium(newPriceMiddle);
-
-                    int newPriceLarge;
-                    fin.read((char*)(&newPriceLarge), sizeof(newPriceLarge));
-                    menu.setPiceLarge(newPriceLarge);
+                    menu.readMenu(fin);
 
                     int toppingSize;
                     fin.read((char*)(&toppingSize), sizeof(toppingSize));
 
                     vector<alegg> newAleggVector;
+
                     for(int i = 0 ;i < toppingSize; i++)
                     {
                             alegg newAlegg;
-                            fin.read((char*)(&newAlegg), sizeof(newAlegg));
+                            newAlegg.readAlegg(fin);
                             newAleggVector.push_back(newAlegg);
                     }
                         menu.setToppinNames(newAleggVector);

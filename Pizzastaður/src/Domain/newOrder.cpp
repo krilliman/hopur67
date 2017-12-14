@@ -23,20 +23,22 @@ void newOrder::addToBeveragesVector(Beverages newBeverages)
 
 void newOrder::setNewPricePerOrder()
 {
+      /*
     int total = 0, smallPizza = 1500 , mediumPizza = 2000 , largePizza = 2500;
     int pizzaVectorSize = pizzaVector.size();
     int sideOrderVectorSize = sideOrderVector.size();
     int beverageVectorSize = beverageVector.size();
     for(int i = 0; i < pizzaVectorSize;i++)
     {
+
         vector<alegg> newAlegg = pizzaVector[i].getAleggVector();
         if(pizzaVector[i].getSize() == 1)
         {
             cout << "in small: " << endl;
             for(int i = 0; i < newAlegg.size();i++)
             {
-                int small = newAlegg[i].getPriceSmall();
-                total += small;
+                //int small = newAlegg[i].getPriceSmall();
+                //total += small;
             }
             total += smallPizza;
         }
@@ -45,8 +47,8 @@ void newOrder::setNewPricePerOrder()
             cout << "in medium: " << endl;
             for(int i = 0; i < newAlegg.size();i++)
             {
-                int medium = newAlegg[i].getPriceMedium();
-                total += medium;
+                //int medium = newAlegg[i].getPriceMedium();
+                //total += medium;
             }
             total += mediumPizza;
 
@@ -56,29 +58,31 @@ void newOrder::setNewPricePerOrder()
             cout << "in large: " << endl;
             for(int i = 0; i < newAlegg.size();i++)
             {
-                 int large = newAlegg[i].getPriceLarge();
-                 total += large;
+                 //int large = newAlegg[i].getPriceLarge();
+                 //total += large;
             }
             total += largePizza;
 
         }
     }
+
     cout << "Total after pizza: " << total << endl;
     for(int i = 0; i < sideOrderVectorSize; i++)
     {
-        int price =sideOrderVector[i].getPrice();
-        total += price;
+       // int price =sideOrderVector[i].getPrice();
+        //total += price;
     }
 
     cout << "Total after sideOrders: " << total << endl;
     for(int i = 0; i < beverageVectorSize;i++)
     {
-        int price = beverageVector[i].getPrice();
-        total += price;
+        //int price = beverageVector[i].getPrice();
+        //total += price;
     }
 
     cout << "total price after beverage: " << total << endl;
     this->pricePerOrder = total;
+    */
 
 }
 vector<Pizza> newOrder::getPizzaVector()

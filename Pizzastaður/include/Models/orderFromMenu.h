@@ -25,6 +25,9 @@ class orderFromMenu
         vector<Menu> getPizzaFromMenuVector();
         vector<string> getSizeOfPizzas();
 
+        void writeOrderFromMenu(ofstream &fout);
+        void readOrderFromMenu(ifstream &fin);
+
         int getPricePerOrder();
         bool getOrderStatus();
 

@@ -113,9 +113,9 @@ ostream& operator <<(ostream& out, orderFromMenu neworder)
     return out;
 }
 
-
 void orderFromMenu::setNewPricePerOrder()
 {
+    /*
     int total = 0;
 
     int pizzasOnMenuVectorSize = this->pizzaFromMenuVector.size();
@@ -143,15 +143,17 @@ void orderFromMenu::setNewPricePerOrder()
     int sizeOfSideOrderVector = sideOrderVector.size();
     for(int i = 0; i < sizeOfSideOrderVector; i++)
     {
-        total += sideOrderVector[i].getPrice();
+        //total += sideOrderVector[i].getPrice();
     }
     int sizeOfBeverageVector = beverageVector.size();
     for(int i = 0; i < sizeOfBeverageVector;i++)
     {
-        total += beverageVector[i].getPrice();
+        //total += beverageVector[i].getPrice();
     }
 
     this->pricePerOrder = total;
+    */
+
 }
 
 vector<SideOrders> orderFromMenu::getSideOrderVector()
