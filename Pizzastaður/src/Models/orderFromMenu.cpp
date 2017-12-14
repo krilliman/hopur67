@@ -115,7 +115,7 @@ ostream& operator <<(ostream& out, orderFromMenu neworder)
 
 void orderFromMenu::setNewPricePerOrder()
 {
-    /*
+
     int total = 0;
 
     int pizzasOnMenuVectorSize = this->pizzaFromMenuVector.size();
@@ -126,33 +126,38 @@ void orderFromMenu::setNewPricePerOrder()
         int stringToInt = stoi(temp);
         if(stringToInt == 1)
         {
-            total += pizzaFromMenuVector[i].getPriceSmall();
+            int small = stoi( pizzaFromMenuVector[i].getPriceSmall());
+            total += small;
         }
 
         else if(stringToInt == 2)
         {
-            total += pizzaFromMenuVector[i].getPriceMedium();
+            int medium = stoi(pizzaFromMenuVector[i].getPriceMedium());
+            total += medium;
         }
 
         else if(stringToInt == 3)
         {
-            total += pizzaFromMenuVector[i].getPriceLarge();
+            int large = stoi(pizzaFromMenuVector[i].getPriceLarge());
+            total += large;
         }
     }
 
     int sizeOfSideOrderVector = sideOrderVector.size();
     for(int i = 0; i < sizeOfSideOrderVector; i++)
     {
-        //total += sideOrderVector[i].getPrice();
+        int sidePice = stoi(sideOrderVector[i].getPrice());
+        total += sidePice;
     }
     int sizeOfBeverageVector = beverageVector.size();
     for(int i = 0; i < sizeOfBeverageVector;i++)
     {
-        //total += beverageVector[i].getPrice();
+        int beveragePrice = stoi(beverageVector[i].getPrice());
+        total += beveragePrice;
     }
 
     this->pricePerOrder = total;
-    */
+
 
 }
 

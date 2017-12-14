@@ -36,10 +36,7 @@ void OrderRepository::writeOrder(newOrder neworder)
 
         pizzaVector[i].writePizza(fout);
 
-
-
         fout.write((char*)(&newAleggVectorSize),sizeof(newAleggVectorSize));
-        cout << "writing down size of alegg array: " << newAleggVectorSize << endl;
 
         for(int i = 0; i < newAleggVectorSize; i++)
         {
@@ -63,7 +60,7 @@ void OrderRepository::writeOrder(newOrder neworder)
 
     pizzaplace.writePizzaPlace(fout);
 
-    //fout.write((char*)(&picePerOrder),sizeof(picePerOrder));
+    fout.write((char*)(&picePerOrder),sizeof(picePerOrder));
 
     fout.write((char*)(&orderVectorSize),sizeof(orderVectorSize));
 
@@ -108,20 +105,19 @@ void OrderRepository::readOrder()
 
                         newPizza.readPizza(fin);
 
-                        int aleggVectorSize;
-                        fin.read((char*)(&aleggVectorSize),sizeof(aleggVectorSize));
+                        int sizeOfAleggVector = 0;
 
-                        cout << "alegg vector size before loop" << aleggVectorSize << endl;
+                        fin.read((char*)(&sizeOfAleggVector), sizeof(sizeOfAleggVector));
+
+                        cout << "size of aleggVector: " << sizeOfAleggVector << endl;
                         vector<alegg> newAleggVector;
-
-                        for(int i = 0; i < aleggVectorSize; i++)
+                        for(int i = 0; i< sizeOfAleggVector; i++)
                         {
-                            cout << "alegg vector size inside loop" << aleggVectorSize <<endl;
                             alegg newAlegg;
                             newAlegg.readAlegg(fin);
                             newAleggVector.push_back(newAlegg);
-                        }
 
+                        }
                         cout << "exiting alegg " << endl;
                         newPizza.setNewAleggVector(newAleggVector);
                         pizzaVector.push_back(newPizza);
@@ -158,10 +154,10 @@ void OrderRepository::readOrder()
                 newPizzaPlace.readPizzaPlace(fin);
                 neworder.setPizzaPlace(newPizzaPlace);
 
-                //int pricePerOrder;
+                int pricePerOrder;
 
-                //fin.read((char*)(&pricePerOrder),sizeof(pricePerOrder));
-                //neworder.setPricePerOrder(pricePerOrder);
+                fin.read((char*)(&pricePerOrder),sizeof(pricePerOrder));
+                neworder.setPricePerOrder(pricePerOrder);
 
                 int ordernum;
                 fin.read((char*)(&ordernum),sizeof(ordernum));
@@ -252,7 +248,7 @@ void OrderRepository::setNewOrderFromMenu(orderFromMenu newOrderfromMenu)
 
         pizzaplace.writePizzaPlace(fout);
 
-        //fout.write((char*)(&picePerOrder),sizeof(picePerOrder));
+        fout.write((char*)(&picePerOrder),sizeof(picePerOrder));
 
         fout.write((char*)(&orderVectorSize),sizeof(orderVectorSize));
 
@@ -354,10 +350,10 @@ void OrderRepository::readOrderFromMenu()
                 neworder.setPizzaPlace(newPizzaPlace);
 
 
-                //int pricePerOrder;
+                int pricePerOrder;
 
-                //fin.read((char*)(&pricePerOrder),sizeof(pricePerOrder));
-                //neworder.setPricePerOrder(pricePerOrder);
+                fin.read((char*)(&pricePerOrder),sizeof(pricePerOrder));
+                neworder.setPricePerOrder(pricePerOrder);
 
 
                 int ordernum;

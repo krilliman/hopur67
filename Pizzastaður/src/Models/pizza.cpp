@@ -4,7 +4,7 @@
 Pizza::Pizza()
 {
     bottom = " ";
-    size = " ";
+    size = '\0';
     notMenuPizza = true;
 }
 void Pizza::setMenuPizza(bool n)
@@ -15,21 +15,14 @@ void Pizza::setMenuPizza(bool n)
 
 void Pizza::writePizza(ofstream &fout)
 {
-    cout << "Entering writePizza" << endl;
-    int bottomSize = this->bottom.length()+1;
-    int sizeSize = this->size.length()+1;
+    int bottomSize = bottom.length()+1;
 
     fout.write((char*)(&bottomSize), sizeof(bottomSize));
     fout.write(bottom.c_str(),bottomSize);
-
-    cout << "writing size: " << this->size << endl;
-    fout.write((char*)(&sizeSize), sizeof(sizeSize));
-    fout.write(size.c_str(),sizeSize);
-    cout << "leaving writePizza" << endl;
+    fout.write((char*)(&size), sizeof(size));
 }
-void Pizza::readPizza(ifstream &fin)
+void Pizza::readPizza(istream& fin)
 {
-    cout << "Entering readPizza" << endl;
     int bottomSize;
     fin.read((char*)(&bottomSize) , sizeof(bottomSize));
     char *str = new char[bottomSize];
@@ -37,24 +30,19 @@ void Pizza::readPizza(ifstream &fin)
 
     string bottomTemp = str;
     this->setNewBottom(bottomTemp);
-    cout << "bottomTemp: " << bottomTemp << endl;
 
-    int sizeSize;
-    fin.read((char*)(&sizeSize) , sizeof(sizeSize));
-    char *str2 = new char[sizeSize];
-    fin.read(str2,bottomSize);
+    char newSize;
+    fin.read((char*)(&newSize), sizeof(newSize));
 
-    string sizeTemp = str2;
-    cout << "sizetemp: " << sizeTemp << endl;
-    this->setNewSize(sizeTemp);
-    cout << "leaving readPizza" << endl;
+    setNewSize(newSize);
+
 }
 
 void Pizza::setNewBottom(string bottom)
 {
     this->bottom = bottom;
 }
-void Pizza::setNewSize(string size)
+void Pizza::setNewSize(char size)
 {
     this->size = size;
 }
@@ -67,7 +55,7 @@ string Pizza::getBottom()
 {
     return this->bottom;
 }
-string Pizza::getSize()
+char Pizza::getSize()
 {
     return this->size;
 }
@@ -125,7 +113,7 @@ istream& operator >>(istream& in, Pizza& pizza)
         cout << "1." << "small" << endl;
         cout << "2." << "medium" << endl;
         cout << "3." <<  "large" << endl;
-        string input2;
+        char input2;
         cin >> input2;
         pizza.setNewSize(input2);
 
@@ -141,8 +129,6 @@ istream& operator >>(istream& in, Pizza& pizza)
         int element = aleggRepo.printTopListStandard();
         alegg newTopping = aleggRepo.getAleggFromList(element);
         pizza.aleggVector.push_back(newTopping);
-
-        cout << "pizza cin newTopping: " << i+1 << newTopping << endl;
     }
 
     return in;
