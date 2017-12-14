@@ -229,15 +229,6 @@ int PizzaRepository::selectFromMenu()
 Menu PizzaRepository::selectElementFromMenu(int element)
 {
     readMenu();
-    Menu newMenu;
-
-    for(unsigned int i = 0; i < this->menuList.size();i++)
-    {
-        if(i == element)
-        {
-            newMenu = menuList[i];
-        }
-
-    }
+    Menu newMenu = this->menuList[element-1];
     return newMenu;
 }

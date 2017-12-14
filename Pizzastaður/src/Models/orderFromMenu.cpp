@@ -17,6 +17,13 @@ istream& operator >>(istream& in, orderFromMenu& neworder)
         int selection = pizzaRepo.selectFromMenu();
         Menu newMenu = pizzaRepo.selectElementFromMenu(selection);
         neworder.pizzaFromMenuVector.push_back(newMenu);
+        cout << "---Choose a size---" << endl;
+        cout << "1. For small" << endl;
+        cout << "2. For Medium" << endl;
+        cout << "3. For Large" << endl;
+        string input;
+        cin >> input;
+        neworder.sizeOfPizzas.push_back(input);
     }
     (system("CLS"));
     cout << "how many side Orders Would you like ? ";
@@ -56,12 +63,37 @@ istream& operator >>(istream& in, orderFromMenu& neworder)
 }
 ostream& operator <<(ostream& out, orderFromMenu neworder)
 {
-    out << "---Pizza-- " << endl;
-    for ( vector<Menu>::iterator i = neworder.pizzaFromMenuVector.begin(); i != neworder.pizzaFromMenuVector.end(); ++i)
-    {
-        out << *i << ' ' << endl;
-    }
+    vector<Menu> newMenuVector = neworder.getPizzaFromMenuVector();
+    vector<string> newPizzaSize = neworder.getSizeOfPizzas();
 
+    out << "---Pizza-- " << endl;
+    for(unsigned int i = 0; i < newMenuVector.size();i++)
+    {
+        vector<alegg> toppingOnCurrentPizza = newMenuVector[i].getToppingVector();
+        out << newMenuVector[i].getName() << endl;
+        out << "Toppings on Current Pizza: " << endl;
+        for(unsigned int u = 0; u < toppingOnCurrentPizza.size();u++)
+        {
+            out << toppingOnCurrentPizza[u].getName() << endl;
+        }
+        int stringToInt = stoi(newPizzaSize[i]);
+        if(stringToInt == 1)
+        {
+            out << "Customer Picked Small pizza, Price is: ";
+            out << newMenuVector[i].getPriceSmall() << endl;
+        }
+        else if(stringToInt == 2)
+        {
+            out << "Customer Picked Medium pizza, Price is: ";
+            out << newMenuVector[i].getPriceMedium() << endl;
+        }
+        else if(stringToInt == 3)
+        {
+            out << "Customer Picked Large pizza, Price is: ";
+            out << newMenuVector[i].getPriceLarge() << endl << endl;
+        }
+
+    }
     out << endl << "--sideOrder---" << endl;
     for ( vector<SideOrders>::iterator i = neworder.sideOrderVector.begin(); i != neworder.sideOrderVector.end(); ++i)
     {
@@ -76,20 +108,55 @@ ostream& operator <<(ostream& out, orderFromMenu neworder)
     out << endl << "---Pizza Place---" << endl;
     out << neworder.pizzaplace << endl;
 
-    //out << endl << "Price Of Order: ";
-    //out << neworder.pricePerOrder << endl;
+    out << endl << "Price Of Order: ";
+    out << neworder.pricePerOrder << endl;
     return out;
 }
 
 
 void orderFromMenu::setNewPricePerOrder()
 {
+    int total = 0;
 
+    int pizzasOnMenuVectorSize = this->pizzaFromMenuVector.size();
+
+    for(int i =0; i <  pizzasOnMenuVectorSize;i++)
+    {
+        string temp = this->sizeOfPizzas[i];
+        int stringToInt = stoi(temp);
+        if(stringToInt == 1)
+        {
+            total += pizzaFromMenuVector[i].getPriceSmall();
+        }
+
+        else if(stringToInt == 2)
+        {
+            total += pizzaFromMenuVector[i].getPriceMedium();
+        }
+
+        else if(stringToInt == 3)
+        {
+            total += pizzaFromMenuVector[i].getPriceLarge();
+        }
+    }
+
+    int sizeOfSideOrderVector = sideOrderVector.size();
+    for(int i = 0; i < sizeOfSideOrderVector; i++)
+    {
+        total += sideOrderVector[i].getPrice();
+    }
+    int sizeOfBeverageVector = beverageVector.size();
+    for(int i = 0; i < sizeOfBeverageVector;i++)
+    {
+        total += beverageVector[i].getPrice();
+    }
+
+    this->pricePerOrder = total;
 }
 
 vector<SideOrders> orderFromMenu::getSideOrderVector()
 {
-    return this->sideOrderVector;
+    return this->sideOrderVector = sideOrderVector;
 }
 vector<Beverages> orderFromMenu::getBeverageVector()
 {
@@ -98,6 +165,10 @@ vector<Beverages> orderFromMenu::getBeverageVector()
 vector<Menu> orderFromMenu::getPizzaFromMenuVector()
 {
     return this->pizzaFromMenuVector;
+}
+vector<string> orderFromMenu::getSizeOfPizzas()
+{
+    return this->sizeOfPizzas;
 }
 
 int orderFromMenu::getPricePerOrder()
@@ -120,6 +191,10 @@ void orderFromMenu::setBeverageVector(vector<Beverages> beverageVector)
 void orderFromMenu::setPizzaFromMenuVector(vector<Menu> pizzaFromMenuVector)
 {
     this->pizzaFromMenuVector = pizzaFromMenuVector;
+}
+void orderFromMenu::setSizeOfPizzas(vector<string> sizeOfPizzas)
+{
+    this->sizeOfPizzas = sizeOfPizzas;
 }
 
 void orderFromMenu::setPizzaPlace(PizzaPlaces pizzaplace)

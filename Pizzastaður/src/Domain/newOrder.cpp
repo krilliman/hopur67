@@ -201,8 +201,6 @@ istream& operator >>(istream& in, newOrder& neworder)
 ostream& operator <<(ostream& out, newOrder neworder)
 {
 
-
-
     out << "---Pizza-- " << endl;
     for ( vector<Pizza>::iterator i = neworder.pizzaVector.begin(); i != neworder.pizzaVector.end(); ++i)
     {

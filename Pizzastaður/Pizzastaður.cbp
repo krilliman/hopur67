@@ -18,6 +18,7 @@
 					<Add directory="include/Domain" />
 					<Add directory="include/Data" />
 					<Add directory="include/UI" />
+					<Add directory="include/model" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -32,6 +33,7 @@
 					<Add directory="include/Domain" />
 					<Add directory="include/Data" />
 					<Add directory="include/UI" />
+					<Add directory="include/model" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -57,6 +59,7 @@
 		<Unit filename="include/Models/PizzaPlaces.h" />
 		<Unit filename="include/Models/alegg.h" />
 		<Unit filename="include/Models/beverages.h" />
+		<Unit filename="include/Models/orderFromMenu.h" />
 		<Unit filename="include/Models/pizza.h" />
 		<Unit filename="include/Models/sideorders.h" />
 		<Unit filename="include/UI/SalesUI.h" />
@@ -81,6 +84,7 @@
 		<Unit filename="src/Models/PizzaPlaces.cpp" />
 		<Unit filename="src/Models/alegg.cpp" />
 		<Unit filename="src/Models/beverages.cpp" />
+		<Unit filename="src/Models/orderFromMenu.cpp" />
 		<Unit filename="src/Models/pizza.cpp" />
 		<Unit filename="src/Models/sideorders.cpp" />
 		<Unit filename="src/UI/SalesUI.cpp" />

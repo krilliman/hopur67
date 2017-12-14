@@ -196,6 +196,7 @@ void OrderRepository::setNewOrderFromMenu(orderFromMenu newOrderfromMenu)
     vector<SideOrders> sideOrderVector = newOrderfromMenu.getSideOrderVector();
     vector<Beverages> beverageVector = newOrderfromMenu.getBeverageVector();
     vector<Menu> pizzaFromMenuVector = newOrderfromMenu.getPizzaFromMenuVector();
+    vector<string> sizeOfPizzas = newOrderfromMenu.getSizeOfPizzas();
     PizzaPlaces pizzaplace = newOrderfromMenu.getPizzaPlace();
 
     int sideOrderVectorSize = sideOrderVector.size();
@@ -203,8 +204,8 @@ void OrderRepository::setNewOrderFromMenu(orderFromMenu newOrderfromMenu)
     int pizzaFromMenuVectorSize = pizzaFromMenuVector.size();
 
     newOrderfromMenu.setNewPricePerOrder();
-
     int picePerOrder = newOrderfromMenu.getPricePerOrder();
+
     ofstream fout;
 
     int orderVectorSize = orderFromMenuVector.size()+1;
@@ -227,8 +228,13 @@ void OrderRepository::setNewOrderFromMenu(orderFromMenu newOrderfromMenu)
             fout.write((char*)(&nameLength), sizeof(nameLength));
             fout.write(menuName.c_str(),nameLength);
 
+            cout << "price small: " << priceSmall << endl;
             fout.write((char*)(&priceSmall),sizeof(priceSmall));
+
+            cout << "price Middle: " << priceMiddle << endl;
             fout.write((char*)(&priceMiddle), sizeof(priceMiddle));
+
+            cout << "price Large: " << priceLarge << endl;
             fout.write((char*)(&priceLarge), sizeof(priceLarge));
 
             fout.write((char*)(&newAleggVectorSize),sizeof(newAleggVectorSize));
@@ -237,6 +243,12 @@ void OrderRepository::setNewOrderFromMenu(orderFromMenu newOrderfromMenu)
             {
                 fout.write((char*)(&newAleggVector[i]), sizeof(alegg));
             }
+            string pizzaSize = sizeOfPizzas[i];
+
+            int sizeLength = pizzaSize.length()+ 1;
+            fout.write((char*)(&sizeLength), sizeof(sizeLength));
+            fout.write(pizzaSize.c_str(),sizeLength);
+
 
 
         }
@@ -257,7 +269,7 @@ void OrderRepository::setNewOrderFromMenu(orderFromMenu newOrderfromMenu)
 
         fout.write((char*)(&pizzaplace),sizeof(pizzaplace));
 
-        //fout.write((char*)(&picePerOrder),sizeof(picePerOrder));
+        fout.write((char*)(&picePerOrder),sizeof(picePerOrder));
 
         fout.write((char*)(&orderVectorSize),sizeof(orderVectorSize));
 
@@ -292,44 +304,38 @@ void OrderRepository::readOrderFromMenu()
 
 
                     vector<Menu> pizzaOnMenuVector;
+                    vector<string> newSizeOfPizzaVector;
 
                     int pizzaOnMenuVectorSize;
                     fin.read((char*)(&pizzaOnMenuVectorSize), sizeof(pizzaOnMenuVectorSize));
                     for(int i = 0;i < pizzaOnMenuVectorSize; i++)
                     {
-                        cout << "Entering for:"<< endl;
                         Menu newPizzaOnMenu;
                         int stringLength;
-                         cout << "before reading string:"<< endl;
                         fin.read((char*)(&stringLength), sizeof(stringLength));
                         char *str = new char[stringLength];
                         fin.read(str,stringLength);
-                         cout << "after reading string:"<< endl;
 
                         string name = str;
                         newPizzaOnMenu.setName(str);
-                         cout << "before price small:"<< endl;
+
                         int priceSmall;
                         fin.read((char*)(&priceSmall), sizeof(priceSmall));
                         newPizzaOnMenu.setPiceSmall(priceSmall);
 
-                         cout << "before price medium :"<< endl;
                         int priceMedium;
                         fin.read((char*)(&priceMedium), sizeof(priceMedium));
-                        newPizzaOnMenu.setPiceSmall(priceMedium);
+                        newPizzaOnMenu.setPiceMedium(priceMedium);
 
-                         cout << "before price Large:"<< endl;
                         int priceLarge;
                         fin.read((char*)(&priceLarge), sizeof(priceLarge));
-                        newPizzaOnMenu.setPiceSmall(priceLarge);
+                        newPizzaOnMenu.setPiceLarge(priceLarge);
 
                         int aleggVectorSize;
                         fin.read((char*)(&aleggVectorSize),sizeof(aleggVectorSize));
 
                         vector<alegg> newAleggVector;
-                        cout << "Size of aleggVector: " << aleggVectorSize << endl;
 
-                         cout << "before alegg for:"<< endl;
                         for(int i = 0; i < aleggVectorSize; i++)
                         {
                             alegg newAlegg;
@@ -337,14 +343,21 @@ void OrderRepository::readOrderFromMenu()
                             newAleggVector.push_back(newAlegg);
                         }
                         newPizzaOnMenu.setToppinNames(newAleggVector);
-                        cout << "after entering alegg to vector"<< endl;
+
+                        int sizeOfPizzaLength;
+                        fin.read((char*)(&sizeOfPizzaLength), sizeof(sizeOfPizzaLength));
+                        char *newString = new char[sizeOfPizzaLength];
+                        fin.read(newString,sizeOfPizzaLength);
+
+                        string newPizzaSize = newString;
+                        newSizeOfPizzaVector.push_back(newPizzaSize);
+
                         pizzaOnMenuVector.push_back(newPizzaOnMenu);
-                        cout << "after setting pizza menu to vector:"<< endl;
 
                     }
+                    neworder.setSizeOfPizzas(newSizeOfPizzaVector);
                     neworder.setPizzaFromMenuVector(pizzaOnMenuVector);
 
-                    cout << "fished with the menu pizza:"<< endl;
 
 
                 int sideOrderSize;
@@ -375,18 +388,17 @@ void OrderRepository::readOrderFromMenu()
                 fin.read((char*)(&newPizzaPlace), sizeof(PizzaPlaces));
                 neworder.setPizzaPlace(newPizzaPlace);
 
-                /*
+
                 int pricePerOrder;
 
                 fin.read((char*)(&pricePerOrder),sizeof(pricePerOrder));
                 neworder.setPricePerOrder(pricePerOrder);
-                */
+
 
                 int ordernum;
                 fin.read((char*)(&ordernum),sizeof(ordernum));
 
                 this->orderFromMenuVector.push_back(neworder);
-                cout << "New order check: ---" << endl << neworder << endl;
             }
         }
     }

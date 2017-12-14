@@ -23,8 +23,8 @@ class orderFromMenu
         vector<SideOrders> getSideOrderVector();
         vector<Beverages> getBeverageVector();
         vector<Menu> getPizzaFromMenuVector();
+        vector<string> getSizeOfPizzas();
 
-        int getPricePerPizza();
         int getPricePerOrder();
         bool getOrderStatus();
 
@@ -32,6 +32,8 @@ class orderFromMenu
         void setSideOrderVector(vector<SideOrders> sideOrderVector);
         void setBeverageVector(vector<Beverages> beverageVector);
         void setPizzaFromMenuVector(vector<Menu> pizzaFromMenuVecor);
+        void setSizeOfPizzas(vector<string> sizeOfPizzas);
+
 
         void setPizzaPlace(PizzaPlaces pizzaplace);
         void setPricePerOrder(int pricePerOrder);
@@ -46,6 +48,7 @@ class orderFromMenu
         vector<Menu> pizzaFromMenuVector;
         vector<SideOrders> sideOrderVector;
         vector<Beverages> beverageVector;
+        vector<string> sizeOfPizzas;
         PizzaPlaces pizzaplace;
         int pricePerOrder;
         bool status;
