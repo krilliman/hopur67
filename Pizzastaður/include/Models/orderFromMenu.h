@@ -30,6 +30,7 @@ class orderFromMenu
 
         int getPricePerOrder();
         bool getOrderStatus();
+        int getOrderNum();
 
         void setPizzaVector(vector<Pizza> pizzaVector);
         void setSideOrderVector(vector<SideOrders> sideOrderVector);
@@ -38,6 +39,7 @@ class orderFromMenu
         void setSizeOfPizzas(vector<string> sizeOfPizzas);
 
 
+        void setOrderNum(int orderNum);
         void setPizzaPlace(PizzaPlaces pizzaplace);
         void setPricePerOrder(int pricePerOrder);
         void setPizzaStatus(bool status);
@@ -54,6 +56,7 @@ class orderFromMenu
         vector<string> sizeOfPizzas;
         PizzaPlaces pizzaplace;
         int pricePerOrder;
+        int orderNum;
         bool status;
 };
 

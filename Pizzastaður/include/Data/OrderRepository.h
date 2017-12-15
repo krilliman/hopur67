@@ -21,8 +21,25 @@ class OrderRepository
         int pickCustomOrderBakery();
         int PickMenuOrderBakery();
 
+        int getOrderFromMenuVectorBakerySize();
+        int getOrderVectorBakerySize();
+
         newOrder getOrderFromList(int element);
         orderFromMenu getMenuOrderFromList(int element);
+
+
+        vector<newOrder> getorderVector();
+        vector<orderFromMenu> getorderFromMenuVector();
+
+        vector<newOrder> getCustomOrderReady();
+        vector<orderFromMenu> getMenuOrderReady();
+
+        void overRideMenuOrders(vector<orderFromMenu> orderFromMenuVector);
+        void overRideCustomOrders(vector<newOrder> customOrder);
+
+        void clearLoadVectors();
+        void writePaidCustomOrders(newOrder customPaidorder);
+        void writePaidMenuOrders(orderFromMenu menuPaidOrder);
 
 
 

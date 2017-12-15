@@ -100,7 +100,6 @@ void OrderRepository::readOrder()
                     vector<Pizza> pizzaVector;
                     int pizzaSize;
                     fin.read((char*)(&pizzaSize),sizeof(pizzaSize));
-                    cout << "pizza Size :" << pizzaSize << endl;
                     for(int i = 0; i< pizzaSize;i++)
                     {
                         Pizza newPizza;
@@ -111,7 +110,6 @@ void OrderRepository::readOrder()
 
                         fin.read((char*)(&sizeOfAleggVector), sizeof(sizeOfAleggVector));
 
-                        cout << "size of aleggVector: " << sizeOfAleggVector << endl;
                         vector<alegg> newAleggVector;
                         for(int i = 0; i< sizeOfAleggVector; i++)
                         {
@@ -120,7 +118,6 @@ void OrderRepository::readOrder()
                             newAleggVector.push_back(newAlegg);
 
                         }
-                        cout << "exiting alegg " << endl;
                         newPizza.setNewAleggVector(newAleggVector);
                         pizzaVector.push_back(newPizza);
                     }
@@ -131,7 +128,6 @@ void OrderRepository::readOrder()
 
                 vector<SideOrders> sideOrderVector;
 
-                cout << "before SideOrder " << endl;
                 for(int i = 0; i < sideOrderSize;i++)
                 {
                     SideOrders newSideorder;
@@ -143,7 +139,7 @@ void OrderRepository::readOrder()
                 int BevergeSize;
                 fin.read((char*)(&BevergeSize), sizeof(BevergeSize));
                 vector<Beverages> beverageVector;
-                cout << "before Beverage " << endl;
+
                 for(int i = 0; i < BevergeSize;i++)
                 {
                     Beverages newBeverage;
@@ -174,6 +170,8 @@ void OrderRepository::readOrder()
 
                 int ordernum;
                 fin.read((char*)(&ordernum),sizeof(ordernum));
+
+                neworder.setOrderNum(ordernum);
 
                 this->orderVector.push_back(neworder);
             }
@@ -386,6 +384,7 @@ void OrderRepository::readOrderFromMenu()
 
                 int ordernum;
                 fin.read((char*)(&ordernum),sizeof(ordernum));
+                neworder.setOrderNum(ordernum);
 
                 this->orderFromMenuVector.push_back(neworder);
             }
@@ -398,6 +397,177 @@ void OrderRepository::readOrderFromMenu()
 
     fin.close();
 
+}
+void OrderRepository::overRideMenuOrders(vector<orderFromMenu> orderFromMenuVector)
+{
+    ofstream fout;
+
+    fout.open("Order_fromMenu_list.dat", ios::binary);
+
+    if(fout.is_open())
+    {
+        int ordersize = orderFromMenuVector.size();
+
+        for(int i = 0; i < ordersize; i++)
+        {
+            vector<SideOrders> sideOrderVector = orderFromMenuVector[i].getSideOrderVector();
+            vector<Beverages> beverageVector = orderFromMenuVector[i].getBeverageVector();
+            vector<Menu> pizzaFromMenuVector = orderFromMenuVector[i].getPizzaFromMenuVector();
+            vector<string> sizeOfPizzas = orderFromMenuVector[i].getSizeOfPizzas();
+            PizzaPlaces pizzaplace = orderFromMenuVector[i].getPizzaPlace();
+
+            int pricePerOrder = orderFromMenuVector[i].getPricePerOrder();
+            int sideOrderVectorSize = sideOrderVector.size();
+            int beverageVectorSize = beverageVector.size();
+            int pizzaFromMenuVectorSize = pizzaFromMenuVector.size();
+            int orderNum = orderFromMenuVector[i].getOrderNum();
+
+            bool orderStatus = orderFromMenuVector[i].getOrderStatus();
+
+            fout.write((char*)(&pizzaFromMenuVectorSize), sizeof(pizzaFromMenuVectorSize));
+
+            for(int i = 0;i < pizzaFromMenuVectorSize;i++)
+            {
+                vector<alegg> newAleggVector = pizzaFromMenuVector[i].getToppingVector();
+                int newAleggVectorSize = newAleggVector.size();
+
+                pizzaFromMenuVector[i].writeMenu(fout);
+
+                fout.write((char*)(&newAleggVectorSize),sizeof(newAleggVectorSize));
+
+                for(int i = 0; i < newAleggVectorSize; i++)
+                {
+                    newAleggVector[i].writeAlegg(fout);
+                }
+
+                string pizzaSize = sizeOfPizzas[i];
+                int sizeLength = pizzaSize.length()+ 1;
+                fout.write((char*)(&sizeLength), sizeof(sizeLength));
+                fout.write(pizzaSize.c_str(),sizeLength);
+
+            }
+
+            fout.write((char*)(&sideOrderVectorSize), sizeof(sideOrderVectorSize));
+
+            for (int i = 0; i < sideOrderVectorSize; ++i)
+            {
+                sideOrderVector[i].writeSideOrder(fout);
+            }
+
+            fout.write((char*)(&beverageVectorSize), sizeof(beverageVectorSize));
+
+            for (int i = 0; i < beverageVectorSize; ++i)
+            {
+                beverageVector[i].writeBeverage(fout);
+            }
+
+            pizzaplace.writePizzaPlace(fout);
+
+            fout.write((char*)(&pricePerOrder),sizeof(pricePerOrder));
+
+            if(orderStatus == true)
+            {
+                int status = 1;
+                fout.write((char*)(&status), sizeof(status));
+            }
+            else if (orderStatus == false)
+            {
+                int status = 0;
+                fout.write((char*)(&status), sizeof(status));
+            }
+
+
+            fout.write((char*)(&orderNum),sizeof(orderNum));
+        }
+    }
+    else
+    {
+            cout << "Could not Open File" << endl;
+    }
+
+    fout.close();
+}
+void OrderRepository::overRideCustomOrders(vector<newOrder> newCustomOrder)
+{
+    ofstream fout;
+
+    fout.open("Order_list.dat", ios::binary);
+
+    if(fout.is_open())
+    {
+        int ordersize = newCustomOrder.size();
+
+        for(int i = 0; i < ordersize; i++)
+        {
+            vector<SideOrders> sideOrderVector = newCustomOrder[i].getSideOrderVector();
+            vector<Beverages> beverageVector = newCustomOrder[i].getBeverageVector();
+            vector<Pizza> pizzaFromCustomVector = newCustomOrder[i].getPizzaVector();
+            PizzaPlaces pizzaplace = newCustomOrder[i].getPizzaPlace();
+
+            int pricePerOrder = newCustomOrder[i].getPricePerOrder();
+            int sideOrderVectorSize = sideOrderVector.size();
+            int beverageVectorSize = beverageVector.size();
+            int pizzaFromMenuVectorSize = pizzaFromCustomVector.size();
+            int orderNum = newCustomOrder[i].getOrderNum();
+
+            bool orderStatus = newCustomOrder[i].getOrderStatus();
+
+            fout.write((char*)(&pizzaFromMenuVectorSize), sizeof(pizzaFromMenuVectorSize));
+
+            for(int i = 0;i < pizzaFromMenuVectorSize;i++)
+            {
+                vector<alegg> newAleggVector = pizzaFromCustomVector[i].getAleggVector();
+                int newAleggVectorSize = newAleggVector.size();
+
+                pizzaFromCustomVector[i].writePizza(fout);
+
+                fout.write((char*)(&newAleggVectorSize),sizeof(newAleggVectorSize));
+
+                for(int i = 0; i < newAleggVectorSize; i++)
+                {
+                    newAleggVector[i].writeAlegg(fout);
+                }
+
+            }
+
+            fout.write((char*)(&sideOrderVectorSize), sizeof(sideOrderVectorSize));
+
+            for (int i = 0; i < sideOrderVectorSize; ++i)
+            {
+                sideOrderVector[i].writeSideOrder(fout);
+            }
+
+            fout.write((char*)(&beverageVectorSize), sizeof(beverageVectorSize));
+
+            for (int i = 0; i < beverageVectorSize; ++i)
+            {
+                beverageVector[i].writeBeverage(fout);
+            }
+
+            pizzaplace.writePizzaPlace(fout);
+
+            fout.write((char*)(&pricePerOrder),sizeof(pricePerOrder));
+
+            if(orderStatus == true)
+            {
+                int status = 1;
+                fout.write((char*)(&status), sizeof(status));
+            }
+            else if (orderStatus == false)
+            {
+                int status = 0;
+                fout.write((char*)(&status), sizeof(status));
+            }
+
+            fout.write((char*)(&orderNum),sizeof(orderNum));
+        }
+    }
+    else
+    {
+        cout << "Could not open file. " << endl;
+    }
+
+    fout.close();
 }
 
 void OrderRepository::getOrderAtSpecificPizzaPlaceBakery(PizzaPlaces newPizzaplace)
@@ -448,20 +618,28 @@ void OrderRepository::getOrderAtSpecificPizzaPlaceDelivery(PizzaPlaces newPizzap
         string newPizzaPlaceName = pizzaplace.getName();
         if(nameOfPizzaPlace == newPizzaPlaceName)
         {
-            newOrder getNewOrder = orderVector[i];
-            orderVectorDelivery.push_back(getNewOrder);
+            if(orderVector[i].getOrderStatus())
+            {
+
+                newOrder getNewOrder = orderVector[i];
+                orderVectorDelivery.push_back(getNewOrder);
+            }
         }
 
     }
     int orderFromMenuVectorSize = orderFromMenuVector.size();
-    for(int i = 0;i < orderFromMenuVectorSize;i++)
+    for(int i = 0; i < orderFromMenuVectorSize;i++)
     {
         PizzaPlaces pizzaplace = orderFromMenuVector[i].getPizzaPlace();
         string newPizzaplaceName = pizzaplace.getName();
         if(nameOfPizzaPlace == newPizzaplaceName)
         {
-            orderFromMenu neworderfrommenu = orderFromMenuVector[i];
-            orderFromMenuVectorDelivery.push_back(neworderfrommenu);
+            if(orderFromMenuVector[i].getOrderStatus())
+            {
+                orderFromMenu neworderfrommenu = orderFromMenuVector[i];
+                orderFromMenuVectorDelivery.push_back(neworderfrommenu);
+            }
+
         }
     }
 }
@@ -508,6 +686,34 @@ orderFromMenu OrderRepository::getMenuOrderFromList(int element)
 }
 
 
+vector<newOrder> OrderRepository::getorderVector()
+{
+    return this->orderVector;
+}
+vector<orderFromMenu> OrderRepository::getorderFromMenuVector()
+{
+    return this->orderFromMenuVector;
+}
+
+vector<newOrder> OrderRepository::getCustomOrderReady()
+{
+    return this->orderVectorDelivery;
+}
+vector<orderFromMenu> OrderRepository::getMenuOrderReady()
+{
+    return this->orderFromMenuVectorDelivery;
+}
+int OrderRepository::getOrderFromMenuVectorBakerySize()
+{
+    int vectorSize = this->orderFromMenuVectorBakery.size();
+    return vectorSize;
+}
+int OrderRepository::getOrderVectorBakerySize()
+{
+    int vectorSize = this->orderVectorBakery.size();
+    return vectorSize;
+}
+
 void OrderRepository::printOrderFromMenuList()
 {
     readOrderFromMenu();
@@ -515,4 +721,144 @@ void OrderRepository::printOrderFromMenuList()
     {
         cout << *i << ' ' << endl;
     }
+}
+
+void OrderRepository::clearLoadVectors()
+{
+    this->orderFromMenuVectorBakery.clear();
+    this->orderFromMenuVectorDelivery.clear();
+    this->orderVectorBakery.clear();
+    this->orderVectorDelivery.clear();
+}
+
+
+void OrderRepository::writePaidCustomOrders(newOrder customPaidorder)
+{
+    vector<Pizza> pizzaVector = customPaidorder.getPizzaVector();
+    vector<SideOrders> sideOrderVector = customPaidorder.getSideOrderVector();
+    vector<Beverages> beverageVector = customPaidorder.getBeverageVector();
+
+    PizzaPlaces pizzaplace = customPaidorder.getPizzaPlace();
+
+    int pizzaVectorSize = pizzaVector.size();
+    int sideOrderVectorSize = sideOrderVector.size();
+    int beverageVectorSize = beverageVector.size();
+    int status = 0;
+
+//    neworder.setNewPricePerOrder();
+
+    int picePerOrder = customPaidorder.getPricePerOrder();
+    ofstream fout;
+
+    int orderVectorSize = orderVector.size()+1;
+
+    fout.open("Order_list_paid.dat", ios::binary |ios::app);
+
+    fout.write((char*)(&pizzaVectorSize), sizeof(pizzaVectorSize));
+    for (int i = 0; i < pizzaVectorSize; ++i)
+    {
+        vector<alegg> newAleggVector = pizzaVector[i].getAleggVector();
+        int newAleggVectorSize = newAleggVector.size();
+
+        pizzaVector[i].writePizza(fout);
+
+        fout.write((char*)(&newAleggVectorSize),sizeof(newAleggVectorSize));
+
+        for(int i = 0; i < newAleggVectorSize; i++)
+        {
+            newAleggVector[i].writeAlegg(fout);
+        }
+    }
+
+    fout.write((char*)(&sideOrderVectorSize), sizeof(sideOrderVectorSize));
+
+    for (int i = 0; i < sideOrderVectorSize; ++i)
+    {
+        sideOrderVector[i].writeSideOrder(fout);
+    }
+
+    fout.write((char*)(&beverageVectorSize), sizeof(beverageVectorSize));
+
+    for (int i = 0; i < beverageVectorSize; ++i)
+    {
+        beverageVector[i].writeBeverage(fout);
+    }
+
+    pizzaplace.writePizzaPlace(fout);
+
+    fout.write((char*)(&picePerOrder),sizeof(picePerOrder));
+
+    fout.write((char*)(&status),sizeof(status));
+    fout.write((char*)(&orderVectorSize),sizeof(orderVectorSize));
+    fout.close();
+
+}
+void OrderRepository::writePaidMenuOrders(orderFromMenu menuPaidOrder)
+{
+    vector<Menu> pizzaVector = menuPaidOrder.getPizzaFromMenuVector();
+    vector<SideOrders> sideOrderVector = menuPaidOrder.getSideOrderVector();
+    vector<Beverages> beverageVector = menuPaidOrder.getBeverageVector();
+
+    PizzaPlaces pizzaplace = menuPaidOrder.getPizzaPlace();
+
+    int pizzaVectorSize = pizzaVector.size();
+    int sideOrderVectorSize = sideOrderVector.size();
+    int beverageVectorSize = beverageVector.size();
+    bool orderStatus = menuPaidOrder.getOrderStatus();
+
+//    neworder.setNewPricePerOrder();
+
+    int picePerOrder = menuPaidOrder.getPricePerOrder();
+    ofstream fout;
+
+    int orderVectorSize = orderVector.size()+1;
+
+    fout.open("Order_list_paid.dat", ios::binary |ios::app);
+
+    fout.write((char*)(&pizzaVectorSize), sizeof(pizzaVectorSize));
+    for (int i = 0; i < pizzaVectorSize; ++i)
+    {
+        vector<alegg> newAleggVector = pizzaVector[i].getToppingVector();
+        int newAleggVectorSize = newAleggVector.size();
+
+        pizzaVector[i].writeMenu(fout);
+
+        fout.write((char*)(&newAleggVectorSize),sizeof(newAleggVectorSize));
+
+        for(int i = 0; i < newAleggVectorSize; i++)
+        {
+            newAleggVector[i].writeAlegg(fout);
+        }
+    }
+
+    fout.write((char*)(&sideOrderVectorSize), sizeof(sideOrderVectorSize));
+
+    for (int i = 0; i < sideOrderVectorSize; ++i)
+    {
+        sideOrderVector[i].writeSideOrder(fout);
+    }
+
+    fout.write((char*)(&beverageVectorSize), sizeof(beverageVectorSize));
+
+    for (int i = 0; i < beverageVectorSize; ++i)
+    {
+        beverageVector[i].writeBeverage(fout);
+    }
+
+    pizzaplace.writePizzaPlace(fout);
+
+    fout.write((char*)(&picePerOrder),sizeof(picePerOrder));
+
+    if(orderStatus == true)
+    {
+        int status = 1;
+        fout.write((char*)(&status),sizeof(status));
+    }
+    else if(orderStatus == false)
+    {
+        int status = 0;
+        fout.write((char*)(&status),sizeof(status));
+    }
+    fout.write((char*)(&orderVectorSize),sizeof(orderVectorSize));
+    fout.close();
 }

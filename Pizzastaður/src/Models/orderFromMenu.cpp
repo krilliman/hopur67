@@ -121,6 +121,14 @@ ostream& operator <<(ostream& out, orderFromMenu neworder)
     return out;
 }
 
+int orderFromMenu::getOrderNum()
+{
+    return this->orderNum;
+}
+void orderFromMenu::setOrderNum(int orderNum)
+{
+    this->orderNum = orderNum;
+}
 void orderFromMenu::setNewPricePerOrder()
 {
 
@@ -220,6 +228,7 @@ void orderFromMenu::setPricePerOrder(int pricePerOrder)
 {
     this->pricePerOrder = pricePerOrder;
 }
+
 void orderFromMenu::setPizzaStatus(bool status)
 {
     this->status = status;

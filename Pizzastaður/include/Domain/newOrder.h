@@ -26,6 +26,7 @@ class newOrder
 
         int getPricePerPizza();
         int getPricePerOrder();
+        int getOrderNum();
         bool getOrderStatus();
 
         void setPizzaVector(vector<Pizza> pizzaVector);
@@ -36,6 +37,7 @@ class newOrder
         void setPizzaPlace(PizzaPlaces pizzaplace);
         void setPricePerOrder(int pricePerOrder);
         void setPizzaStatus(bool status);
+        void setOrderNum(int orderNum);
 
 
         PizzaPlaces getPizzaPlace();
@@ -49,6 +51,7 @@ class newOrder
         PizzaPlaces pizzaplace;
         int pricePerPizza;
         int pricePerOrder;
+        int orderNum;
         bool status;
 
 };

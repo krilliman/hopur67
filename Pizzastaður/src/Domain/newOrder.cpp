@@ -20,6 +20,11 @@ void newOrder::addToBeveragesVector(Beverages newBeverages)
     this->beverageVector.push_back(newBeverages);
 }
 
+void newOrder::setOrderNum(int orderNum)
+{
+    this->orderNum = orderNum;
+}
+
 
 void newOrder::setNewPricePerOrder()
 {
@@ -121,6 +126,10 @@ int newOrder::getPricePerOrder()
 bool newOrder::getOrderStatus()
 {
     return this->status;
+}
+int newOrder::getOrderNum()
+{
+    return this->orderNum;
 }
 
 void newOrder::setPizzaVector(vector<Pizza> pizzaVector)

@@ -7,11 +7,26 @@ class DeliveryService
     public:
         DeliveryService();
         void PrintOrders();
-        void GetPizzaPlace();
+        PizzaPlaces GetPizzaPlace();
+        void getOrdersAtSpecificPizzaPlace(PizzaPlaces currentPizzaPlace);
+        void changeOrders();
 
-    protected:
+        int selectListOfCustomOrderReady();
+        int selectFromMenuOrderReady();
+
+        orderFromMenu selectFromOrderMenuReady(int element);
+        newOrder selectFromCustomOrdeReady(int element);
+
+        void changeCustomOrders(newOrder);
+        void changeMenuOrders(orderFromMenu);
+
+        int customOrdersVectorSize(PizzaPlaces pizzaplace);
+        int menuOrderVectorSize(PizzaPlaces pizzaplace);
+
 
     private:
+        vector<newOrder> customOrderReady;
+        vector<orderFromMenu> menuOrdersReady;
 };
 
 #endif // DELIVERYSERVICE_H
