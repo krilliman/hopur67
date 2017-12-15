@@ -18,8 +18,9 @@ void OrderRepository::writeOrder(newOrder neworder)
     int pizzaVectorSize = pizzaVector.size();
     int sideOrderVectorSize = sideOrderVector.size();
     int beverageVectorSize = beverageVector.size();
+    int status = 0;
 
-    neworder.setNewPricePerOrder();
+//    neworder.setNewPricePerOrder();
 
     int picePerOrder = neworder.getPricePerOrder();
     ofstream fout;
@@ -62,6 +63,7 @@ void OrderRepository::writeOrder(newOrder neworder)
 
     fout.write((char*)(&picePerOrder),sizeof(picePerOrder));
 
+    fout.write((char*)(&status),sizeof(status));
     fout.write((char*)(&orderVectorSize),sizeof(orderVectorSize));
 
     fout.close();
@@ -159,11 +161,21 @@ void OrderRepository::readOrder()
                 fin.read((char*)(&pricePerOrder),sizeof(pricePerOrder));
                 neworder.setPricePerOrder(pricePerOrder);
 
+                int status;
+                fin.read((char*)(&status), sizeof(status));
+                if(status == 0)
+                {
+                    neworder.setPizzaStatus(false);
+                }
+                else if(status == 1)
+                {
+                    neworder.setPizzaStatus(true);
+                }
+
                 int ordernum;
                 fin.read((char*)(&ordernum),sizeof(ordernum));
 
                 this->orderVector.push_back(neworder);
-                cout << "leaving fin" << endl;
             }
         }
     }
@@ -198,7 +210,7 @@ void OrderRepository::setNewOrderFromMenu(orderFromMenu newOrderfromMenu)
     int beverageVectorSize = beverageVector.size();
     int pizzaFromMenuVectorSize = pizzaFromMenuVector.size();
 
-    newOrderfromMenu.setNewPricePerOrder();
+//    newOrderfromMenu.setNewPricePerOrder();
     int picePerOrder = newOrderfromMenu.getPricePerOrder();
 
     ofstream fout;
@@ -249,6 +261,9 @@ void OrderRepository::setNewOrderFromMenu(orderFromMenu newOrderfromMenu)
         pizzaplace.writePizzaPlace(fout);
 
         fout.write((char*)(&picePerOrder),sizeof(picePerOrder));
+        int status = 0;
+
+        fout.write((char*)(&status), sizeof(status));
 
         fout.write((char*)(&orderVectorSize),sizeof(orderVectorSize));
 
@@ -355,6 +370,19 @@ void OrderRepository::readOrderFromMenu()
                 fin.read((char*)(&pricePerOrder),sizeof(pricePerOrder));
                 neworder.setPricePerOrder(pricePerOrder);
 
+                int status;
+
+                fin.read((char*)(&status),sizeof(status));
+
+                if(status == 0)
+                {
+                    neworder.setPizzaStatus(false);
+                }
+                else if(status == 1)
+                {
+                    neworder.setPizzaStatus(true);
+                }
+
 
                 int ordernum;
                 fin.read((char*)(&ordernum),sizeof(ordernum));
@@ -371,6 +399,115 @@ void OrderRepository::readOrderFromMenu()
     fin.close();
 
 }
+
+void OrderRepository::getOrderAtSpecificPizzaPlaceBakery(PizzaPlaces newPizzaplace)
+{
+    readOrder();
+    readOrderFromMenu();
+
+    string nameOfPizzaPlace = newPizzaplace.getName();
+
+
+    int OrderVectorSize = orderVector.size();
+    for(int i = 0; i < OrderVectorSize;i++)
+    {
+        PizzaPlaces pizzaplace = orderVector[i].getPizzaPlace();
+        string newPizzaPlaceName = pizzaplace.getName();
+        if(nameOfPizzaPlace == newPizzaPlaceName)
+        {
+            newOrder getNewOrder = orderVector[i];
+            orderVectorBakery.push_back(getNewOrder);
+        }
+
+    }
+    int orderFromMenuVectorSize = orderFromMenuVector.size();
+    for(int i = 0;i < orderFromMenuVectorSize;i++)
+    {
+        PizzaPlaces pizzaplace = orderFromMenuVector[i].getPizzaPlace();
+        string newPizzaplaceName = pizzaplace.getName();
+        if(nameOfPizzaPlace == newPizzaplaceName)
+        {
+            orderFromMenu neworderfrommenu = orderFromMenuVector[i];
+            orderFromMenuVectorBakery.push_back(neworderfrommenu);
+        }
+    }
+
+}
+void OrderRepository::getOrderAtSpecificPizzaPlaceDelivery(PizzaPlaces newPizzaplace)
+{
+    readOrder();
+    readOrderFromMenu();
+
+    string nameOfPizzaPlace = newPizzaplace.getName();
+
+
+    int OrderVectorSize = orderVector.size();
+    for(int i = 0; i < OrderVectorSize;i++)
+    {
+        PizzaPlaces pizzaplace = orderVector[i].getPizzaPlace();
+        string newPizzaPlaceName = pizzaplace.getName();
+        if(nameOfPizzaPlace == newPizzaPlaceName)
+        {
+            newOrder getNewOrder = orderVector[i];
+            orderVectorDelivery.push_back(getNewOrder);
+        }
+
+    }
+    int orderFromMenuVectorSize = orderFromMenuVector.size();
+    for(int i = 0;i < orderFromMenuVectorSize;i++)
+    {
+        PizzaPlaces pizzaplace = orderFromMenuVector[i].getPizzaPlace();
+        string newPizzaplaceName = pizzaplace.getName();
+        if(nameOfPizzaPlace == newPizzaplaceName)
+        {
+            orderFromMenu neworderfrommenu = orderFromMenuVector[i];
+            orderFromMenuVectorDelivery.push_back(neworderfrommenu);
+        }
+    }
+}
+
+
+int OrderRepository::pickCustomOrderBakery()
+{
+    int counter = 0;
+    int input;
+    cout << "Pick a Order: " << endl;
+    for ( vector<newOrder>::iterator i = orderVectorBakery.begin(); i != orderVectorBakery.end(); ++i)
+    {
+        cout << counter+1 << ": ";
+        cout << *i << ' ' << endl;
+        counter++;
+    }
+    cin >> input;
+    return input;
+}
+int OrderRepository::PickMenuOrderBakery()
+{
+    int counter = 0;
+    int input;
+    cout << "Pick a Order: " << endl;
+    for ( vector<orderFromMenu>::iterator i = orderFromMenuVectorBakery.begin(); i != orderFromMenuVectorBakery.end(); ++i)
+    {
+        cout << counter+1 << ": ";
+        cout << *i << ' ' << endl;
+        counter++;
+    }
+    cin >> input;
+    return input;
+}
+newOrder OrderRepository::getOrderFromList(int element)
+{
+    newOrder orderToReturn = orderVectorBakery[element-1];
+    return orderToReturn;
+}
+
+orderFromMenu OrderRepository::getMenuOrderFromList(int element)
+{
+    orderFromMenu orderToReturn = orderFromMenuVectorBakery[element-1];
+    return orderToReturn;
+}
+
+
 void OrderRepository::printOrderFromMenuList()
 {
     readOrderFromMenu();

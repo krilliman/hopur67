@@ -19,6 +19,7 @@
 					<Add directory="include/Data" />
 					<Add directory="include/UI" />
 					<Add directory="include/model" />
+					<Add directory="include/exceptions" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -34,6 +35,7 @@
 					<Add directory="include/Data" />
 					<Add directory="include/UI" />
 					<Add directory="include/model" />
+					<Add directory="include/exceptions" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -49,6 +51,8 @@
 		<Unit filename="include/Data/aleggrepository.h" />
 		<Unit filename="include/Data/extrasrepository.h" />
 		<Unit filename="include/Data/pizzarepository.h" />
+		<Unit filename="include/Domain/BakingService.h" />
+		<Unit filename="include/Domain/DeliveryServices.h" />
 		<Unit filename="include/Domain/ListOfPizzaPlaces.h" />
 		<Unit filename="include/Domain/OrderList.h" />
 		<Unit filename="include/Domain/beverageslist.h" />
@@ -67,12 +71,15 @@
 		<Unit filename="include/UI/bakingui.h" />
 		<Unit filename="include/UI/deliveryui.h" />
 		<Unit filename="include/UI/mainui.h" />
+		<Unit filename="include/exceptions/userInputCheck.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Data/OrderRepository.cpp" />
 		<Unit filename="src/Data/PizzaPlaceRepo.cpp" />
 		<Unit filename="src/Data/aleggrepository.cpp" />
 		<Unit filename="src/Data/extrasrepository.cpp" />
 		<Unit filename="src/Data/pizzarepository.cpp" />
+		<Unit filename="src/Domain/BakingService.cpp" />
+		<Unit filename="src/Domain/DeliveryServices.cpp" />
 		<Unit filename="src/Domain/ListOfPizzaPlaces.cpp" />
 		<Unit filename="src/Domain/OrderList.cpp" />
 		<Unit filename="src/Domain/beverageslist.cpp" />
@@ -92,6 +99,7 @@
 		<Unit filename="src/UI/bakingui.cpp" />
 		<Unit filename="src/UI/deliveryui.cpp" />
 		<Unit filename="src/UI/mainui.cpp" />
+		<Unit filename="src/exceptions/userInputCheck.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

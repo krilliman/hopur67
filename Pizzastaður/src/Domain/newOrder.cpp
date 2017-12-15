@@ -2,7 +2,7 @@
 #include <cstdlib>
 newOrder::newOrder()
 {
-
+    status = false;
 }
 
 void newOrder::addToSideOrderVector(SideOrders newSideorder)
@@ -232,5 +232,13 @@ ostream& operator <<(ostream& out, newOrder neworder)
 
     out << endl << "Price Of Order: ";
     out << neworder.pricePerOrder << endl;
+    if(neworder.status == false)
+    {
+        out << endl << "Not ready " << endl;
+    }
+    else if(neworder.status == true)
+    {
+        out << endl << "Order Ready " << endl;
+    }
     return out;
 }
