@@ -1,98 +1,12 @@
 #include "pizzarepository.h"
 #include <fstream>
 #include "menu.h"
+#include <userInputCheck.h>
 
 PizzaRepository::PizzaRepository()
 {
     //ctor
 }
-/*
-void PizzaRepository::storePizza(Pizza& pizza)
-{
-
-    vector<alegg> newAleggVector = pizza.getAleggVector();
-    int vectorSize = newAleggVector.size();
-    char *newBottom = pizza.getBottom();
-    int newSize = pizza.getSize();
-
-    ofstream fout;
-
-    fout.open("pizzas.dat", ios::binary | ios::app);
-
-    fout.write((char*)(&newBottom),sizeof(newBottom));
-    fout.write((char*)(&newSize),sizeof(newSize));
-
-    fout.write((char*)(&vectorSize), sizeof(vectorSize));
-    fout.write((char*)(&newAleggVector),sizeof(alegg));
-
-    fout.close();
-}
-
-void PizzaRepository::readPizza()
-{
-     ifstream fin;
-
-    fin.open("pizzas.dat", ios::binary );
-
-
-    if(fin.is_open())
-        {
-            fin.seekg(0,fin.end);
-            int listSize = fin.tellg() / sizeof(Pizza);
-            fin.seekg(0, fin.beg);
-
-            Pizza pizza;
-            for(int i = 0; i < listSize;i++)
-            {
-                    Pizza newPizza;
-
-                    char *newBottom;
-                    fin.read((char*)(&newBottom),sizeof(newBottom));
-                    newPizza.setNewBottom(newBottom);
-
-                    int newSize;
-                    fin.read((char*)(&newSize),sizeof(newSize));
-                    newPizza.setNewSize(newSize);
-
-                    int vectorSize;
-                    fin.read((char*)(&vectorSize), sizeof(vectorSize));
-
-                    vector<alegg> newAleggVector;
-                    for(int i = 0; i < vectorSize; i++)
-                    {
-                        alegg newAlegg;
-                        fin.read((char*)(&newAlegg),sizeof(alegg));
-                        newAleggVector.push_back(newAlegg);
-                    }
-                    newPizza.setNewAleggVector(newAleggVector);
-
-                pizzas.push_back(newPizza);
-            }
-        }
-        else
-        {
-            cout << "Could not open file." << endl;
-        }
-
-
-    fin.close();
-}
-void PizzaRepository::printPizza(vector<Pizza> pizzas)
-{
-    for ( vector<Pizza>::iterator i = pizzas.begin(); i != pizzas.end(); ++i)
-    {
-        cout << *i << ' ' << endl;
-    }
-}
-void PizzaRepository::printAllPizzas()
-{
-    readPizza();
-    for ( vector<Pizza>::iterator i = pizzas.begin(); i != pizzas.end(); ++i)
-    {
-        cout << *i << ' ' << endl;
-    }
-}
-*/
 
 void PizzaRepository::storeMenu( Menu& menu)
 {
@@ -123,7 +37,6 @@ void PizzaRepository::readMenu()
     fin.open("Menu_list.dat", ios::binary);
         if(fin.is_open())
         {
-            cout << "Entering If: ----" << endl;
             fin.seekg(0,fin.end);
             int listSize = fin.tellg();
             fin.seekg(0,fin.beg);
@@ -168,7 +81,7 @@ void PizzaRepository::readMenu()
         }
         else
         {
-            cout << "Could not open file." << endl;
+            //cout << "Could not open file." << endl;
         }
 
     fin.close();
@@ -176,20 +89,37 @@ void PizzaRepository::readMenu()
 }
 int PizzaRepository::selectFromMenu()
 {
+    userInputCheck newuserinput;
     readMenu();
-    int counter = 1;
-    int input = 0;
-
-    cout << "Select from given menu: " << endl;
-    for ( vector<Menu>::iterator i = menuList.begin(); i != menuList.end(); i++)
+    string newInput;
+    int input;
+    int newCounter = 0;
+    while(newCounter == 0)
     {
-        cout << counter << ": ";
-        cout << *i << ' ' << endl << endl;
-        counter++;
+         int counter = 1;
+            cout << "Select pizza from menu: " << endl;
+            cout << "-------------------------------------------------------" << endl;
+            for ( vector<Menu>::iterator i = menuList.begin(); i != menuList.end(); i++)
+            {
+                cout << counter << ": ";
+                cout << *i << ' ' << endl << endl;
+                counter++;
+            }
+            cin >> newInput;
+            if(newuserinput.checkInRangeMenu(newInput) == true)
+            {
+                input = stoi(newInput);
+                newCounter++;
+            }
+            else
+            {
+              cout << "invalid input " << endl;
+            }
     }
-    cin >> input;
 
     return input;
+
+
 }
 
 Menu PizzaRepository::selectElementFromMenu(int element)

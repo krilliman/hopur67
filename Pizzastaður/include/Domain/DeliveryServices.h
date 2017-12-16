@@ -9,10 +9,9 @@ class DeliveryService
         void PrintOrders();
         PizzaPlaces GetPizzaPlace();
         void getOrdersAtSpecificPizzaPlace(PizzaPlaces currentPizzaPlace);
-        void changeOrders();
 
         int selectListOfCustomOrderReady();
-        int selectFromMenuOrderReady();
+        int selectFromMenuOrders();
 
         orderFromMenu selectFromOrderMenuReady(int element);
         newOrder selectFromCustomOrdeReady(int element);
@@ -22,7 +21,6 @@ class DeliveryService
 
         int customOrdersVectorSize(PizzaPlaces pizzaplace);
         int menuOrderVectorSize(PizzaPlaces pizzaplace);
-
 
     private:
         vector<newOrder> customOrderReady;

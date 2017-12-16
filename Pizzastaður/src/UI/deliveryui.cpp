@@ -15,20 +15,17 @@ deliveryui::deliveryui()
 void deliveryui::startUI()
 {
     char status = '\0';
-    int Selection;
-    while (Selection != 1)
+    char selectoion = '\0';
+    while (selectoion != 'q')
     {
         cout << "*** DELIVERY INTERFACE ***" << endl;
         cout << "-------------------------------------------------------" << endl;
-        cout << "Press 1 to go back to -Main Menu-" << endl;
+        cout << "Press q to go back to -Main Menu-" << endl;
         cout << "Press 2 Choose location: " << endl;
-        cin >> Selection;
+        cin >> selectoion;
 
-        if(Selection == 1)
-        {
 
-        }
-        else if(Selection == 2)
+        if(selectoion == '2')
         {
             DeliveryService deliveryservice;
             PizzaPlaces newPizzaplace = deliveryservice.GetPizzaPlace();
@@ -37,8 +34,8 @@ void deliveryui::startUI()
             int customVectorSize = deliveryservice.customOrdersVectorSize(newPizzaplace);
             int menuVectorSize = deliveryservice.menuOrderVectorSize(newPizzaplace);
 
-            cout << "Size of custom Vector: " << customVectorSize << endl;
-            cout << "Size of Menu Vector: " << menuVectorSize << endl;
+            //cout << "Size of custom Vector: " << customVectorSize << endl;
+            //cout << "Size of Menu Vector: " << menuVectorSize << endl;
 
             cout << "Press m to print list of orders from menu " << endl;
             cout << "Press c to print list of Custom orders " << endl;
@@ -46,7 +43,7 @@ void deliveryui::startUI()
             cin >> input;
             if(input == 'm' && menuVectorSize != 0)
             {
-                int menuInput = deliveryservice.selectFromMenuOrderReady();
+                int menuInput = deliveryservice.selectFromMenuOrders();
                 orderFromMenu newOrderFromMenu = deliveryservice.selectFromOrderMenuReady(menuInput);
 
                 cout << endl << newOrderFromMenu  << endl;
@@ -56,11 +53,12 @@ void deliveryui::startUI()
                 cin >> input;
                 if(input == 1)
                 {
+                    newOrderFromMenu.setPizzaStatus(true);
                     deliveryservice.changeMenuOrders(newOrderFromMenu);
                 }
                 else if(input == 2)
                 {
-                    cout << "Doing nothing " << endl;
+                   // cout << "Doing nothing " << endl;
                 }
             }
             else
@@ -81,13 +79,13 @@ void deliveryui::startUI()
                 cin >> input;
                 if(input == 1)
                 {
-                    bool test = true;
-                    newCustomOrder.setPizzaStatus(test);
+
+                    newCustomOrder.setPizzaStatus(true);
                     deliveryservice.changeCustomOrders(newCustomOrder);
                 }
                 else if(input == 2)
                 {
-                    cout << "Doing nothing " << endl;
+                   // cout << "Doing nothing " << endl;
                 }
             }
             else
@@ -95,6 +93,7 @@ void deliveryui::startUI()
                 cout << "File Empty." << endl;
             }
         }
+
         ////printListOfPizzaPlaces();
 
 

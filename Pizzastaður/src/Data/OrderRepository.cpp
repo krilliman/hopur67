@@ -18,9 +18,9 @@ void OrderRepository::writeOrder(newOrder neworder)
     int pizzaVectorSize = pizzaVector.size();
     int sideOrderVectorSize = sideOrderVector.size();
     int beverageVectorSize = beverageVector.size();
-    int status = 0;
+    bool status = neworder.getOrderStatus();
 
-//    neworder.setNewPricePerOrder();
+    neworder.setNewPricePerOrder();
 
     int picePerOrder = neworder.getPricePerOrder();
     ofstream fout;
@@ -63,7 +63,16 @@ void OrderRepository::writeOrder(newOrder neworder)
 
     fout.write((char*)(&picePerOrder),sizeof(picePerOrder));
 
-    fout.write((char*)(&status),sizeof(status));
+    if(status == false )
+    {
+        int orderstatus = 0;
+        fout.write((char*)(&orderstatus),sizeof(orderstatus));
+    }
+    else if (status == true)
+    {
+        int orderstatus = 1;
+        fout.write((char*)(&orderstatus), sizeof(orderstatus));
+    }
     fout.write((char*)(&orderVectorSize),sizeof(orderVectorSize));
 
     fout.close();
@@ -91,7 +100,6 @@ void OrderRepository::readOrder()
             fin.read((char*)(&listSize),sizeof(listSize));
             fin.seekg(0,fin.beg);
 
-            cout << "List Size: " << listSize << endl;
 
             for(int i = 0; i < listSize;i++)
             {
@@ -159,14 +167,17 @@ void OrderRepository::readOrder()
 
                 int status;
                 fin.read((char*)(&status), sizeof(status));
-                if(status == 0)
+                if(status == 0 )
                 {
-                    neworder.setPizzaStatus(false);
+                    bool temp = false;
+                    neworder.setPizzaStatus(temp);
                 }
-                else if(status == 1)
+                else if (status == 1)
                 {
-                    neworder.setPizzaStatus(true);
+                    bool temp  = true;
+                    neworder.setPizzaStatus(temp);
                 }
+
 
                 int ordernum;
                 fin.read((char*)(&ordernum),sizeof(ordernum));
@@ -179,7 +190,7 @@ void OrderRepository::readOrder()
     }
     else
     {
-        cout << "Could not open file." << endl;
+        //cout << "Could not open file." << endl;
     }
 
     fin.close();
@@ -207,8 +218,9 @@ void OrderRepository::setNewOrderFromMenu(orderFromMenu newOrderfromMenu)
     int sideOrderVectorSize = sideOrderVector.size();
     int beverageVectorSize = beverageVector.size();
     int pizzaFromMenuVectorSize = pizzaFromMenuVector.size();
+    bool status = newOrderfromMenu.getOrderStatus();
 
-//    newOrderfromMenu.setNewPricePerOrder();
+    newOrderfromMenu.setNewPricePerOrder();
     int picePerOrder = newOrderfromMenu.getPricePerOrder();
 
     ofstream fout;
@@ -259,9 +271,17 @@ void OrderRepository::setNewOrderFromMenu(orderFromMenu newOrderfromMenu)
         pizzaplace.writePizzaPlace(fout);
 
         fout.write((char*)(&picePerOrder),sizeof(picePerOrder));
-        int status = 0;
 
-        fout.write((char*)(&status), sizeof(status));
+        if(status == false )
+        {
+            int orderstatus = 0;
+            fout.write((char*)(&orderstatus),sizeof(orderstatus));
+        }
+        else if (status == true)
+        {
+            int orderstatus = 1;
+            fout.write((char*)(&orderstatus), sizeof(orderstatus));
+        }
 
         fout.write((char*)(&orderVectorSize),sizeof(orderVectorSize));
 
@@ -288,7 +308,6 @@ void OrderRepository::readOrderFromMenu()
             fin.read((char*)(&listSize),sizeof(listSize));
             fin.seekg(0,fin.beg);
 
-            cout << "List Size: " << listSize << endl;
 
             for(int i = 0; i < listSize;i++)
             {
@@ -392,7 +411,7 @@ void OrderRepository::readOrderFromMenu()
     }
     else
     {
-        cout << "Could not open file." << endl;
+        //cout << "Could not open file." << endl;
     }
 
     fin.close();
@@ -422,7 +441,7 @@ void OrderRepository::overRideMenuOrders(vector<orderFromMenu> orderFromMenuVect
             int pizzaFromMenuVectorSize = pizzaFromMenuVector.size();
             int orderNum = orderFromMenuVector[i].getOrderNum();
 
-            bool orderStatus = orderFromMenuVector[i].getOrderStatus();
+            bool status = orderFromMenuVector[i].getOrderStatus();
 
             fout.write((char*)(&pizzaFromMenuVectorSize), sizeof(pizzaFromMenuVectorSize));
 
@@ -465,15 +484,16 @@ void OrderRepository::overRideMenuOrders(vector<orderFromMenu> orderFromMenuVect
 
             fout.write((char*)(&pricePerOrder),sizeof(pricePerOrder));
 
-            if(orderStatus == true)
+
+            if(status == false )
             {
-                int status = 1;
-                fout.write((char*)(&status), sizeof(status));
+                int orderstatus = 0;
+                fout.write((char*)(&orderstatus),sizeof(orderstatus));
             }
-            else if (orderStatus == false)
+            else if (status == true)
             {
-                int status = 0;
-                fout.write((char*)(&status), sizeof(status));
+                int orderstatus = 1;
+                fout.write((char*)(&orderstatus), sizeof(orderstatus));
             }
 
 
@@ -482,7 +502,7 @@ void OrderRepository::overRideMenuOrders(vector<orderFromMenu> orderFromMenuVect
     }
     else
     {
-            cout << "Could not Open File" << endl;
+           // cout << "Could not Open File" << endl;
     }
 
     fout.close();
@@ -510,7 +530,7 @@ void OrderRepository::overRideCustomOrders(vector<newOrder> newCustomOrder)
             int pizzaFromMenuVectorSize = pizzaFromCustomVector.size();
             int orderNum = newCustomOrder[i].getOrderNum();
 
-            bool orderStatus = newCustomOrder[i].getOrderStatus();
+            bool status = newCustomOrder[i].getOrderStatus();
 
             fout.write((char*)(&pizzaFromMenuVectorSize), sizeof(pizzaFromMenuVectorSize));
 
@@ -548,15 +568,16 @@ void OrderRepository::overRideCustomOrders(vector<newOrder> newCustomOrder)
 
             fout.write((char*)(&pricePerOrder),sizeof(pricePerOrder));
 
-            if(orderStatus == true)
+
+            if(status == false )
             {
-                int status = 1;
-                fout.write((char*)(&status), sizeof(status));
+                int orderstatus = 0;
+                fout.write((char*)(&orderstatus),sizeof(orderstatus));
             }
-            else if (orderStatus == false)
+            else if (status == true)
             {
-                int status = 0;
-                fout.write((char*)(&status), sizeof(status));
+                int orderstatus = 1;
+                fout.write((char*)(&orderstatus), sizeof(orderstatus));
             }
 
             fout.write((char*)(&orderNum),sizeof(orderNum));
@@ -564,7 +585,7 @@ void OrderRepository::overRideCustomOrders(vector<newOrder> newCustomOrder)
     }
     else
     {
-        cout << "Could not open file. " << endl;
+        //cout << "Could not open file. " << endl;
     }
 
     fout.close();
@@ -609,7 +630,6 @@ void OrderRepository::getOrderAtSpecificPizzaPlaceDelivery(PizzaPlaces newPizzap
     readOrderFromMenu();
 
     string nameOfPizzaPlace = newPizzaplace.getName();
-
 
     int OrderVectorSize = orderVector.size();
     for(int i = 0; i < OrderVectorSize;i++)
@@ -703,6 +723,15 @@ vector<orderFromMenu> OrderRepository::getMenuOrderReady()
 {
     return this->orderFromMenuVectorDelivery;
 }
+
+vector<newOrder> OrderRepository::getOrderVectorBakery()
+{
+    return this->orderVectorBakery;
+}
+vector<orderFromMenu> OrderRepository::getOrderFromMenuVectorBakery()
+{
+    return this->orderFromMenuVectorBakery;
+}
 int OrderRepository::getOrderFromMenuVectorBakerySize()
 {
     int vectorSize = this->orderFromMenuVectorBakery.size();
@@ -743,9 +772,7 @@ void OrderRepository::writePaidCustomOrders(newOrder customPaidorder)
     int pizzaVectorSize = pizzaVector.size();
     int sideOrderVectorSize = sideOrderVector.size();
     int beverageVectorSize = beverageVector.size();
-    int status = 0;
-
-//    neworder.setNewPricePerOrder();
+    bool status = true;
 
     int picePerOrder = customPaidorder.getPricePerOrder();
     ofstream fout;
@@ -788,11 +815,22 @@ void OrderRepository::writePaidCustomOrders(newOrder customPaidorder)
 
     fout.write((char*)(&picePerOrder),sizeof(picePerOrder));
 
-    fout.write((char*)(&status),sizeof(status));
+    if(status == false )
+    {
+        int orderstatus = 0;
+        fout.write((char*)(&orderstatus),sizeof(orderstatus));
+    }
+    else if (status == true)
+    {
+        int orderstatus = 1;
+        fout.write((char*)(&orderstatus), sizeof(orderstatus));
+    }
+
     fout.write((char*)(&orderVectorSize),sizeof(orderVectorSize));
     fout.close();
 
 }
+
 void OrderRepository::writePaidMenuOrders(orderFromMenu menuPaidOrder)
 {
     vector<Menu> pizzaVector = menuPaidOrder.getPizzaFromMenuVector();
@@ -805,8 +843,6 @@ void OrderRepository::writePaidMenuOrders(orderFromMenu menuPaidOrder)
     int sideOrderVectorSize = sideOrderVector.size();
     int beverageVectorSize = beverageVector.size();
     bool orderStatus = menuPaidOrder.getOrderStatus();
-
-//    neworder.setNewPricePerOrder();
 
     int picePerOrder = menuPaidOrder.getPricePerOrder();
     ofstream fout;

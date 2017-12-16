@@ -1,5 +1,6 @@
 #include "orderFromMenu.h"
 #include <pizzarepository.h>
+#include <stdlib.h>
 orderFromMenu::orderFromMenu()
 {
     status = false;
@@ -8,27 +9,30 @@ orderFromMenu::orderFromMenu()
 istream& operator >>(istream& in, orderFromMenu& neworder)
 {
 
-    cout << "How many pizzas from menu would you like ? ";
+    cout << "How many pizzas would you like? ";
     int inputPizzas;
     cin >> inputPizzas;
+    cout << "-------------------------------------------------------" << endl;
     for(int i = 0; i < inputPizzas; i++)
     {
         PizzaRepository pizzaRepo;
         int selection = pizzaRepo.selectFromMenu();
         Menu newMenu = pizzaRepo.selectElementFromMenu(selection);
         neworder.pizzaFromMenuVector.push_back(newMenu);
-        cout << "---Choose a size---" << endl;
-        cout << "1. For small" << endl;
-        cout << "2. For Medium" << endl;
-        cout << "3. For Large" << endl;
+        cout << "Please choose size: " << endl;
+        cout << "-------------------------------------------------------" << endl;
+        cout << "1. Small" << endl;
+        cout << "2. Medium" << endl;
+        cout << "3. Large" << endl;
         string input;
         cin >> input;
         neworder.sizeOfPizzas.push_back(input);
     }
     (system("CLS"));
-    cout << "how many side Orders Would you like ? ";
+    cout << "How many sides would you like? ";
     int inputSideOrders;
     cin >> inputSideOrders;
+    cout << "-------------------------------------------------------" << endl;
     for(int i = 0; i < inputSideOrders; i++)
     {
         SideOrderList newlist;
@@ -38,8 +42,9 @@ istream& operator >>(istream& in, orderFromMenu& neworder)
     }
     (system("CLS"));
     int beverage;
-    cout << "How many beverages would you like ? ";
+    cout << "How many beverages would you like? ";
     in >> beverage;
+    cout << "-------------------------------------------------------" << endl;
 
     for(int i = 0; i < beverage; i++)
     {
@@ -66,17 +71,18 @@ ostream& operator <<(ostream& out, orderFromMenu neworder)
     vector<Menu> newMenuVector = neworder.getPizzaFromMenuVector();
     vector<string> newPizzaSize = neworder.getSizeOfPizzas();
 
-    out << "---Pizza-- " << endl;
+    out << "** PIZZA **" << endl;
     for(unsigned int i = 0; i < newMenuVector.size();i++)
     {
         vector<alegg> toppingOnCurrentPizza = newMenuVector[i].getToppingVector();
         out << newMenuVector[i].getName() << endl;
-        out << "Toppings on Current Pizza: " << endl;
+        out << "Toppings: " << endl;
+        cout << "-------------------------------------------------------" << endl;
         for(unsigned int u = 0; u < toppingOnCurrentPizza.size();u++)
         {
             out << toppingOnCurrentPizza[u].getName() << endl;
         }
-        int stringToInt = stoi(newPizzaSize[i]);
+       int stringToInt = stoi(newPizzaSize[i]);
         if(stringToInt == 1)
         {
             out << "Customer Picked Small pizza, Price is: ";
@@ -94,29 +100,33 @@ ostream& operator <<(ostream& out, orderFromMenu neworder)
         }
 
     }
-    out << endl << "--sideOrder---" << endl;
+    out << endl << "** SIDES **" << endl;
     for ( vector<SideOrders>::iterator i = neworder.sideOrderVector.begin(); i != neworder.sideOrderVector.end(); ++i)
     {
         out << *i << ' ' << endl;
     }
-    out << endl << "--Beverage---" << endl;
+    out << endl << "** BEVERAGES **" << endl;
     for ( vector<Beverages>::iterator i = neworder.beverageVector.begin(); i != neworder.beverageVector.end(); ++i)
     {
         out << *i << ' ' << endl;
     }
-
-    out << endl << "---Pizza Place---" << endl;
+    cout << "-------------------------------------------------------" << endl;
+    out << endl << "PICK UP AT: " << endl;
     out << neworder.pizzaplace << endl;
+    cout << "-------------------------------------------------------" << endl;
 
-    out << endl << "Price Of Order: ";
+    out << endl << "ORDER TOTAL: ";
     out << neworder.pricePerOrder << endl;
+    cout << "-------------------------------------------------------" << endl;
     if(neworder.status == false)
     {
-        out << endl << "Not ready " << endl;
+        out << endl << "Order in progress" << endl;
+        cout << "-------------------------------------------------------" << endl;
     }
     else if(neworder.status == true)
     {
-        out << endl << "Order Ready " << endl;
+        out << endl << "Order ready for pick up" << endl;
+        cout << "-------------------------------------------------------" << endl;
     }
     return out;
 }

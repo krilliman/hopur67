@@ -36,15 +36,16 @@ void PizzaPlaces::readPizzaPlace(ifstream &fin)
 
 ostream& operator <<(ostream& out, const PizzaPlaces& pizzaplaces)
 {
-    cout << "Name of PizzaPlace: ";
     out << pizzaplaces.name << endl;
+    cout << "-------------------------------------------------------" << endl;
     return out;
 }
 istream& operator >>(istream& in, PizzaPlaces& pizzaplaces)
 {
-    cout << "Enter a name of a PizzaPlace: ";
+    cout << "Please enter name of pizza place: ";
     in >> ws;
     getline(in,pizzaplaces.name);
+    cout << "-------------------------------------------------------" << endl;
 
     return in;
 }

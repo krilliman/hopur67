@@ -27,7 +27,6 @@ alegg ToppingList::getToppingList()
     alegg newAlegg;
     newAlegg = aleggRepo.getAleggFromList(input);
 
-    cout << "TEST: "<< newAlegg << endl;
 
     return newAlegg;
 

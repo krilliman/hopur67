@@ -1,4 +1,5 @@
 #include "PizzaPlaceRepo.h"
+#include <userInputCheck.h>
 
 PizzaPlaceRepo::PizzaPlaceRepo()
 {
@@ -40,7 +41,6 @@ void PizzaPlaceRepo::readListOfPizzaPlaces()
               fin.read((char*)(&listSize), sizeof(listSize));
               fin.seekg(0,fin.beg);
 
-                cout << "List Size: " << listSize << endl;
                 for(int i = 0; i < listSize;i++)
                 {
                     PizzaPlaces pizzaplace;
@@ -56,7 +56,7 @@ void PizzaPlaceRepo::readListOfPizzaPlaces()
         }
         else
         {
-            cout << "Could not open file." << endl;
+            //cout << "Could not open file." << endl;
         }
 
     fin.close();
@@ -71,18 +71,38 @@ PizzaPlaces PizzaPlaceRepo::getPizzaPlaceFromList(int element)
 
 int PizzaPlaceRepo::readFromListOFPizzaPlaces()
 {
-    int input = 0;
-    int counter = 1;
     readListOfPizzaPlaces();
-    cout << "Select a pizza place" << endl;
-    for ( vector<PizzaPlaces>::iterator i = vectorOfPizzaPlaces.begin(); i != vectorOfPizzaPlaces.end(); ++i)
+    userInputCheck newuserInput;
+    string input;
+    int newCounter = 0;
+    int newInput;
+    while(newCounter == 0)
     {
-        cout << counter  << ": ";
-        cout << *i << ' ' << endl << endl;
-        counter++;
+        int counter = 1;
+
+        cout << "Select a pizza place: " << endl;
+        cout << "-------------------------------------------------------" << endl;
+        for ( vector<PizzaPlaces>::iterator i = vectorOfPizzaPlaces.begin(); i != vectorOfPizzaPlaces.end(); ++i)
+        {
+            cout << " * " << counter  << " * : ";
+            cout << *i << ' ' << endl << endl;
+            cout << "-------------------------------------------------------" << endl;
+            counter++;
+        }
+        cin >> input;
+        cout << "-------------------------------------------------------" << endl;
+        if(newuserInput.checkInRangePizzaPlace(input) == true)
+        {
+            newInput = stoi(input);
+            newCounter++;
+        }
+        else
+        {
+          cout << "invalid input " << endl;
+        }
     }
-    cin >> input;
-    return input;
+
+    return newInput;
 }
 
 void PizzaPlaceRepo::printPizzaPlace(vector<PizzaPlaces> vectorOfPizzaPlaces)

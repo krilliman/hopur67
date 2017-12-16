@@ -1,5 +1,6 @@
 #include "aleggrepository.h"
 #include <fstream>
+#include <userInputCheck.h>
 AleggRepository::AleggRepository()
 {
     //ctor
@@ -50,7 +51,7 @@ void AleggRepository::readTopList()
                     fin.read((char*)(&listSize), sizeof(listSize));
                     fin.seekg(0,fin.beg);
 
-                    cout << "List Size: " << listSize << endl;
+                    // cout << "List Size: " << listSize << endl;
                     for(int i = 0; i < listSize;i++)
                     {
                             alegg newAlegg;
@@ -64,7 +65,7 @@ void AleggRepository::readTopList()
         }
         else
         {
-            cout << "Could not open file." << endl;
+            //cout << "Could not open file." << endl;
         }
 
     fin.close();
@@ -80,16 +81,38 @@ void AleggRepository::printTopList(vector<alegg> vectorAlegg)
 }
 int AleggRepository::printTopListStandard()
 {
+    userInputCheck newcheck;
     readTopList();
-    int counter = 1;
-    int input = 0;
-    for ( vector<alegg>::iterator i = vectorAlegg.begin(); i != vectorAlegg.end(); ++i)
+
+    string input;
+    int newInput;
+    int newCounter = 0;
+    while(newCounter == 0)
     {
-        cout << "Select topping number: " << endl;
-        cout << counter << ": ";
-        cout << *i << ' ' << endl;
-        counter++;
+        int counter = 1;
+        cout << "Please select topping: " << endl;
+        cout << "-------------------------------------------------------" << endl;
+        for ( vector<alegg>::iterator i = vectorAlegg.begin(); i != vectorAlegg.end(); ++i)
+        {
+            cout << " * " << counter << " * : ";
+            cout << *i << ' ' << endl;
+            cout << "-------------------------------------------------------" << endl;
+            counter++;
+        }
+        cin >> input;
+        cout << "-------------------------------------------------------" << endl;
+
+
+        if(newcheck.checkInRangeAlegg(input) == true)
+        {
+            newInput = stoi(input);
+            newCounter++;
+        }
+        else
+        {
+          cout << "invalid input " << endl;
+        }
     }
-    cin >> input;
-    return input;
+
+    return newInput;
 }

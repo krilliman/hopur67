@@ -53,6 +53,7 @@ class newOrder
         int pricePerOrder;
         int orderNum;
         bool status;
+        int process;
 
 };
 

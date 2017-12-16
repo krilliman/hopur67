@@ -107,18 +107,20 @@ void alegg::readAlegg(istream &fin)
 istream& operator >> (istream& in, alegg& nyttalegg)
 {
 
-    cout << "Name Of Topping: ";
+    cout << "Please enter name of topping: ";
     in >> ws;
     getline(in,nyttalegg.name);
+    cout << "-------------------------------------------------------" << endl;
 
-    cout << "Price Little: ";
+    cout << "Price(Small): ";
     in >> nyttalegg.priceLittle;
 
-    cout << "Price Middle: ";
+    cout << "Price(Medium): ";
     in >> nyttalegg.priceMiddle;
 
-    cout << "Price Big: ";
+    cout << "Price(Large): ";
     in >> nyttalegg.priceLarge;
+    cout << "-------------------------------------------------------" << endl;
 
     return in;
 
@@ -128,17 +130,19 @@ ostream& operator << (ostream& out, const alegg skrifalegg)
 
     cout << "Topping name: ";
     out << skrifalegg.name << endl;
+    cout << "-------------------------------------------------------" << endl;
 
-    cout << "Price Little: ";
+    cout << "Price(Small): ";
     out << skrifalegg.priceLittle << endl;
 
-    cout << "Price Middle : ";
+    cout << "Price(Medium) : ";
     out << skrifalegg.priceMiddle << endl;
 
-
-    cout << "Price Big: ";
+    cout << "Price(Large): ";
     out << skrifalegg.priceLarge << endl;
+    cout << "-------------------------------------------------------" << endl;
 
 
     return out;
 }
+

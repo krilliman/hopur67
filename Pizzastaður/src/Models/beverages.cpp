@@ -60,8 +60,9 @@ ostream& operator << (ostream& out, const Beverages& beverages)
     cout << "Name: ";
     out << beverages.name << endl;
 
-    cout << "Price : ";
+    cout << "Price: ";
     out << beverages.price << endl;
+    cout << "-------------------------------------------------------" << endl;
 
     return out;
 }
@@ -71,8 +72,9 @@ istream& operator >>(istream& in, Beverages& beverages)
     in >> ws;
     getline(in,beverages.name);
 
-    cout << "Enter a Price : ";
+    cout << "Price: ";
     in >> beverages.price;
+    cout << "-------------------------------------------------------" << endl;
 
     return in;
 }

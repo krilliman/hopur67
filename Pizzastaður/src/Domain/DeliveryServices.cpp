@@ -5,11 +5,6 @@ DeliveryService::DeliveryService()
     //ctor
 }
 
-void DeliveryService::PrintOrders()
-{
-    OrderRepository orderRepo;
-    orderRepo.printOrderList();
-}
 PizzaPlaces DeliveryService::GetPizzaPlace()
 {
     PizzaPlaceRepo pizzaplaceRepo;
@@ -19,7 +14,6 @@ PizzaPlaces DeliveryService::GetPizzaPlace()
     return newPizzaplace;
 
 }
-
 void DeliveryService::getOrdersAtSpecificPizzaPlace(PizzaPlaces currentPizzaPlace)
 {
     OrderRepository orderRepo;
@@ -43,7 +37,7 @@ int DeliveryService::selectListOfCustomOrderReady()
     cin >> input;
     return input;
 }
-int DeliveryService::selectFromMenuOrderReady()
+int DeliveryService::selectFromMenuOrders()
 {
     int counter = 1;
     int vectorSize = this->menuOrdersReady.size();
@@ -84,7 +78,6 @@ void DeliveryService::changeCustomOrders(newOrder neworder)
     {
         if(allCustomOrders[i].getOrderNum() == neworder.getOrderNum())
         {
-            cout  << allCustomOrders[i] << endl;
             allCustomOrders.erase(allCustomOrders.begin()+i);
         }
         orderRepo.overRideCustomOrders(allCustomOrders);
@@ -104,9 +97,9 @@ void DeliveryService::changeMenuOrders(orderFromMenu newOrderFromMenu)
         {
             allMenuOrders.erase(allMenuOrders.begin()+i);
         }
-        orderRepo.overRideMenuOrders(allMenuOrders);
-        orderRepo.writePaidMenuOrders(newOrderFromMenu);
     }
+    orderRepo.overRideMenuOrders(allMenuOrders);
+    orderRepo.writePaidMenuOrders(newOrderFromMenu);
 }
 int DeliveryService::customOrdersVectorSize(PizzaPlaces pizzaplace)
 {

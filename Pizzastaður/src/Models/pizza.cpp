@@ -66,11 +66,13 @@ vector<alegg> Pizza::getAleggVector()
 ostream& operator <<(ostream& out, const Pizza& pizza)
 {
 
-    cout << "Bottom type: ";
+    cout << "Crust type: ";
     out << pizza.bottom << endl;
+    cout << "-------------------------------------------------------" << endl;
 
-    cout << "Pizza Size: ";
+    cout << "Size: ";
     out << pizza.size << endl;
+    cout << "-------------------------------------------------------" << endl;
 
     for ( vector<alegg>::const_iterator i = pizza.aleggVector.begin(); i != pizza.aleggVector.end(); ++i)
     {
@@ -81,16 +83,17 @@ ostream& operator <<(ostream& out, const Pizza& pizza)
 istream& operator >>(istream& in, Pizza& pizza)
 {
 
-    cout << "TEST 1: --- " << endl;
+    //cout << "TEST 1: --- " << endl;
 
     if(pizza.notMenuPizza == false)
     {
 
         string bottom1 = "Normal";
         string bottom2 = "Thin";
-        string bottom3 = "pan";
+        string bottom3 = "Pan";
         int input;
-        cout << "Choose a bottom: " << endl;
+        cout << "Please choose crust: " << endl;
+        cout << "-------------------------------------------------------" << endl;
         cout << "1." << bottom1 << endl;
         cout << "2." << bottom2 << endl;
         cout << "3." <<  bottom3 << endl;
@@ -109,18 +112,20 @@ istream& operator >>(istream& in, Pizza& pizza)
             pizza.bottom = bottom3;
         }
 
-        cout << "choose a size " << endl;
-        cout << "1." << "small" << endl;
-        cout << "2." << "medium" << endl;
-        cout << "3." <<  "large" << endl;
+        cout << "Please choose size: " << endl;
+        cout << "-------------------------------------------------------" << endl;
+        cout << "1." << "Small" << endl;
+        cout << "2." << "Medium" << endl;
+        cout << "3." <<  "Large" << endl;
         char input2;
         cin >> input2;
         pizza.setNewSize(input2);
 
     }
-    cout << "Enter Number Of Toppings: ";
+    cout << "How many toppings would you like? ";
     int topCnt;
     in >> topCnt;
+    cout << "-------------------------------------------------------" << endl;
     for(int i = 0; i < topCnt;i++)
     {
 

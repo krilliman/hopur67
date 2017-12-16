@@ -1,5 +1,6 @@
 #include "extrasrepository.h"
 #include <fstream>
+#include <userInputCheck.h>
 extrasRepository::extrasRepository()
 {
     //ctor
@@ -47,7 +48,7 @@ void extrasRepository::readSOList()
           fin.read((char*)(&listSize), sizeof(listSize));
           fin.seekg(0,fin.beg);
 
-            cout << "List Size: " << listSize << endl;
+            //cout << "List Size: " << listSize << endl;
             for(int i = 0; i < listSize;i++)
             {
                 SideOrders sideorder;
@@ -64,7 +65,7 @@ void extrasRepository::readSOList()
     }
     else
     {
-        cout << "Could not open file." << endl;
+        //cout << "Could not open file." << endl;
     }
 
     fin.close();
@@ -137,7 +138,7 @@ void extrasRepository::readBevergesList()
         }
         else
         {
-            cout << "Could not open file." << endl;
+            //cout << "Could not open file." << endl;
         }
 
     fin.close();
@@ -161,34 +162,74 @@ void extrasRepository::printSOList(vector<SideOrders> vectorSideOrders)
 }
 int extrasRepository::printBevergesListStandard()
 {
+    userInputCheck newuserInput;
     readBevergesList();
-    int counter = 1;
-    int input = 0;
-    cout << "Pick a Beverage: " << endl;
-    for ( vector<Beverages>::iterator i = vectorBeverages.begin(); i != vectorBeverages.end(); ++i)
+
+    string input;
+    int newInput;
+    int newCounter = 0;
+    while(newCounter == 0)
     {
-        cout << counter << ": ";
-        cout << *i << ' ' << endl;
-        counter++;
+        int counter = 1;
+        cout << "Please choose a beverage: " << endl;
+        cout << "-------------------------------------------------------" << endl;
+        for ( vector<Beverages>::iterator i = vectorBeverages.begin(); i != vectorBeverages.end(); ++i)
+        {
+            cout << " * " << counter << " * : ";
+            cout << *i << ' ' << endl;
+            cout << "-------------------------------------------------------" << endl;
+            counter++;
+        }
+        cin >> input;
+        cout << "-------------------------------------------------------" << endl;
+        if(newuserInput.checkInRangeBeverages(input) == true)
+        {
+            newInput = stoi(input);
+            newCounter++;
+        }
+        else
+        {
+          //cout << "invalid input " << endl;
+        }
+
+
     }
-    cin >> input;
-    return input;
+    return newInput;
+
 }
 int extrasRepository::printSOListStandard()
 {
-
+    userInputCheck newuserInput;
     readSOList();
-    int counter = 1;
-    int input = 0;
-    cout << "Pick a sideOrder: " << endl;
+
+    string input;
+    int newInput;
+    int newCounter = 0;
+    while(newCounter == 0)
+    {
+        int counter = 1;
+    cout << "Please choose a side: " << endl;
+    cout << "-------------------------------------------------------" << endl;
 
     for ( vector<SideOrders>::iterator i = vectorSideOrders.begin(); i != vectorSideOrders.end(); ++i)
     {
-        cout <<counter << ": ";
+        cout << " * " <<counter << " * : ";
         cout << *i << ' ' << endl;
+        cout << "-------------------------------------------------------" << endl;
 
         counter++;
     }
     cin >> input;
-    return input;
+    cout << "-------------------------------------------------------" << endl;
+        if(newuserInput.checkInRangeSideOrder(input) == true)
+        {
+            newInput = stoi(input);
+            newCounter++;
+        }
+        else
+        {
+          cout << "invalid input " << endl;
+        }
+    }
+    return newCounter;
 }

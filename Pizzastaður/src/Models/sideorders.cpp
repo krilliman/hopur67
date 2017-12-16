@@ -69,12 +69,14 @@ void SideOrders::readSideOrder(ifstream &fin)
 }
 istream& operator >> (istream& in, SideOrders& sideorders)
 {
-    cout << "Enter Side Order Name: ";
+    cout << "Please enter side order name: ";
     in >> ws;
     getline(in,sideorders.name);
+    cout << "-------------------------------------------------------" << endl;
 
-    cout << "Enter Side Order Price: ";
+    cout << "Price: ";
     in >> sideorders.Price;
+    cout << "-------------------------------------------------------" << endl;
 
     return in;
 }

@@ -139,13 +139,13 @@ ostream& operator << (ostream& out,  Menu& listi)
     {
         cout << newAleggVector[i].getName() << endl;
     }
-    cout << "Price for little: ";
+    cout << "Price(Small): ";
     out << listi.verdLitil << endl;
 
-    cout << "Price for Middle: ";
+    cout << "Price(Medium): ";
     out << listi.verdMid << endl;
 
-    cout << "Price for Big: ";
+    cout << "Price(Large): ";
     out << listi.verdStor << endl;
 
     return out;
@@ -172,14 +172,14 @@ istream& operator >> (istream& in, Menu& listi)
     }
 
 
-    cout << "Price for little: ";
+    cout << "Price(Small): ";
     in >> listi.verdLitil;
 
-    cout << "Price for Middle: ";
+    cout << "Price(Medium): ";
     in >> listi.verdMid;
 
-    cout << "Price for Big: ";
+    cout << "Price(Large): ";
     in >> listi.verdStor;
-    cout << "Exiting Menu/CIN: ---" << endl;
+
     return in;
 }

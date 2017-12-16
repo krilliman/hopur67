@@ -1,4 +1,5 @@
 #include "salesui.h"
+#include "mainui.h"
 #include "alegg.h"
 #include "toppinglist.h"
 #include "pizzarepository.h"
@@ -19,28 +20,19 @@ void SalesUI::startUI()
     char Selection = '\0';
     while (Selection != 'r')
     {
-        cout << endl<< "New Order: " << endl;
-        cout << "1: Offers / Missing" << endl;
-        cout << "2: Pizza from Menu / Missing" << endl;
-        cout << "3: Make your own / Missing" << endl;
-        cout << "4: to Print order" << endl;
-        cout << "5. to print orders from menu" << endl;
-        cout << "r: Press r to go back to - Main Menu -" << endl;
+        cout << "*** SALES INTERFACE ***" << endl;
+        cout << "-------------------------------------------------------" << endl;
+        cout << "1: Menu Pizza" << endl;
+        cout << "2: Make your own" << endl;
+        cout << "3: Print all custom orders" << endl;
+        cout << "4: Print all menu orders " << endl;
+        cout << "Q: Press Q to go back to - Main Menu -" << endl;
+        cout << "-------------------------------------------------------" << endl;
         cin >> Selection;
+        cout << "-------------------------------------------------------" << endl;
+
 
         if (Selection == '1')
-        {
-            ///int menu.offer;
-
-            cout << "Please select offer: " << endl;
-            cout << "1: Offer A " << endl;
-            cout << "2: Offer B " << endl;
-            cout << "3: Offer C " << endl;
-
-            //cin >> menu.offer;
-            //INSERTSERVICE
-        }
-        if (Selection == '2')
         {
             OrderList newOrderList;
             int input = 0;
@@ -51,11 +43,10 @@ void SalesUI::startUI()
                 orderFromMenu neworder;
 
                 cin >> neworder;
-                cout << "TEST: " << neworder << endl;
                 newOrderList.setNewOrderFromMenu(neworder);
             }
         }
-        if (Selection == '3')
+        else if (Selection == '2')
         {
             OrderList newOrderList;
             int input = 0;
@@ -66,22 +57,27 @@ void SalesUI::startUI()
                 newOrder neworder;
 
                 cin >> neworder;
-                cout << "TEST: " << neworder << endl;
+                //cout << "TEST: " << neworder << endl;
                 newOrderList.setNewOrder(neworder);
             }
 
 
 
         }
-        if (Selection == '4')
+        else if (Selection == '3')
         {
            OrderList newOrderList;
            newOrderList.getOrderList();
         }
-        if (Selection == '5')
+        else if (Selection == '4')
         {
             OrderList newOrderList;
             newOrderList.getOrdersFromMenu();
+        }
+        else if (Selection == 'Q' || Selection == 'q')
+        {
+            MainUI mainui;
+            mainui.startUI();
         }
     }
 }

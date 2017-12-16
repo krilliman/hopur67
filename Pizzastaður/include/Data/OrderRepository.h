@@ -34,6 +34,9 @@ class OrderRepository
         vector<newOrder> getCustomOrderReady();
         vector<orderFromMenu> getMenuOrderReady();
 
+        vector<newOrder> getOrderVectorBakery();
+        vector<orderFromMenu> getOrderFromMenuVectorBakery();
+
         void overRideMenuOrders(vector<orderFromMenu> orderFromMenuVector);
         void overRideCustomOrders(vector<newOrder> customOrder);
 

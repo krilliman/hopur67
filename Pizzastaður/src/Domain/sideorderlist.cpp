@@ -30,6 +30,5 @@ SideOrders SideOrderList::getOutOfSideOrderList()
     SideOrders newSideorder;
     newSideorder = extrasRepo.getSideOrderFromList(input);
 
-    cout << newSideorder << endl;
     return newSideorder;
 }
